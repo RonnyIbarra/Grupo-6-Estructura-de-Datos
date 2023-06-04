@@ -14,7 +14,7 @@ class OperacionListas
 {
 public:
    virtual void eliminar(T)=0;
-   virtual void buscar(long int)=0;
+   virtual bool buscar(long int)=0;
    virtual void mostrar(void)=0;
 
 protected:

@@ -24,7 +24,7 @@ class ListaDoble: public OperacionListas<T>{
 	    void insertarPorCabeza(T);
 	    void insertarPorCola(T);
 	    void eliminar(T)override;
-	    void buscar(long int)override;
+	    bool buscar(long int)override;
 	    void mostrar()override;
 };
 
