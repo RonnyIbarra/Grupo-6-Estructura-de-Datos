@@ -2,7 +2,13 @@
 Order=0
 Focused=0
 [Editor_0]
+<<<<<<< HEAD
 CursorCol=1
 CursorRow=1
 TopLine=3
+=======
+CursorCol=34
+CursorRow=34
+TopLine=23
+>>>>>>> 5c6d8ae2feec2f3bf4e1a9b2a8cfd40afd694911
 LeftChar=1

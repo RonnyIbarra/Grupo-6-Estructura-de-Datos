@@ -86,7 +86,7 @@ void ListaDoble<T>::eliminar(T valor) {
 
 //buscar por cedula
 template <typename T>
-void ListaDoble<T>::buscar(long int cedula) {
+bool ListaDoble<T>::buscar(long int cedula) {
     Nodo<T>* actual = cabeza;
     bool encontrado = false;
     
@@ -100,9 +100,9 @@ void ListaDoble<T>::buscar(long int cedula) {
     }
     
     if (encontrado) {
-        std::cout << "La persona con C.I." << cedula << " se encuentra registrada." << std::endl;
+        return true;
     } else {
-        std::cout << "No se han encontrado coincidencias" << std::endl;
+        return false;
     }
 }
 
