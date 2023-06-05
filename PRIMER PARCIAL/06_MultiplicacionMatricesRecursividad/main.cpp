@@ -10,6 +10,7 @@
 #include "Matriz.h"
 #include "Operaciones.h"
 #include "Validacion.h"
+#include "Operaciones.cpp"
 
 void iniciar(int);
 
