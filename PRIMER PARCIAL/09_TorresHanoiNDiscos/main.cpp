@@ -9,7 +9,6 @@
 #include <iostream>
 #include <stack>
 #include "TorresHanoi.h"
-#include "TorresHanoi.cpp"
 #include "Validacion.h"
 
 using namespace std;
