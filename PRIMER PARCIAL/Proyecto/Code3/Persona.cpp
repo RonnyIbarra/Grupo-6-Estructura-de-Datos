@@ -35,7 +35,7 @@ void Persona::setFechaNacimiento(Fecha newFechaNacimiento){fechaNacimiento = new
 
 Registro Persona::getRegistro(void){return registro;}
 
-void Persona::setRegistro(Registro newRegistro){registro = newRegistro;}
+void Persona::setRegistro(Registro newRegistro){this->registro = newRegistro;}
 
 
 Persona::Persona(){

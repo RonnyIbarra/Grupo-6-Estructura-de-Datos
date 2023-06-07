@@ -18,6 +18,7 @@ public:
    	long int validarCedula(void);
    	Fecha ingresarEdad(void);
    	bool validarCedulaExistente(void);
+   	bool esMayorDeEdad(Fecha&);
    	std::string ingresarLetras();
    	Validacion();
 	
