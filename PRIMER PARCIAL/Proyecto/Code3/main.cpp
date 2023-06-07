@@ -16,10 +16,10 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-	ListaDoble<Persona>* listaNueva = GestorArchivos<Persona>::cargarListaDesdeArchivo("datos.dat");
-	listaNueva->mostrar();
+	ListaDoble<Persona>* listaPersonas = GestorArchivos<Persona>::cargarListaDesdeArchivo("datos.dat");
+	listaPersonas->mostrar();
 	Validacion validacion;
-	long int val_ced;
+	long int cedula;
 	bool bool_buscar = false;
 	int d, m, y;
 	string nombre, apellido;
@@ -28,17 +28,24 @@ int main(int argc, char** argv) {
 	system("cls");
 	printf("\t****************************\n\tSISTEMA CONTROL DE REGISTROS\n\t****************************\n\n");
 	do{
-		val_ced = validacion.validarCedula();
-	}while(val_ced == -1 );	
+		cedula = validacion.validarCedula();
+	}while(cedula == -1 );	
 	
-	bool_buscar = listaNueva->buscar(val_ced);
+	bool_buscar = listaPersonas->buscar(cedula);
 	if(bool_buscar){
 		system("cls");
 		printf("\n\t***CONTROL***\n");
+		Registro registro1;
+		registro1.setHoraEntradaFromSystem();
+		listaPersonas->modificarHoraEntrada(*listaPersonas, cedula, registro1.getHoraEntrada());
+		printf("hora registrada\n");
+		GestorArchivos<Persona>::guardarListaEnArchivo("datos.dat", listaPersonas);
+		listaPersonas->mostrar();
+		
 	}else{
 		system("cls");
 		printf("\n\t***REGISTRO***\n");
-		printf("Cedula: %ld\n",val_ced);
+		printf("Cedula: %ld\n",cedula);
 		printf("Nombre: ");
 		nombre = validacion.ingresarLetras();
 		printf("Apellido: ");
@@ -51,9 +58,12 @@ int main(int argc, char** argv) {
 		printf("anio: ");
 		y = validacion.ingresarDatosEnteros();
 		Fecha fechaNacimiento(d,m,y);
-		Persona persona1(val_ced,nombre,apellido,fechaNacimiento);
-		listaNueva->insertarPorCola(persona1); 
-		GestorArchivos<Persona>::guardarListaEnArchivo("datos.dat", listaNueva);
+		Registro registro2;
+		registro2.setHoraEntradaFromSystem();
+		int sw = 0;
+		Persona persona1(cedula,nombre,apellido,sw,fechaNacimiento, registro2);
+		listaPersonas->insertarPorCola(persona1); 
+		GestorArchivos<Persona>::guardarListaEnArchivo("datos.dat", listaPersonas);
 	}
 	
 

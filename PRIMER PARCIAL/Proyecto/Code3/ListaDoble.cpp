@@ -84,6 +84,26 @@ void ListaDoble<T>::eliminar(T valor) {
     }
 }
 
+//modificar registro
+template <typename T>
+void ListaDoble<T>::modificarHoraEntrada(ListaDoble<T>& lista, long int cedula, std::tm nuevaHoraEntrada) {
+    Nodo<T>* actual = lista.getCabeza();
+
+    while (actual != nullptr) {
+        if (actual->getDato().getCedula() == cedula) {
+            Registro registro = actual->getDato().getRegistro();
+            registro.setHoraEntrada(nuevaHoraEntrada);
+            actual->getDato().setRegistro(registro);
+            return;
+        }
+
+        actual = actual->getSiguiente();
+    }
+}
+
+
+
+
 //buscar por cedula
 template <typename T>
 bool ListaDoble<T>::buscar(long int cedula) {

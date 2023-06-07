@@ -10,11 +10,16 @@
 #include <string>
 #include "Persona.h"
 
+
 using namespace std;
 
 long int Persona::getCedula(void){return cedula;}
 
 void Persona::setCedula(long int newCedula){cedula = newCedula;}
+
+int Persona::getSw(void){return sw;}
+
+void Persona::setSw(int newSw){sw = newSw;}
 
 string Persona::getNombre(void){return nombre;}
 
@@ -28,22 +33,31 @@ Fecha Persona::getFechaNacimiento(void){return fechaNacimiento;}
 
 void Persona::setFechaNacimiento(Fecha newFechaNacimiento){fechaNacimiento = newFechaNacimiento;}
 
+Registro Persona::getRegistro(void){return registro;}
+
+void Persona::setRegistro(Registro newRegistro){registro = newRegistro;}
+
 
 Persona::Persona(){
 	Fecha newFechaNacimiento;
+	Registro newRegistro;
 	this->cedula = 0;
 	this-> nombre = "";
 	this-> apellido = "";
+	this-> sw=0;
 	this-> fechaNacimiento = newFechaNacimiento;
+	this->registro = newRegistro;
 }                         
  
  
-Persona::Persona(long int newCedula, string newNombre, string NewApellido, Fecha newFechaNacimiento){
+Persona::Persona(long int newCedula, string newNombre, string NewApellido, int newSw, Fecha newFechaNacimiento, Registro newRegistro){
 
 	this->cedula = newCedula;
 	this-> nombre = newNombre;
 	this-> apellido = NewApellido;
+	this->sw = newSw;
 	this-> fechaNacimiento = newFechaNacimiento;
+	this->registro = newRegistro;
 }
 
 Persona::~Persona()
@@ -56,5 +70,7 @@ void Persona::toString()
     std::cout << "PERSONA::";
 	std::cout << "{" << "cedula:" << cedula << "; " << "nombre:" << nombre << "; " << "apellido:" << apellido << "; " << "fechaNacimiento:";
     fechaNacimiento.toString();
+    std::cout << "; " ;
+    registro.toString();
     std::cout << "}" << std::endl;
 }
