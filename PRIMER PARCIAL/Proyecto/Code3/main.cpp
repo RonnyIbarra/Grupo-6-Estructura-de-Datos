@@ -63,7 +63,6 @@ int main(int argc, char** argv) {
 					
 				}else{
 					bool edad = false;
-					Fecha fechaNacimiento;
 					system("cls");
 					printf("\n\t***REGISTRO***\n");
 					printf("Cedula: %ld\n",cedula);
@@ -71,18 +70,15 @@ int main(int argc, char** argv) {
 					nombre = validacion.ingresarLetras();
 					printf("Apellido: ");
 					apellido = validacion.ingresarLetras();
-					
-					while(edad==false){
-						printf("Fecha de Nacimiento");
-					    printf("\n\tdia: ");
-						d = validacion.ingresarDatosEnteros();
-						printf("\tmes: ");
-						m = validacion.ingresarDatosEnteros();
-						printf("\tanio: ");
-						y = validacion.ingresarDatosEnteros();
-						Fecha fechaNacimiento(d,m,y);
-						edad = validacion.esMayorDeEdad(fechaNacimiento);
-					}
+					printf("Fecha de Nacimiento");
+					printf("\n\tdia: ");
+					d = validacion.ingresarDatosEnteros();
+					printf("\tmes: ");
+					m = validacion.ingresarDatosEnteros();
+					printf("\tanio: ");
+					y = validacion.ingresarDatosEnteros();
+					Fecha fechaNacimiento(d,m,y);
+						
 
 					Registro registro2;
 					registro2.setHoraEntradaFromSystem();
