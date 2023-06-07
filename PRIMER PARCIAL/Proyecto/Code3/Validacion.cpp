@@ -11,6 +11,7 @@
 #include <conio.h>
 #include <math.h>
 #include <string>
+#include <ctime>
 
 Validacion::Validacion(){
 }
@@ -139,11 +140,7 @@ Fecha Validacion::ingresarEdad(void){
 	return fecha;
 }
 
-//cedula existente
-bool Validacion::validarCedulaExistente(void){
-	
-	return 0;
-}
+
 
 //ingresar solo letras
 std::string Validacion::ingresarLetras() {
@@ -169,3 +166,31 @@ std::string Validacion::ingresarLetras() {
     std::cout << std::endl;
     return texto;
 }
+
+
+//mayor de edad
+bool Validacion::esMayorDeEdad(Fecha& fecha) {
+    time_t now = time(nullptr); // Obtener el tiempo actual del sistema
+    tm* localTime = localtime(&now); // Convertir el tiempo en una estructura tm local
+
+    int yearActual = localTime->tm_year + 1900; // Obtener el año actual
+
+    // Comparar la fecha de nacimiento con la fecha actual
+    if (yearActual - fecha.getYear() > 18) {
+        return true; // Mayor de edad
+    }
+    else if (yearActual - fecha.getYear() == 18) {
+        // Si el año actual - año de nacimiento es igual a 18, comprobar el mes y el día
+        if (fecha.getMes() < localTime->tm_mon + 1) {
+            return true; // Mayor de edad
+        }
+        else if (fecha.getMes() == localTime->tm_mon + 1) {
+            if (fecha.getDia() <= localTime->tm_mday) {
+                return true; // Mayor de edad
+            }
+        }
+    }
+
+    return false; // Menor de edad
+}
+

@@ -13,6 +13,7 @@
 #include "OperacionListas.h"
 #include "Nodo.h"
 #include "Registro.h"
+#include "Persona.h"
 
 template <typename T>
 class ListaDoble: public OperacionListas<T>{
@@ -27,7 +28,7 @@ class ListaDoble: public OperacionListas<T>{
 	    void insertarPorCola(T);
 	    void eliminar(T)override;
 	    void registrarEntrada(T , std::tm& );
-	    void modificarHoraEntrada(ListaDoble<T>&, long int , std::tm );
+	    void modificarHoraEntrada(long int , std::tm );
 	    bool buscar(long int)override;
 	    void mostrar()override;
 };
