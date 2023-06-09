@@ -26,11 +26,14 @@ class ListaDoble: public OperacionListas<T>{
 	    Nodo<T>* getCola();
 	    void insertarPorCabeza(T);
 	    void insertarPorCola(T);
-	    void eliminar(T)override;
+	    void eliminar(long int);
 	    void registrarEntrada(T , std::tm& );
 	    void modificarHoraEntrada(long int , std::tm );
+	    void modificarHoraSalida(long int , std::tm );
 	    bool buscar(long int)override;
 	    void mostrar()override;
+	    Nodo<T>* buscarNodo(long int);
+	    void modificar(T, T);
 };
 
 #endif

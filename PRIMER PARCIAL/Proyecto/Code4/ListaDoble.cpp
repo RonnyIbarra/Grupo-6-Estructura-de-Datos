@@ -55,35 +55,6 @@ void ListaDoble<T>::insertarPorCola(T valor) {
 }
 
 
-template <typename T>
-void ListaDoble<T>::eliminar(T valor) {
-    Nodo<T>* actual = cabeza;
-    
-    while (actual != nullptr) {
-        if (actual->getDato().getCedula() == valor.getCedula()) {
-            if (actual == cabeza) {
-                cabeza = actual->getSiguiente();
-                if (cabeza != nullptr)
-                    cabeza->setAnterior(nullptr);
-            } else if (actual == cola) {
-                cola = actual->getAnterior();
-                if (cola != nullptr)
-                    cola->setSiguiente(nullptr);
-            } else {
-                Nodo<T>* anterior = actual->getAnterior();
-                Nodo<T>* siguiente = actual->getSiguiente();
-                anterior->setSiguiente(siguiente);
-                siguiente->setAnterior(anterior);
-            }
-            
-            delete actual;
-            return;
-        }
-        
-        actual = actual->getSiguiente();
-    }
-}
-
 //modificar registro
 
 template <typename T>
@@ -94,6 +65,26 @@ void ListaDoble<T>::modificarHoraEntrada(long int cedula, std::tm horaEntrada) {
     while (actual != nullptr) {
         if (actual->getDato().getCedula() == cedula) {
             actual->getDato().getRegistro().setHoraEntrada(horaEntrada);
+            encontrado = true;
+            break;
+        }
+        
+        actual = actual->getSiguiente();
+    }
+    
+    if (!encontrado) {
+        std::cout << "No se encontro la persona con cedula " << cedula << std::endl;
+    }
+}
+
+template <typename T>
+void ListaDoble<T>::modificarHoraSalida(long int cedula, std::tm horaEntrada) {
+    Nodo<T>* actual = cabeza;
+    bool encontrado = false;
+    
+    while (actual != nullptr) {
+        if (actual->getDato().getCedula() == cedula) {
+            actual->getDato().getRegistro().setHoraSalida(horaEntrada);
             encontrado = true;
             break;
         }
@@ -130,6 +121,32 @@ bool ListaDoble<T>::buscar(long int cedula) {
     }
 }
 
+
+
+template <typename T>
+void ListaDoble<T>::eliminar(long int cedula) {
+    Nodo<T>* actual = cabeza;
+    Nodo<T>* anterior = nullptr;
+    
+    while (actual != nullptr) {
+        if (actual->getDato().getCedula() == cedula) {
+            if (anterior == nullptr) {
+                // Si el nodo a eliminar es el primero de la lista
+                cabeza = actual->getSiguiente();
+            } else {
+                anterior->setSiguiente(actual->getSiguiente());
+            }
+            
+            delete actual;
+            return; // Termina la función sin retornar un valor
+        }
+        
+        anterior = actual;
+        actual = actual->getSiguiente();
+    }
+}
+
+
 //mostar todo
 template <typename T>
 void ListaDoble<T>::mostrar() {
@@ -140,6 +157,32 @@ void ListaDoble<T>::mostrar() {
     while (actual != nullptr) {
         actual->getDato().toString();
         actual = actual->getSiguiente();
+    }
+}
+
+
+template<typename T>
+Nodo<T>* ListaDoble<T>::buscarNodo(long int cedula) {
+    Nodo<T>* actual = cabeza;
+    
+    while (actual != nullptr) {
+        if (actual->getDato().getCedula() == cedula) {
+            return actual;
+        }
+        actual = actual->getSiguiente();
+    }
+    
+    return nullptr;
+}
+
+template<typename T>
+void ListaDoble<T>::modificar(T dato, T nuevoDato){
+	Nodo<T>* nodo = buscarNodo(dato);
+    if (nodo != NULL) {
+        nodo->setDato(nuevoDato);
+        std::cout << "Elemento actualizado correctamente." << std::endl;
+    } else {
+        std::cout << "Elemento no encontrado." << std::endl;
     }
 }
 

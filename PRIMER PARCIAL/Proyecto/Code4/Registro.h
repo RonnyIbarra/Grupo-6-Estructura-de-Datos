@@ -22,6 +22,8 @@ public:
    void setHoraEntradaFromSystem(void);
    void setHoraSalidaFromSystem(void);
    void toString(void);
+   void toStringSalida(void);
+   void toStringEntrada(void);
    Registro(const std::tm& , const std::tm& );
    Registro();
    
