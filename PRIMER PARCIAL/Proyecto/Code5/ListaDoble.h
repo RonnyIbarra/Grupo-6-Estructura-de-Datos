@@ -27,9 +27,7 @@ class ListaDoble: public OperacionListas<T>{
 	    void insertarPorCabeza(T);
 	    void insertarPorCola(T);
 	    void eliminar(long int);
-	    void registrarEntrada(T , std::tm& );
-	    void modificarHoraEntrada(long int , std::tm );
-	    void modificarHoraSalida(long int , std::tm );
+	    void registrarEntrada(T , std::tm&);
 	    bool buscar(long int)override;
 	    void mostrar()override;
 	    Nodo<T>* buscarNodo(long int);

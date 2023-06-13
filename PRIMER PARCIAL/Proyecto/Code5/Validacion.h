@@ -16,14 +16,15 @@ public:
 	float ingresarDatosfloat(void);
    	int ingresarDatosEnteros(void);
    	long int validarCedula(void);
-   	Fecha ingresarEdad(void);
-   	bool validarCedulaExistente(void);
    	bool validarYear(int );
    	int validarYear(void);
    	bool validarDia(int );
    	int validarDia(void);
    	bool validarMes(int );
    	int validarMes(void);
+   	Fecha validarFecha(void);
+   	bool es_bisiesto(int);
+   	bool validar_fecha(int, int, int);
    	std::string ingresarLetras();
    	Validacion();
 	

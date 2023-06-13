@@ -18,8 +18,10 @@ using namespace std;
 int main(int argc, char** argv) {   
 	ListaDoble<Persona>* listaPersonas = GestorArchivos<Persona>::cargarListaDesdeArchivo("datos.dat"); 
 	Validacion validacion;
+	Fecha fechaNacimiento;
 	long int cedula;
 	bool bool_buscar = false;
+	bool bool_eliminar = false;
 	int d, m, y;
 	string nombre, apellido;
 	
@@ -48,9 +50,11 @@ int main(int argc, char** argv) {
 				printf("\n");
 				system("cls");
 				printf("\t****************************\n\tSISTEMA CONTROL DE REGISTROS\n\t****************************\n\n");
-				do{
+				cedula = validacion.validarCedula();
+				while(cedula == -1 ){
+					printf("Cedula ingresada no valida, intente de nuevo\n");
 					cedula = validacion.validarCedula();
-				}while(cedula == -1 );	
+				}
 				
 				bool_buscar = listaPersonas->buscar(cedula);
 				if(bool_buscar){
@@ -117,14 +121,16 @@ int main(int argc, char** argv) {
 					printf("Apellido: ");
 					apellido = validacion.ingresarLetras();
 					printf("Fecha de Nacimiento");
-					printf("\n\tdia: ");
-					d = validacion.validarDia();
-					printf("\tmes: ");
-					m = validacion.validarMes();
-					printf("\tanio: ");
-					y = validacion.validarYear();
-					Fecha fechaNacimiento(d,m,y);
-
+					fechaNacimiento = validacion.validarFecha();
+					while(fechaNacimiento.getDia() == 0 || fechaNacimiento.getDia() == -1){
+						if(fechaNacimiento.getDia() == -1){
+							printf("La fecha ingresada no existe");
+							fechaNacimiento = validacion.validarFecha();
+						}else{
+							printf("Recuerde que usted debe ser mayor de edad para poder ser registrado");
+							fechaNacimiento = validacion.validarFecha();
+						}
+					}
 					Registro registro2;
 					registro2.setHoraEntradaFromSystem();
 					int sw=0;
@@ -132,10 +138,9 @@ int main(int argc, char** argv) {
 					listaPersonas->insertarPorCola(persona1); 
 					// Guardar la lista actualizada en el archivo
 					GestorArchivos<Persona>::guardarListaEnArchivo("datos.dat", listaPersonas);
-    				printf("Guardado con exito ...\n\nINFORMACION\n");
+    				printf("INFORMACION\n");
     				registro2.toStringEntrada();
-				    std::cout << "Hora de ENTRADA Registrada...." << std::endl;	
-    				
+    				printf("Hora de ENTRADA Registrada...\n\nGuardado con exito ...\n");
 					system("PAUSE");
 				}
 				
@@ -145,14 +150,20 @@ int main(int argc, char** argv) {
 					printf("\n");
 					system("cls");
 					printf("\t****************************\n\t    ELIMINAR POR CEDULA    \n\t****************************\n\n");
-					do{
 					cedula = validacion.validarCedula();
-					}while(cedula == -1 );
-					listaPersonas->eliminar(cedula);
-					 // Guardar la lista actualizada en el archivo
-					GestorArchivos<Persona>::guardarListaEnArchivo("datos.dat", listaPersonas);
-					printf("Se elimino correctamante...");
-					
+					while(cedula == -1 ){
+						printf("Cedula ingresada no valida, intente de nuevo\n");
+						cedula = validacion.validarCedula();
+					}
+					bool_eliminar = listaPersonas->buscar(cedula);
+					if(bool_eliminar){
+						listaPersonas->eliminar(cedula);
+						 // Guardar la lista actualizada en el archivo
+						GestorArchivos<Persona>::guardarListaEnArchivo("datos.dat", listaPersonas);
+						printf("\nSe elimino correctamante...\n");
+					}else{
+						printf("\nNo se encontro la cedula que deseaba eliminar\n");	
+					}
                 	system("PAUSE");
             break;
                 

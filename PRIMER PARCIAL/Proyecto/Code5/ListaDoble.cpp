@@ -55,50 +55,6 @@ void ListaDoble<T>::insertarPorCola(T valor) {
 }
 
 
-//modificar registro
-
-template <typename T>
-void ListaDoble<T>::modificarHoraEntrada(long int cedula, std::tm horaEntrada) {
-    Nodo<T>* actual = cabeza;
-    bool encontrado = false;
-    
-    while (actual != nullptr) {
-        if (actual->getDato().getCedula() == cedula) {
-            actual->getDato().getRegistro().setHoraEntrada(horaEntrada);
-            encontrado = true;
-            break;
-        }
-        
-        actual = actual->getSiguiente();
-    }
-    
-    if (!encontrado) {
-        std::cout << "No se encontro la persona con cedula " << cedula << std::endl;
-    }
-}
-
-template <typename T>
-void ListaDoble<T>::modificarHoraSalida(long int cedula, std::tm horaEntrada) {
-    Nodo<T>* actual = cabeza;
-    bool encontrado = false;
-    
-    while (actual != nullptr) {
-        if (actual->getDato().getCedula() == cedula) {
-            actual->getDato().getRegistro().setHoraSalida(horaEntrada);
-            encontrado = true;
-            break;
-        }
-        
-        actual = actual->getSiguiente();
-    }
-    
-    if (!encontrado) {
-        std::cout << "No se encontro la persona con cedula " << cedula << std::endl;
-    }
-}
-
-
-
 //buscar por cedula
 template <typename T>
 bool ListaDoble<T>::buscar(long int cedula) {

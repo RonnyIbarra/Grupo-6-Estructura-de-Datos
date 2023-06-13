@@ -22,7 +22,7 @@ void TorresDeHanoi<T>::moverDiscos(int n, stack<T>& origen, stack<T>& destino, s
 template <typename T>
 void TorresDeHanoi<T>::resolver(int numDiscos) {
     if (numDiscos <= 0) {
-        cout << "El número de discos debe ser mayor que cero." << endl;
+        cout << "El numero de discos debe ser mayor que cero." << endl;
         return;
     }
 
