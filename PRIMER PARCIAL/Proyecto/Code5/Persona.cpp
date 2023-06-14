@@ -19,7 +19,7 @@ void Persona::setCedula(long int newCedula){cedula = newCedula;}
 
 int Persona::getSw(void){return sw;}
 
-void Persona::setSw(int newSw){sw = newSw;}
+void Persona::setSw(int newSw){this->sw = newSw;}
 
 string Persona::getNombre(void){return nombre;}
 
@@ -67,10 +67,12 @@ Persona::~Persona()
 
 void Persona::toString()
 {
-    std::cout << "PERSONA::";
-	std::cout << "{" << "cedula:" << cedula << "; " << "nombre:" << nombre << "; " << "apellido:" << apellido << "; " << "fechaNacimiento:";
-    fechaNacimiento.toString();
-    std::cout << "; " ;
-    registro.toString();
-    std::cout << "}" << std::endl;
+	printf("\t******************\n              Persona          \n\t******************\n\n");
+	std::cout << "cedula:           " << cedula <<   std::endl;
+	std::cout << "nombre:           " << nombre <<   std::endl;
+	std::cout << "apellido:         " << apellido <<  std::endl;
+	std::cout << "Fecha Nacimiento: " << fechaNacimiento.getDia() << "/" << fechaNacimiento.getMes() << "/" << fechaNacimiento.getYear() << std::endl;
+	registro.toString();
+    std::cout <<  std::endl;
+    std::cout <<  std::endl;
 }

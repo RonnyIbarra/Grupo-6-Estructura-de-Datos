@@ -44,7 +44,7 @@ static void guardarListaEnArchivo(const char* nombreArchivo, ListaDoble<T>* list
         }
 
         archivo.close();
-        cout << endl << "La lista se ha guardado correctamente en el archivo." << endl;
+        cout << endl;
     } else {
         cout << endl << "No se pudo abrir el archivo." << endl;
     }
@@ -116,6 +116,7 @@ static ListaDoble<T>* cargarListaDesdeArchivo(const char* nombreArchivo) {
 
     return lista;
 }
+
 
 
 };

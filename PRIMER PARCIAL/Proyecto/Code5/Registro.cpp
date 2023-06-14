@@ -65,6 +65,21 @@ void Registro::toString() {
     ossSalida << std::put_time(&horaSalida, "%H:%M:%S");
     std::string strHoraSalida = ossSalida.str();
 
-    std::cout << "Hora de entrada: " << strHoraEntrada << "; ";
-    std::cout << "Hora de salida: " << strHoraSalida ;
+    std::cout << "Hora de entrada:  " << strHoraEntrada << std::endl;
+    std::cout << "Hora de salida:   " << strHoraSalida ;
+}
+void Registro::toStringEntrada() {
+    std::ostringstream ossEntrada;
+    ossEntrada << std::put_time(&horaEntrada, "%H:%M:%S");
+    std::string strHoraEntrada = ossEntrada.str();
+
+    std::cout << "Hora de entrada:  " << strHoraEntrada << std::endl;
+}
+void Registro::toStringSalida() {
+
+    std::ostringstream ossSalida;
+    ossSalida << std::put_time(&horaSalida, "%H:%M:%S");
+    std::string strHoraSalida = ossSalida.str();
+
+    std::cout << "Hora de salida:   " << strHoraSalida << std::endl;
 }
