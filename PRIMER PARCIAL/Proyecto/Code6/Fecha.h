@@ -1,7 +1,7 @@
 /***********************************************************************
  * UNIVERSIDAD DE LAS FUERZAS ARMADAS - ESPE
  * Module:  Fecha.h
- * Author:  Kevin Amaguaña, Alexander Daniel, Ronny Ibarra
+ * Author: Kevin Amaguaña, Alexander Guaman, Ronny Ibarra
  * Modified: Sunday, June 4, 2023 8:24:36 AM
  * Purpose: Declaration of the class Fecha
  ***********************************************************************/

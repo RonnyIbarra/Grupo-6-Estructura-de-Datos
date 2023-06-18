@@ -1,7 +1,7 @@
 /***********************************************************************
  * UNIVERSIDAD DE LAS FUERZAS ARMADAS - ESPE 
  * Module:  main.cpp
- * Author:  Kevin Amaguaña, Alexander Daniel, Ronny Ibarra
+ * Author:  Kevin Amaguaña, Alexander Guaman, Ronny Ibarra
  * Modified: Sunday, June 4, 2023 8:24:36 AM
  * Purpose: Aplicativo para control de registro utilizando listas dobles
  ***********************************************************************/
@@ -16,7 +16,8 @@
 using namespace std;
 
 int main(int argc, char** argv) {   
-	ListaDoble<Persona>* listaPersonas = GestorArchivos<Persona>::cargarListaDesdeArchivo("datos.dat"); 
+	ListaDoble<Persona>* listaPersonas = GestorArchivos<Persona>::cargarListaPersonaDesdeArchivo("personas.txt");
+	ListaDoble<Registro>* listaRegistros = GestorArchivos<Registro>::cargarListaRegistroDesdeArchivo("registros.txt"); 
 	Validacion validacion;
 	Fecha fechaNacimiento;
 	long int cedula;
@@ -31,9 +32,10 @@ int main(int argc, char** argv) {
         system("color a");
 		system("cls");
 		printf("\t****************************\n\tSISTEMA CONTROL DE REGISTROS\n\t****************************\n\n");
-        std::cout << "1. Mostrar registros\n";
-        std::cout << "2. Control de Registros\n";
-        std::cout << "3. Eliminar por cedula\n";
+        std::cout << "1. Mostrar personal\n";
+        std::cout << "2. Mostrar registros\n";
+        std::cout << "3. Control de Registros\n";
+        std::cout << "4. Eliminar por cedula\n";
         std::cout << "0. Salir\n";
         std::cout << "Ingrese su opcion: ";
         opcion = validacion.ingresarDatosEnteros();
@@ -41,12 +43,21 @@ int main(int argc, char** argv) {
         switch (opcion) {
             case 1:
                 	system("cls");
-                	printf("\t****************************\n\t    LISTA DE REGISTROS   \n\t****************************\n\n");
-					listaPersonas->mostrar();
+                	printf("\t****************************\n\t    LISTA DEL PERSONAL   \n\t****************************\n\n\n\n");
+                	printf("CEDULA   \t NOMBRE   \t APELLIDO   \t FECHA DE NACIMIENTO\n\n");
+					listaPersonas->mostrarPersonas();
+					printf("\n\n");
                 	system("PAUSE");
                 break;
             case 2:
-				listaPersonas = GestorArchivos<Persona>::cargarListaDesdeArchivo("datos.dat");
+                	system("cls");
+                	printf("\t****************************\n\t    LISTA DE REGISTROS   \n\t****************************\n\n");
+					listaRegistros->mostrarRegistros(listaPersonas);
+                	system("PAUSE");
+                break;
+            case 3:
+				listaPersonas = GestorArchivos<Persona>::cargarListaPersonaDesdeArchivo("personas.txt");
+				listaRegistros = GestorArchivos<Registro>::cargarListaRegistroDesdeArchivo("registros.txt"); 
 				printf("\n");
 				system("cls");
 				printf("\t****************************\n\tSISTEMA CONTROL DE REGISTROS\n\t****************************\n\n");
@@ -63,41 +74,55 @@ int main(int argc, char** argv) {
 					printf("\t****************************\n\t          CONTROL          \n\t****************************\n\n");
 					
 					Nodo<Persona>* nodo = listaPersonas->buscarNodo(cedula);
+					Nodo<Registro>* nodoRegistro = listaRegistros->buscarNodoPorCola(cedula);
 					if (nodo != nullptr) {
 				        Persona personaActual = nodo->getDato();
+				        Registro registroActual = nodoRegistro->getDato();
 				        //salida o entrada segun la bandera 'sw'
-				    	if(personaActual.getSw() == 0){
-				    		int swAux = 1;
-							Registro registro3;
-				    		registro3.setHoraEntrada(personaActual.getRegistro().getHoraEntrada());		
-				    		registro3.setHoraSalidaFromSystem();
-				        	Persona nuevoPersona(personaActual.getCedula(),personaActual.getNombre(),personaActual.getApellido(),swAux,personaActual.getFechaNacimiento(),registro3);
+				        
+				    	if(personaActual.getSw() == 0){ 	//SALIDA
+				    		int swAux = 1;	
+				        	Persona nuevoPersona(personaActual.getCedula(),personaActual.getNombre(),personaActual.getApellido(),swAux,personaActual.getFechaNacimiento());
 							// Modificar los atributos de Registro
-				        	personaActual.setRegistro(nuevoPersona.getRegistro());
 				        	personaActual.setSw(nuevoPersona.getSw());
-				
+							registroActual.setHoraSalidaFromSystem();
 				        	// Actualizar el nodo
 				        	nodo->setDato(personaActual);
+				        	nodoRegistro->setDato(registroActual);
+
 				        	// Guardar la lista actualizada en el archivo
-				        	GestorArchivos<Persona>::guardarListaEnArchivo("datos.dat", listaPersonas);
+				        	GestorArchivos<Persona>::guardarListaPersonaEnArchivo("personas.txt", listaPersonas);
+				        	GestorArchivos<Registro>::guardarListaRegistroEnArchivo("registros.txt", listaRegistros);
 							
-							registro3.toStringSalida();
+							registroActual.toStringSalida();
 				       		std::cout << "Hora de SALIDA Registrada...." << std::endl;
-						}else if(personaActual.getSw() == 1){
+				       		
+						}else if(personaActual.getSw() == 1){	//ENTRADA
 							int swAux1 = 0;
-							std::tm Hora0 = {};
+							std::tm tiempo = {};
+							tiempo.tm_year = 1900 - 1900; // Año: resta 1900
+							tiempo.tm_mon = 0; // Mes: índice 0 representa enero
+							tiempo.tm_mday = 1; // Día: 1
+							tiempo.tm_hour = 0; // Hora: 0
+							tiempo.tm_min = 0; // Minuto: 0
+							tiempo.tm_sec = 0; // Segundo: 0
 							Registro registro1;
+							registro1.setCedula(personaActual.getCedula());
 							registro1.setHoraEntradaFromSystem();
-							registro1.setHoraSalida(Hora0);
-							Persona nuevoPersona(personaActual.getCedula(),personaActual.getNombre(),personaActual.getApellido(),swAux1,personaActual.getFechaNacimiento(),registro1);
+							registro1.setHoraSalida(tiempo);
+							Persona nuevoPersona(personaActual.getCedula(),personaActual.getNombre(),personaActual.getApellido(),swAux1,personaActual.getFechaNacimiento());
 							// Modificar los atributos de Registro
-				        	personaActual.setRegistro(nuevoPersona.getRegistro());
 				        	personaActual.setSw(nuevoPersona.getSw());
 				
 				        	// Actualizar el nodo
 				        	nodo->setDato(personaActual);
+							
+							// Guardar en la lista de registros
+							listaRegistros->insertarPorCola(registro1);
+							
 							// Guardar la lista actualizada en el archivo
-				        	GestorArchivos<Persona>::guardarListaEnArchivo("datos.dat", listaPersonas);
+							GestorArchivos<Persona>::guardarListaPersonaEnArchivo("personas.txt", listaPersonas);
+							GestorArchivos<Registro>::guardarListaRegistroEnArchivo("registros.txt", listaRegistros);
 							
 							registro1.toStringEntrada();
 				        	std::cout << "Hora de ENTRADA Registrada...." << std::endl;	
@@ -131,13 +156,26 @@ int main(int argc, char** argv) {
 							fechaNacimiento = validacion.validarFecha();
 						}
 					}
+					
+					std::tm tiempo = {};
+					tiempo.tm_year = 1900 - 1900; // Año: resta 1900
+					tiempo.tm_mon = 0; // Mes: índice 0 representa enero
+					tiempo.tm_mday = 1; // Día: 1
+					tiempo.tm_hour = 0; // Hora: 0
+					tiempo.tm_min = 0; // Minuto: 0
+					tiempo.tm_sec = 0; // Segundo: 0
 					Registro registro2;
+					registro2.setCedula(cedula);
 					registro2.setHoraEntradaFromSystem();
+					registro2.setHoraSalida(tiempo);
 					int sw=0;
-					Persona persona1(cedula,nombre,apellido,sw,fechaNacimiento, registro2);
+					Persona persona1(cedula,nombre,apellido,sw,fechaNacimiento);
 					listaPersonas->insertarPorCola(persona1); 
+					listaRegistros->insertarPorCola(registro2);
 					// Guardar la lista actualizada en el archivo
-					GestorArchivos<Persona>::guardarListaEnArchivo("datos.dat", listaPersonas);
+					GestorArchivos<Persona>::guardarListaPersonaEnArchivo("personas.txt", listaPersonas);
+					GestorArchivos<Registro>::guardarListaRegistroEnArchivo("registros.txt", listaRegistros);
+					
     				printf("INFORMACION\n");
     				registro2.toStringEntrada();
     				printf("Hora de ENTRADA Registrada...\n\nGuardado con exito ...\n");
@@ -145,8 +183,8 @@ int main(int argc, char** argv) {
 				}
 				
 				break;
-			case 3:
-                	listaPersonas = GestorArchivos<Persona>::cargarListaDesdeArchivo("datos.dat");
+			case 4:
+                	listaPersonas = GestorArchivos<Persona>::cargarListaPersonaDesdeArchivo("datos.dat");
 					printf("\n");
 					system("cls");
 					printf("\t****************************\n\t    ELIMINAR POR CEDULA    \n\t****************************\n\n");
@@ -159,7 +197,7 @@ int main(int argc, char** argv) {
 					if(bool_eliminar){
 						listaPersonas->eliminar(cedula);
 						 // Guardar la lista actualizada en el archivo
-						GestorArchivos<Persona>::guardarListaEnArchivo("datos.dat", listaPersonas);
+						GestorArchivos<Persona>::guardarListaPersonaEnArchivo("personas.txt", listaPersonas);
 						printf("\nSe elimino correctamante...\n");
 					}else{
 						printf("\nNo se encontro la cedula que deseaba eliminar\n");	

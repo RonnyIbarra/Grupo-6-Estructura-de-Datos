@@ -1,7 +1,7 @@
 /*******************************************************************************
  * UNIVERSIDAD DE LAS FUERZAS ARMADAS - ESPE
  * Module:  ListaDoble.cpp
- * Author:  Kevin Amaguaña, Alexander Daniel, Ronny Ibarra
+ * Author:  Kevin Amaguaña, Alexander Guaman, Ronny Ibarra
  * Modified: Sunday, June 4, 2023 8:24:36 AM
  * Purpose: Implementation of the class ListaDoble
  *******************************************************************************/
@@ -116,6 +116,38 @@ void ListaDoble<T>::mostrar() {
     }
 }
 
+template <typename T>
+void ListaDoble<T>::mostrarPersonas() {
+    Nodo<T>* actual = cabeza;
+        
+    while (actual != nullptr) {
+        actual->getDato().toStringTabla();
+        actual = actual->getSiguiente();
+    }
+}
+
+template <typename T>
+void ListaDoble<T>::mostrarRegistros(ListaDoble<Persona>* listaPersonas) {
+    Nodo<T>* actual = cabeza;
+    Nodo<Persona>* actualPersona = listaPersonas->getCabeza();
+    
+    std::cout << "Contenido de la lista:" << std::endl;
+    
+    while (actualPersona != nullptr) {
+	    actualPersona->getDato().toString();
+			while (actual != nullptr){
+	    		if(actual->getDato().getCedula() == actualPersona->getDato().getCedula()){
+		        	actual->getDato().toString();
+		        	actual = actual->getSiguiente();
+				}else{
+					actual = actual->getSiguiente();	
+				}	
+			}
+	    actualPersona = actualPersona->getSiguiente();
+	    actual = cabeza;
+    }
+}
+
 
 template<typename T>
 Nodo<T>* ListaDoble<T>::buscarNodo(long int cedula) {
@@ -126,6 +158,20 @@ Nodo<T>* ListaDoble<T>::buscarNodo(long int cedula) {
             return actual;
         }
         actual = actual->getSiguiente();
+    }
+    
+    return nullptr;
+}
+
+template<typename T>
+Nodo<T>* ListaDoble<T>::buscarNodoPorCola(long int cedula) {
+    Nodo<T>* actual = cola;
+    
+    while (actual != nullptr) {
+        if (actual->getDato().getCedula() == cedula) {
+            return actual;
+        }
+        actual = actual->getAnterior();
     }
     
     return nullptr;

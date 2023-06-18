@@ -1,7 +1,7 @@
 /***********************************************************************
  * UNIVERSIDAD DE LAS FUERZAS ARMADAS - ESPE 
  * Module:  RegistroSistema.h
- * Author:   Kevin Amaguaña, Alexander Daniel, Ronny Ibarra
+ * Author:   Kevin Amaguaña, Alexander Guaman, Ronny Ibarra
  * Modified: Sunday, June 4, 2023 8:24:36 AM
  * Purpose: Declaration of the class Registro
  ***********************************************************************/
@@ -14,6 +14,8 @@
 class Registro
 {
 public:
+   long int getCedula();
+   void setCedula(long int); 
    const std::tm& getHoraEntrada() const;
    void setHoraEntrada(const std::tm& );
    const std::tm& getHoraSalida() const;
@@ -24,12 +26,13 @@ public:
    void toString(void);
    void toStringSalida(void);
    void toStringEntrada(void);
-   Registro(const std::tm& , const std::tm& );
+   Registro(const long int, const std::tm& , const std::tm& );
    Registro();
    
 
 protected:
 private:
+	long int cedula;
     std::tm horaEntrada;
     std::tm horaSalida;
 
