@@ -94,7 +94,7 @@ void ListaCircularDoble<T>::mostrar() {
 		Nodo<T>* aux = this->cabeza;
 		do
 		{
-			std::cout << aux->getDato().toString() << " ";
+			aux->getDato().toString();
 			aux = aux->getSiguiente();
 		} while (aux != this->cabeza);
 		std::cout << std::endl;

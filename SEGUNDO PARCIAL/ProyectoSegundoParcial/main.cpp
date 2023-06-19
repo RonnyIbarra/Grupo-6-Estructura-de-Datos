@@ -10,6 +10,12 @@
 #include <conio.h>
 #include <windows.h>
 
+#include "ListaCircularDoble.cpp"
+#include "Nodo.cpp"
+#include "Persona.h"
+#include "Validacion.h"
+#include "GestorArchivos.h"
+
 using namespace std;
 
 void gotoxy(int x, int y) {
@@ -54,8 +60,14 @@ void drawMenu(int selectedItem) {
 }
 
 int main() {
-    int selectedItem = 0;
+    ListaCircularDoble<Persona>* listaPersonas = GestorArchivos<Persona>::cargarListaPersonaDesdeArchivo("personas.txt");
+    Validacion validacion;
+    Fecha fechaNacimiento;
+	int selectedItem = 0;
+	bool bool_buscar = false;
+	bool bool_eliminar = false;
     bool salir = false;
+    string dni, nombre, apellido;
 
     while (!salir) {
         drawMenu(selectedItem);
@@ -80,24 +92,97 @@ int main() {
                 
                 switch(selectedItem){
                 	case 1:
-                		printf("\tInsertar\n");
+                		listaPersonas = GestorArchivos<Persona>::cargarListaPersonaDesdeArchivo("personas.txt");
+                		system("cls");
+						printf("\tInsertar\n");
+                		dni = validacion.validarDni();
+						while(dni == "-1" ){
+							printf("DNI ingresada no valido, intente de nuevo\n");
+							dni = validacion.validarDni();
+						}
+                		//registrar
+                		bool_buscar = listaPersonas->buscar(dni);
+						if(bool_buscar){
+							system("cls");							
+							// implementar el registro de cada persona que ya este registrada
+							std::cout << "Relizar registro de la hora" << std::endl;
+							
+						}else{
+							bool edad = false;
+							system("cls");
+							printf("\tInsertar\n\n");
+							std::cout << "DNI: " << dni << std::endl;
+							printf("Nombre: ");
+							nombre = validacion.ingresarLetras();
+							printf("Apellido: ");
+							apellido = validacion.ingresarLetras();
+							printf("Fecha de Nacimiento");
+							fechaNacimiento = validacion.validarFecha();
+							while(fechaNacimiento.getDia() == 0 || fechaNacimiento.getDia() == -1){
+								if(fechaNacimiento.getDia() == -1){
+									printf("La fecha ingresada no existe");
+									fechaNacimiento = validacion.validarFecha();
+								}else{
+									printf("Recuerde que usted debe ser mayor de edad para poder ser registrado");
+									fechaNacimiento = validacion.validarFecha();
+								}
+							}
+							Persona persona1(dni,nombre,apellido,fechaNacimiento);
+							listaPersonas->insertar(persona1); 
+							// Guardar la lista actualizada en el archivo
+							GestorArchivos<Persona>::guardarListaPersonaEnArchivo("personas.txt", listaPersonas);
+							printf("\nGuardado con exito...\n\n");
+						
+						}
+                		
                 		selectedItem --;
-                		_getch();
+                		system("PAUSE");
 						break;
 					case 2:
+						listaPersonas = GestorArchivos<Persona>::cargarListaPersonaDesdeArchivo("datos.dat");
+						system("cls");
 						printf("\tBuscar\n");
+						dni = validacion.validarDni();
+						while(dni == "-1" ){
+							printf("DNI ingresada no valido, intente de nuevo\n");
+							dni = validacion.validarDni();
+						}						
+						bool_buscar = listaPersonas->buscar(dni);
+						if(bool_buscar){							
+							cout << "La persona con el DNI " << dni << " si se encuentra registrada" << endl;
+						}else{
+							cout << "La persona con el DNI " << dni << " no se pudo encontrar" << endl;
+						}
 						selectedItem --;
-						_getch();
+						system("PAUSE");
 						break;		
 					case 3:
+						listaPersonas = GestorArchivos<Persona>::cargarListaPersonaDesdeArchivo("datos.dat");
+						system("cls");
 						printf("\tEliminar\n");
+						dni = validacion.validarDni();
+						while(dni == "-1" ){
+							printf("DNI ingresada no valido, intente de nuevo\n");
+							dni = validacion.validarDni();
+						}						
+						bool_eliminar = listaPersonas->buscar(dni);
+						if(bool_eliminar){
+							listaPersonas->eliminar(dni);
+							// Guardar la lista actualizada en el archivo
+							GestorArchivos<Persona>::guardarListaPersonaEnArchivo("personas.txt", listaPersonas);
+							
+							printf("\nSe elimino correctamante...\n");
+						}else{
+							printf("\nNo se encontro el DNI que deseaba eliminar\n");	
+						}
 						selectedItem --;
-						_getch();
+						system("PAUSE");
 						break;
 					case 4:
-						printf("\tMostrar\n");
+						printf("\tMostrar\n\n");
+						listaPersonas->mostrar();
 						selectedItem --;
-						_getch();
+						system("PAUSE");
 						break;
 				}
                 

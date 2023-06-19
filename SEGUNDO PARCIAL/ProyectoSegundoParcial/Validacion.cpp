@@ -98,7 +98,7 @@ int Validacion::ingresarDatosEnteros() {
 //cedula
 std::string Validacion::validarDni() {
     long int cedula;
-    std::cout << "Ingrese el numero de cedula: ";
+    std::cout << "Ingrese su DNI: ";
     cedula = ingresarDatosEnteros();
 
     std::string cedulaStr = std::to_string(cedula);
