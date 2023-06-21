@@ -57,6 +57,13 @@ void drawMenu(int selectedItem) {
     } else {
         cout << "   Mostrar" << endl;
     }
+    if (selectedItem == 4) {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);  // Color rojo
+        cout << "Ordenar (Radix)" << endl;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);  // Restaurar color normal
+    } else {
+        cout << "   Ordenar (Radix)" << endl;
+    }
 }
 
 int main() {
@@ -79,10 +86,10 @@ int main() {
                 key = _getch();
                 switch (key) {
                     case 72:  // Tecla flecha arriba
-                        selectedItem = (selectedItem - 1 + 4) % 4;
+                        selectedItem = (selectedItem - 1 + 5) % 5;
                         break;
                     case 80:  // Tecla flecha abajo
-                        selectedItem = (selectedItem + 1) % 4;
+                        selectedItem = (selectedItem + 1) % 5;
                         break;
                 }
                 break;
@@ -103,7 +110,7 @@ int main() {
                 		//registrar
                 		bool_buscar = listaPersonas->buscar(dni);
 						if(bool_buscar){
-							system("cls");							
+							system("cls");					
 							// implementar el registro de cada persona que ya este registrada
 							std::cout << "Relizar registro de la hora" << std::endl;
 							
@@ -139,7 +146,7 @@ int main() {
                 		system("PAUSE");
 						break;
 					case 2:
-						listaPersonas = GestorArchivos<Persona>::cargarListaPersonaDesdeArchivo("datos.dat");
+						//listaPersonas = GestorArchivos<Persona>::cargarListaPersonaDesdeArchivo("datos.dat");
 						system("cls");
 						printf("\tBuscar\n");
 						dni = validacion.validarDni();
@@ -157,7 +164,7 @@ int main() {
 						system("PAUSE");
 						break;		
 					case 3:
-						listaPersonas = GestorArchivos<Persona>::cargarListaPersonaDesdeArchivo("datos.dat");
+						//listaPersonas = GestorArchivos<Persona>::cargarListaPersonaDesdeArchivo("datos.dat");
 						system("cls");
 						printf("\tEliminar\n");
 						dni = validacion.validarDni();
@@ -179,8 +186,16 @@ int main() {
 						system("PAUSE");
 						break;
 					case 4:
-						printf("\tMostrar\n\n");
+						printf("\tMostrar Personal\n\n");
 						listaPersonas->mostrar();
+						selectedItem --;
+						system("PAUSE");
+						break;
+					case 5:
+						printf("Ordenar Por Apellido (Radix)\n\n");
+						listaPersonas->ordenarRadixPorApellido();
+						listaPersonas->mostrar();
+						GestorArchivos<Persona>::guardarListaPersonaEnArchivo("personas.txt", listaPersonas);
 						selectedItem --;
 						system("PAUSE");
 						break;

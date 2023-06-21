@@ -15,6 +15,7 @@ class Validacion {
 public:
 	float ingresarDatosfloat(void);
    	int ingresarDatosEnteros(void);
+   	std::string ingresarDatosEnterosString(void);
    	std::string validarDni(void);
    	bool validarYear(int );
    	int validarYear(void);

@@ -23,6 +23,7 @@ public:
    void eliminar(std::string);
    void mostrar(void);
    bool buscar(std::string);
+   void ordenarRadixPorApellido(void);
    Nodo<T>* buscarNodo(std::string );
    Nodo<T>* buscarNodoPorCola(std::string );
 

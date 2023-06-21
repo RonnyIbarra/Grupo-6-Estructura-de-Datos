@@ -95,13 +95,38 @@ int Validacion::ingresarDatosEnteros() {
 		return n;
 	}
 	
+std::string Validacion::ingresarDatosEnterosString() {
+    std::string dato;
+    char c;
+    int i = 0;
+    
+    while ((c = getch()) != 13) {
+        if (c >= '0' && c <= '9') {
+            std::cout << c;
+            dato += c;
+        } else {
+            if (!dato.empty()) {
+                if (c == 8) {
+                    dato.pop_back();
+                    putchar(8);
+                    putchar(32);
+                    putchar(8);
+                }
+            }
+        }
+    }
+    
+    std::cout << "\n";
+    return dato;
+}
+
+	
 //cedula
 std::string Validacion::validarDni() {
-    long int cedula;
+    std::string cedulaStr;
     std::cout << "Ingrese su DNI: ";
-    cedula = ingresarDatosEnteros();
+    cedulaStr = ingresarDatosEnterosString();
 
-    std::string cedulaStr = std::to_string(cedula);
 
     if (cedulaStr.length() != 10) {
         return "-1"; // La longitud de la cédula debe ser 10 dígitos

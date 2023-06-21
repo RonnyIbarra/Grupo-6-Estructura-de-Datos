@@ -7,6 +7,7 @@
  *******************************************************************************/
  
 #include <iostream>
+#include <list>
 #include "ListaCircularDoble.h"
 
 template <typename T>
@@ -119,6 +120,66 @@ bool ListaCircularDoble<T>::buscar(std::string cedula) {
 	}
 	return false;
 }
+
+//ordenamiento por RADIX
+template <typename T>
+void ListaCircularDoble<T>::ordenarRadixPorApellido() {
+    if (this->cabeza == nullptr || this->cabeza->getSiguiente() == this->cabeza) {
+        // La lista está vacía o solo tiene un elemento, no es necesario ordenar
+        return;
+    }
+
+    int numCaracteresMax = 0;
+    Nodo<T>* aux = this->cabeza;
+    do {
+        int numCaracteres = aux->getDato().getApellido().length();
+        if (numCaracteres > numCaracteresMax) {
+            numCaracteresMax = numCaracteres;
+        }
+        aux = aux->getSiguiente();
+    } while (aux != this->cabeza);
+
+    // Ordenamiento Radix
+    for (int i = numCaracteresMax - 1; i >= 0; i--) {
+        // Crear listas vacías para cada carácter
+        std::list<Nodo<T>*> listas[256];
+
+        // Llenar las listas según el carácter actual en la posición i
+        aux = this->cabeza;
+        do {
+            int ascii = (int)aux->getDato().getApellido()[i];
+            listas[ascii].push_back(aux);
+            aux = aux->getSiguiente();
+        } while (aux != this->cabeza);
+
+        // Unir las listas en una sola lista ordenada
+        Nodo<T>* cabezaOrdenada = nullptr;
+        Nodo<T>* colaOrdenada = nullptr;
+        for (int j = 0; j < 256; j++) {
+            for (Nodo<T>* nodo : listas[j]) {
+                if (cabezaOrdenada == nullptr) {
+                    cabezaOrdenada = nodo;
+                    colaOrdenada = nodo;
+                    nodo->setAnterior(nullptr);
+                    nodo->setSiguiente(nullptr);
+                } else {
+                    colaOrdenada->setSiguiente(nodo);
+                    nodo->setAnterior(colaOrdenada);
+                    nodo->setSiguiente(nullptr);
+                    colaOrdenada = nodo;
+                }
+            }
+        }
+
+        // Unir la lista ordenada con la lista original
+        colaOrdenada->setSiguiente(cabezaOrdenada);
+        cabezaOrdenada->setAnterior(colaOrdenada);
+        this->cabeza = cabezaOrdenada;
+        this->cola = colaOrdenada;
+    }
+}
+
+
 
 
 template<typename T>
