@@ -65,3 +65,10 @@ void Persona::toString()
     std::cout <<  std::endl;
 }
 
+void Persona::toStringTabla()
+{
+	printf("%s   \t %s   \t %s   \t %d/%d/%d",dni.c_str(),apellido.c_str(),nombre.c_str(),fecha.getDia(),fecha.getMes(),fecha.getYear());
+    std::cout <<  std::endl;
+}
+
+

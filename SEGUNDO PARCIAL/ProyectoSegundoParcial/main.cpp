@@ -216,7 +216,8 @@ int main() {
 						break;
 					case 4:
 						printf("\tMostrar Personal\n\n");
-						listaPersonas->mostrar();
+						printf("CEDULA   \t APELLIDO   \t NOMBRE   \t FECHA DE NACIMIENTO\n\n");
+						listaPersonas->mostrarTabla();
 						selectedItem--;
 						system("PAUSE");
 						break;
@@ -228,8 +229,9 @@ int main() {
 						break;
 					case 6:
 						printf("Ordenar Por Apellido (Radix)\n\n");
+						printf("CEDULA   \t APELLIDO   \t NOMBRE   \t FECHA DE NACIMIENTO\n\n");
 						listaPersonas->ordenarRadixPorApellido();
-						listaPersonas->mostrar();
+						listaPersonas->mostrarTabla();
 						GestorArchivos<Persona>::guardarListaPersonaEnArchivo("personas.txt", listaPersonas);
 						selectedItem--;
 						system("PAUSE");

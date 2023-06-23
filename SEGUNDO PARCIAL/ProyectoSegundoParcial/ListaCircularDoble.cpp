@@ -102,6 +102,20 @@ void ListaCircularDoble<T>::mostrar() {
 	}
 }
 
+template <typename T>
+void ListaCircularDoble<T>::mostrarTabla() {
+    if (this->cabeza != nullptr)
+	{
+		Nodo<T>* aux = this->cabeza;
+		do
+		{
+			aux->getDato().toStringTabla();
+			aux = aux->getSiguiente();
+		} while (aux != this->cabeza);
+		std::cout << std::endl;
+	}
+}
+
 
 //buscar por cedula
 template <typename T>
@@ -139,45 +153,55 @@ void ListaCircularDoble<T>::ordenarRadixPorApellido() {
         aux = aux->getSiguiente();
     } while (aux != this->cabeza);
 
-    // Ordenamiento Radix
-    for (int i = numCaracteresMax - 1; i >= 0; i--) {
-        // Crear listas vacías para cada carácter
-        std::list<Nodo<T>*> listas[256];
+    // Llamar a la función recursiva para el primer dígito
+    ordenarRadixPorApellidoRecursivo(this->cabeza, numCaracteresMax - 1);
+}
 
-        // Llenar las listas según el carácter actual en la posición i
-        aux = this->cabeza;
-        do {
-            int ascii = (int)aux->getDato().getApellido()[i];
-            listas[ascii].push_back(aux);
-            aux = aux->getSiguiente();
-        } while (aux != this->cabeza);
+template <typename T>
+void ListaCircularDoble<T>::ordenarRadixPorApellidoRecursivo(Nodo<T>* cabeza, int posicion) {
+    if (posicion < 0) {
+        return;
+    }
 
-        // Unir las listas en una sola lista ordenada
-        Nodo<T>* cabezaOrdenada = nullptr;
-        Nodo<T>* colaOrdenada = nullptr;
-        for (int j = 0; j < 256; j++) {
-            for (Nodo<T>* nodo : listas[j]) {
-                if (cabezaOrdenada == nullptr) {
-                    cabezaOrdenada = nodo;
-                    colaOrdenada = nodo;
-                    nodo->setAnterior(nullptr);
-                    nodo->setSiguiente(nullptr);
-                } else {
-                    colaOrdenada->setSiguiente(nodo);
-                    nodo->setAnterior(colaOrdenada);
-                    nodo->setSiguiente(nullptr);
-                    colaOrdenada = nodo;
-                }
+    // Crear listas vacías para cada carácter
+    std::list<Nodo<T>*> listas[256];
+
+    // Llenar las listas según el carácter actual en la posición 'posicion'
+    Nodo<T>* aux = cabeza;
+    do {
+        int ascii = (int)aux->getDato().getApellido()[posicion];
+        listas[ascii].push_back(aux);
+        aux = aux->getSiguiente();
+    } while (aux != cabeza);
+
+    // Unir las listas en una sola lista ordenada
+    Nodo<T>* cabezaOrdenada = nullptr;
+    Nodo<T>* colaOrdenada = nullptr;
+    for (int j = 0; j < 256; j++) {
+        for (Nodo<T>* nodo : listas[j]) {
+            if (cabezaOrdenada == nullptr) {
+                cabezaOrdenada = nodo;
+                colaOrdenada = nodo;
+                nodo->setAnterior(nullptr);
+                nodo->setSiguiente(nullptr);
+            } else {
+                colaOrdenada->setSiguiente(nodo);
+                nodo->setAnterior(colaOrdenada);
+                nodo->setSiguiente(nullptr);
+                colaOrdenada = nodo;
             }
         }
-
-        // Unir la lista ordenada con la lista original
-        colaOrdenada->setSiguiente(cabezaOrdenada);
-        cabezaOrdenada->setAnterior(colaOrdenada);
-        this->cabeza = cabezaOrdenada;
-        this->cola = colaOrdenada;
     }
+
+    // Unir la lista ordenada con la lista original
+    colaOrdenada->setSiguiente(cabezaOrdenada);
+    cabezaOrdenada->setAnterior(colaOrdenada);
+    cabeza = cabezaOrdenada;
+
+    // Llamar recursivamente para el siguiente dígito
+    ordenarRadixPorApellidoRecursivo(cabeza, posicion - 1);
 }
+
 
 
 

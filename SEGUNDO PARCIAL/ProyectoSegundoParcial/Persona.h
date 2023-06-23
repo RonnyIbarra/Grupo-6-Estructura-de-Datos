@@ -27,6 +27,7 @@ public:
    Persona(std::string,std::string,std::string,Fecha);
    ~Persona();
    void toString(void);
+   void toStringTabla(void);
 
 protected:
 private:

@@ -22,8 +22,10 @@ public:
    void insertar(T);
    void eliminar(std::string);
    void mostrar(void);
+   void mostrarTabla(void);
    bool buscar(std::string);
    void ordenarRadixPorApellido(void);
+   void ordenarRadixPorApellidoRecursivo(Nodo<T>*, int );
    Nodo<T>* buscarNodo(std::string );
    Nodo<T>* buscarNodoPorCola(std::string );
 
