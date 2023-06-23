@@ -121,7 +121,7 @@ bool ListaCircularDoble<T>::buscar(std::string cedula) {
 	return false;
 }
 
-//ordenamiento por RADIX
+//ordenar Radix
 template <typename T>
 void ListaCircularDoble<T>::ordenarRadixPorApellido() {
     if (this->cabeza == nullptr || this->cabeza->getSiguiente() == this->cabeza) {
@@ -178,7 +178,6 @@ void ListaCircularDoble<T>::ordenarRadixPorApellido() {
         this->cola = colaOrdenada;
     }
 }
-
 
 
 

@@ -9,12 +9,13 @@
 #include <iostream>
 #include <conio.h>
 #include <windows.h>
-
+#include <ctime>
+#include <locale>
+#include "GestorArchivos.h"
 #include "ListaCircularDoble.cpp"
 #include "Nodo.cpp"
 #include "Persona.h"
 #include "Validacion.h"
-#include "GestorArchivos.h"
 
 using namespace std;
 
@@ -52,12 +53,19 @@ void drawMenu(int selectedItem) {
     }
     if (selectedItem == 3) {
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);  // Color rojo
-        cout << "Mostrar" << endl;
+        cout << "Mostrar Personal" << endl;
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);  // Restaurar color normal
     } else {
-        cout << "   Mostrar" << endl;
+        cout << "   Mostrar Personal" << endl;
     }
     if (selectedItem == 4) {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);  // Color rojo
+        cout << "Mostrar Registros" << endl;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);  // Restaurar color normal
+    } else {
+        cout << "   Mostrar Registros" << endl;
+    }
+    if (selectedItem == 5) {
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);  // Color rojo
         cout << "Ordenar (Radix)" << endl;
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);  // Restaurar color normal
@@ -68,6 +76,7 @@ void drawMenu(int selectedItem) {
 
 int main() {
     ListaCircularDoble<Persona>* listaPersonas = GestorArchivos<Persona>::cargarListaPersonaDesdeArchivo("personas.txt");
+    ListaCircularDoble<Registro>* listaRegistro= GestorArchivos<Registro>::cargarListaRegistroDesdeArchivo("registro.txt");
     Validacion validacion;
     Fecha fechaNacimiento;
 	int selectedItem = 0;
@@ -86,10 +95,10 @@ int main() {
                 key = _getch();
                 switch (key) {
                     case 72:  // Tecla flecha arriba
-                        selectedItem = (selectedItem - 1 + 5) % 5;
+                        selectedItem = (selectedItem - 1 + 6) % 6;
                         break;
                     case 80:  // Tecla flecha abajo
-                        selectedItem = (selectedItem + 1) % 5;
+                        selectedItem = (selectedItem + 1) % 6;
                         break;
                 }
                 break;
@@ -109,10 +118,30 @@ int main() {
 						}
                 		//registrar
                 		bool_buscar = listaPersonas->buscar(dni);
-						if(bool_buscar){
-							system("cls");					
+						if(bool_buscar){					
 							// implementar el registro de cada persona que ya este registrada
+							listaRegistro = GestorArchivos<Registro>::cargarListaRegistroDesdeArchivo("registro.txt");
+							bool edad = false;
+							system("cls");
 							std::cout << "Relizar registro de la hora" << std::endl;
+							time_t tiempoActual = time(nullptr);
+							tm *fechaActual = localtime(&tiempoActual);
+		
+							int diaActual = fechaActual->tm_mday;
+							int mesActual = fechaActual->tm_mon + 1;
+							int anioActual = fechaActual->tm_year + 1900;
+							int horaActual = fechaActual->tm_hour;
+							int minutosActual = fechaActual->tm_min;
+							int segundosActual = fechaActual->tm_sec;
+							Fecha fecha1(diaActual, mesActual, anioActual, horaActual,minutosActual, segundosActual);
+							Registro registro1;
+							registro1.setDni(dni);
+							registro1.setFecha(fecha1);
+							listaRegistro->insertar(registro1);
+							printf("hora   %d:%d:%d", horaActual,minutosActual,segundosActual);
+							// Guardar la lista actualizada en el archivo
+							GestorArchivos<Registro>::guardarListaRegistroEnArchivo("registro.txt", listaRegistro);
+							printf("\nGuardado con exito...\n\n");
 							
 						}else{
 							bool edad = false;
@@ -188,15 +217,21 @@ int main() {
 					case 4:
 						printf("\tMostrar Personal\n\n");
 						listaPersonas->mostrar();
-						selectedItem --;
+						selectedItem--;
 						system("PAUSE");
 						break;
 					case 5:
+						printf("\tMostrar Registros\n\n");
+						listaRegistro->mostrar();
+						selectedItem--;
+						system("PAUSE");
+						break;
+					case 6:
 						printf("Ordenar Por Apellido (Radix)\n\n");
 						listaPersonas->ordenarRadixPorApellido();
 						listaPersonas->mostrar();
 						GestorArchivos<Persona>::guardarListaPersonaEnArchivo("personas.txt", listaPersonas);
-						selectedItem --;
+						selectedItem--;
 						system("PAUSE");
 						break;
 				}

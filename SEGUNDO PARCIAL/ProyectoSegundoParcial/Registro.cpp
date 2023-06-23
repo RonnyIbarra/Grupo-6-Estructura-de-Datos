@@ -23,3 +23,8 @@ void Registro::setDni(std::string newDni){this->dni = newDni;}
 Fecha Registro::getFecha(){return fecha;}
 
 void Registro::setFecha(Fecha newFecha){this->fecha = newFecha;}
+
+void Registro::toString(){
+	std::cout << dni << " -> " ;
+	printf("%d/%d/%d   %d:%d:%d \n", fecha.getDia(), fecha.getMes(), fecha.getYear(), fecha.getHora(), fecha.getMinuto(), fecha.getSegundo());
+}

@@ -21,6 +21,8 @@ public:
     void setFecha(Fecha);
     Registro();
     Registro(std::string, Fecha);
+    void toString(void);
+    
 protected:
 private:
    std::string dni;

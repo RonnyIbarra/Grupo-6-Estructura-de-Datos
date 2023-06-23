@@ -8,6 +8,7 @@
 
 #include "Fecha.h"
 #include <iostream>
+using namespace std;
 
 int Fecha::getDia(void)
 {
@@ -43,6 +44,38 @@ void Fecha::setYear(int newYear)
    year = newYear;
 }
 
+int Fecha::getHora(void)
+{
+   return hora;
+}
+
+
+int Fecha::getMinuto(void)
+{
+   return minuto;
+}
+
+
+int Fecha::getSegundo(void)
+{
+   return segundo;
+}
+void Fecha::setHora(int newHora)
+{
+   hora = newHora;
+}
+void Fecha::setMinuto(int newMinuto)
+{
+   minuto = newMinuto;
+}
+void Fecha::setSegundo(int newSegundo)
+{
+   segundo = newSegundo;
+}
+
+
+
+
 Fecha::Fecha(){
 	this->dia = 0;
 	this->mes = 0;
@@ -53,6 +86,15 @@ Fecha::Fecha(int newDia, int newMes, int newYear){
 	this-> dia = newDia;
 	this-> mes = newMes;
 	this-> year = newYear;
+}
+
+Fecha::Fecha(int newDia, int newMes, int newYear, int newHora, int newMinuto, int newSegundo){
+	this-> dia = newDia;
+	this-> mes = newMes;
+	this-> year = newYear;
+	this-> hora = newHora;
+	this-> minuto = newMinuto;
+	this->segundo = newSegundo;
 }
 
 //toString
