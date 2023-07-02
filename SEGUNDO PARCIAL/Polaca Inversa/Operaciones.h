@@ -4,7 +4,8 @@
  * Modified: jueves, 02 de Julio de 2023 
  * Purpose: Polaca Inversa
  ***********************************************************************/
- #pragma once
+#ifndef OPERACIONES_H
+#define OPERACIONES_H
 
 class Operaciones
 {
@@ -18,5 +19,10 @@ public:
 	long factorial(int);
 
 	double potencia(double, double);
+
+	double raizCuadrada(double);
+
+	double raizCubica(double);
 };
 
+#endif

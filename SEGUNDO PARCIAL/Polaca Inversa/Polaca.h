@@ -1,4 +1,5 @@
 /***********************************************************************
+ * Universidad de las Fuerzas Armadas ESPE
  * Module:  Polaca.h
  * Author:  Ronny Ibarra, Milena Maldonado, Daniel Guaman
  * Modified: miércoles, 23 de Junio de 2023 8:20:18
@@ -13,13 +14,13 @@ using namespace std;
 
 class Polaca {
 public:
-    static string convertInfijoAPrefijo(const string& expresion);
-    static string convertInfijoAInfijo(const string& expresion);
-    static string convertInfijoAPosfijo(const string& expresion);
+	Polaca(void);
+	bool Operador(char);
+	int obtenerPrecedencia(char);
+	string convertInfijoAPrefijo(const string&);
+	string convertInfijoAPosfijo(const string&);
+	double evaluarOperacion(double, double, const string &);
 
-private:
-    static bool Operador(char c);
-    static int obtenerPrecedencia(char operador);
 };
 
 #endif  // CALCULATOR_H

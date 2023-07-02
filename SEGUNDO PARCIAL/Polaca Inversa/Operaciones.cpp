@@ -5,8 +5,7 @@
  * Purpose: Polaca Inversa
  ***********************************************************************/
 
- #include "Operaciones.h"
-#include <Math.h>
+#include "Operaciones.h"
 #include <iostream>
 using namespace std;
 double Operaciones::sin(double angulo )
@@ -23,7 +22,7 @@ double Operaciones::sin(double angulo )
         final_sign = final_sign + 1;
     }
     for (int i = 1; i <= 11; i = i + 2) {
-        precission = pow(-1, sign)*(potencia(x,i) / factorial(i));
+        precission = potencia(-1, sign)*(potencia(x,i) / factorial(i));
 
         result = result + precission;
         sign = sign + 1;
@@ -50,7 +49,7 @@ double Operaciones::cos(double angulo)
     }
     for (int i = 0; i < presicion; i++)
     {
-        result += ((pow(-1, i)) / factorial(2 * i)) * potencia(angulo, 2 * i);
+        result += ((potencia(-1, i)) / factorial(2 * i)) * potencia(angulo, 2 * i);
     }
     if (cont%2==1) {
        result = result * -1;
@@ -86,15 +85,27 @@ double Operaciones::potencia(double num, double pot)
         return num;
     }
     if (pot == 0.5) {
-        double raiz = 0;
-        while ((num - raiz*raiz) > 0.00001) {
-            raiz = raiz + 0.00001;
-        }
-        
+        double raiz = raizCuadrada(num);
         return raiz;
     }
     for (int i = 0; i < pot; i++) {
         result = result * num;
     }
     return result;
+}
+
+double Operaciones::raizCuadrada(double num) {
+    double raiz = 0;
+    while ((num - raiz * raiz) > 0.00001) {
+        raiz = raiz + 0.00001;
+    }
+    return raiz;
+}
+
+double Operaciones::raizCubica(double num) {
+    double raiz = 0;
+    while ((num - raiz * raiz * raiz) > 0.00001) {
+        raiz = raiz + 0.00001;
+    }
+    return raiz;
 }
