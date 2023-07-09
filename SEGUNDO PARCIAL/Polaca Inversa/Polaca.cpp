@@ -76,8 +76,9 @@ Pila<string> Polaca::convertirExpresionInfijaAPrefija(string expresionInfija){
                 while (!pilaOperadores.empty() && obtenerPrecedencia(string(1, c)) <= obtenerPrecedencia(pilaOperadores.top())) {
                     pilaSalida.push(pilaOperadores.top());
                     pilaOperadores.pop();
-                } 
-                pilaOperadores.push(string(1, c));
+                }
+                if(c != ')')
+                    pilaOperadores.push(string(1, c));
             }
         }
         
