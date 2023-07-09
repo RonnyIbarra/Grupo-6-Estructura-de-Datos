@@ -1,29 +1,22 @@
 /***********************************************************************
- * Module:  Nodo.h
+ * Module:  Validar.h
  * Author:  Ronny Ibarra, Milena Maldonado, Daniel Guaman
  * Modified: jueves, 02 de Julio de 2023
  * Purpose: Polaca Inversa
  ***********************************************************************/
 
-#ifndef NODO_H
-#define NODO_H
-
 #include <iostream>
+#include <conio.h>
+#include "Validacion.h"
 
-using namespace std;
 
-template <class T>
-class Nodo {
-private:
-    T data;
-    Nodo<T>* next;
+Validacion::Validacion()
+{
+}
 
-public:
-    Nodo(const T&);
-    T getData(void) const;
-    Nodo<T>* getNext(void) const;
-    void setNext(Nodo<T>*);
-    
-};
+string Validacion::validarExpresion(){
+	int n = 0;
 
-#endif
+	return to_string(n);
+}
+

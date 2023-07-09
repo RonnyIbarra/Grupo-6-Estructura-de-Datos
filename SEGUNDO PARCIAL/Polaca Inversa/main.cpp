@@ -10,6 +10,7 @@
 #include<iostream>
 #include "Polaca.h"
 #include "Operaciones.h"
+#include "Validacion.h"
 #include <string>
 #include <conio.h>
 
@@ -33,26 +34,22 @@ void mostrarMenu() {
 int main() {
     Polaca polaca;
     string expresion;
+    Validacion v;
 
     mostrarMenu();
     getline(cin, expresion);
+    //expresion = v.validarExpresion();
 
-    string posfijo = polaca.convertInfijoAPosfijo(expresion);
-    string prefijo = polaca.convertInfijoAPrefijo(expresion);
+    Pila<string> prefijo = polaca.convertirExpresionInfijaAPrefija(expresion);
+    Pila<string> posfijo = polaca.convertirExpresionInfijaAPosfija(expresion);
 
     cout << "Expresion original: " << expresion << endl;
-    cout << "Expresion en notacion posfija: " << posfijo << endl;
-    cout << "Expresion en notacion prefijo: " << prefijo << endl;
+    cout << "Expresion en notacion prefijo: ";
+    prefijo.print();
+    cout << "Expresion en notacion posfija: ";
+    posfijo.print();
 
-    /*
-    Operaciones op;
-    double num;
-    cout << "num: ";
-    cin >> num;
-    cout << "seno : " << op.sin(num);
-    */
-    
-
+    system("pause");
 
     return 0;
 }

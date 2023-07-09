@@ -9,8 +9,6 @@
 #include <string>
 #include <sstream>
 #include "Polaca.h"
-#include "Operaciones.h"
-#include "Stack.cpp"
 
 using namespace std;
 
@@ -18,68 +16,35 @@ Polaca::Polaca(void)
 {
 }
 
-bool Polaca::Operador(char c) {
-    return (c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == 'r' || c == 's' || c == 'c' || c == 't' || c == 'q');
+
+bool Polaca::isOperador(char c) {
+    return c == '+' || c == '-' || c == '*' || c == '/' || c == '^';
 }
 
+bool Polaca::isFuncion(char c) {
+    return c == 's' || c == 'c' || c == 't'  || c == 'r' || c == 'q';
+}
 
-int Polaca::obtenerPrecedencia(char operador) {
-    if (operador == '^' || operador == 'r' || operador == 's' || operador == 'c' || operador == 't' || operador == 'q')
+int Polaca::obtenerPrecedencia(string operador) {
+    if (operador == "s" || operador == "c" || operador == "t")
+        return 4;
+    else if (operador == "^" || operador == "r" || operador == "q")
         return 3;
-    else if (operador == '*' || operador == '/')
+    else if (operador == "*" || operador == "/")
         return 2;
-    else if (operador == '+' || operador == '-')
+    else if (operador == "+" || operador == "-")
         return 1;
     else
         return 0;
 }
 
-string Polaca::convertInfijoAPosfijo(const string& expresion) {
-    Stack<char> pilaOperadores;
-    string posfijo;
 
-    for (char c : expresion) {
-        if (isalnum(c)) {
-            posfijo += c;
-        }
-        else if (c == '(') {
-            pilaOperadores.push(c);
-        }
-        else if (c == ')') {
-            while (!pilaOperadores.empty() && pilaOperadores.top() != '(') {
-                posfijo += pilaOperadores.top();
-                pilaOperadores.pop();
-            }
-
-            if (!pilaOperadores.empty() && pilaOperadores.top() == '(')
-                pilaOperadores.pop();
-        }
-        else if (Operador(c)) {
-            while (!pilaOperadores.empty() && obtenerPrecedencia(pilaOperadores.top()) >= obtenerPrecedencia(c)) {
-                posfijo += pilaOperadores.top();
-                pilaOperadores.pop();
-            }
-
-            pilaOperadores.push(c);
-        }
-    }
-
-    while (!pilaOperadores.empty()) {
-        posfijo += pilaOperadores.top();
-        pilaOperadores.pop();
-    }
-
-    return posfijo;
-}
-
-
-string Polaca::convertInfijoAPrefijo(const string& expresion) {
-    Stack<char> pilaOperadores;
-    string prefijo;
+Pila<string> Polaca::convertirExpresionInfijaAPrefija(string expresionInfija){
+    Pila<string> pilaSalida;
+    Pila<string> pilaOperadores;
     string infijoRevertido;
 
-    // Revertir la expresión infija
-    for (auto it = expresion.rbegin(); it != expresion.rend(); ++it) {
+    for (auto it = expresionInfija.rbegin(); it != expresionInfija.rend(); ++it) {
         if (*it == '(')
             infijoRevertido += ')';
         else if (*it == ')')
@@ -88,39 +53,105 @@ string Polaca::convertInfijoAPrefijo(const string& expresion) {
             infijoRevertido += *it;
     }
 
+    string numero;
     for (char c : infijoRevertido) {
-        if (std::isalnum(c)) {
-            prefijo = c + prefijo;
+        if (std::isdigit(c) || c == '.') {
+            numero = c + numero; // Agregar el dígito o el punto al inicio del número
         }
-        else if (c == '(') {
-            pilaOperadores.push(c);
-        }
-        else if (c == ')') {
-            while (!pilaOperadores.empty() && pilaOperadores.top() != '(') {
-                prefijo = pilaOperadores.top() + prefijo;
-                pilaOperadores.pop();
+        else {
+            if (!numero.empty()) {
+                pilaSalida.push(numero);
+                numero.clear(); // Limpiar la variable para el siguiente número
             }
-
-            if (!pilaOperadores.empty() && pilaOperadores.top() == '(')
-                pilaOperadores.pop();
-        }
-        else if (Operador(c)) {
-            while (!pilaOperadores.empty() && obtenerPrecedencia(pilaOperadores.top()) >= obtenerPrecedencia(c)) {
-                prefijo = pilaOperadores.top() + prefijo;
-                pilaOperadores.pop();
+            if (c == '(') {
+                while (!pilaOperadores.empty() && pilaOperadores.top() != ")") {
+                    pilaSalida.push(pilaOperadores.top());
+                    pilaOperadores.pop();
+                }
+                // Quitar el paréntesis de cierre de la pila de operadores
+                if (!pilaOperadores.empty())
+                    pilaOperadores.pop();
             }
-
-            pilaOperadores.push(c);
+            else {
+                while (!pilaOperadores.empty() && obtenerPrecedencia(string(1, c)) <= obtenerPrecedencia(pilaOperadores.top())) {
+                    pilaSalida.push(pilaOperadores.top());
+                    pilaOperadores.pop();
+                } 
+                pilaOperadores.push(string(1, c));
+            }
         }
+        
+    }
+    if (!numero.empty()) {
+        // Agregar el último número construido (si existe) a la pila de operandos
+        pilaSalida.push(numero);
     }
 
     while (!pilaOperadores.empty()) {
-        prefijo = pilaOperadores.top() + prefijo;
+        pilaSalida.push(pilaOperadores.top());
         pilaOperadores.pop();
     }
 
-    return prefijo;
-} 
+    return pilaSalida;
+}
+
+
+Pila<string> Polaca::convertirExpresionInfijaAPosfija(string expresionInfija) {
+    Pila<string> pilaPosfija;
+    Pila<string> pilaOperadores;
+    string numero;
+
+    for (char c : expresionInfija) {
+        if (isdigit(c) || c == '.') {
+            numero += c;
+        }
+        else {
+            if (!numero.empty()) {
+                pilaPosfija.push(numero);
+                numero.clear();
+            }
+            if (c == '(') {
+                pilaOperadores.push(string(1, c));
+            }
+            else if (c == ')') {
+                while (!pilaOperadores.empty() && pilaOperadores.top() != "(") {
+                    pilaPosfija.push(pilaOperadores.top());
+                    pilaOperadores.pop();
+                }
+                if (!pilaOperadores.empty() && pilaOperadores.top() == "(") {
+                    pilaOperadores.pop();
+                }
+            }
+            else {
+                while (!pilaOperadores.empty() && obtenerPrecedencia(string(1, c)) <= obtenerPrecedencia(pilaOperadores.top())) {
+                    pilaPosfija.push(pilaOperadores.top());
+                    pilaOperadores.pop();
+                }
+                pilaOperadores.push(string(1, c));
+            }
+        }
+    }
+
+    if (!numero.empty()) {
+        // Agregar el último número construido (si existe) a la pila de operandos
+        pilaPosfija.push(numero);
+    }
+
+    while (!pilaOperadores.empty()) {
+        pilaPosfija.push(pilaOperadores.top());
+        pilaOperadores.pop();
+    }
+
+    Pila<string> pilaSalida;
+    while (!pilaPosfija.empty()) {
+        pilaSalida.push(pilaPosfija.top());
+        pilaPosfija.pop();
+    }
+
+    return pilaSalida;
+}
+
+
 
 double Polaca::evaluarOperacion(double operand1, double operand2, const string& operador) {
     Operaciones op;
@@ -157,20 +188,3 @@ double Polaca::evaluarOperacion(double operand1, double operand2, const string& 
     }
     return 0.0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

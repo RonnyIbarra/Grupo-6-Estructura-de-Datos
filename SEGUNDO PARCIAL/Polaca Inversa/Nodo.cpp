@@ -8,7 +8,11 @@
 #include "Nodo.h"
 
 template <typename T>
-Nodo<T>::Nodo(const T& value) : data(value), next(nullptr) {}
+Nodo<T>::Nodo(const T& value) {
+    this->data = value;
+    this->next = nullptr;
+
+}
 
 template <typename T>
 T Nodo<T>::getData() const {

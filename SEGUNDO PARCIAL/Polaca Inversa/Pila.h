@@ -11,17 +11,20 @@
 #include "Nodo.h"
 
 template <class T>
-class Stack {
+class Pila {
 private:
     Nodo<T>* topNode;
 
 public:
-    Stack();
-    ~Stack();
+    Pila();
+    ~Pila();
     T top() const;
     void pop();
     bool empty() const;
     void push(const T&);
+    int size() const;
+    void print() const;
+
 };
 
 #endif

@@ -9,18 +9,22 @@
 #define POLACA_H
 
 #include <string>
+#include "Operaciones.h"
+#include "Pila.cpp"
+#include "Nodo.cpp"
 
 using namespace std;
 
 class Polaca {
 public:
 	Polaca(void);
-	bool Operador(char);
-	int obtenerPrecedencia(char);
-	string convertInfijoAPrefijo(const string&);
-	string convertInfijoAPosfijo(const string&);
-	double evaluarOperacion(double, double, const string &);
-
+	bool isOperador(char);
+	bool isFuncion(char);
+	int obtenerPrecedencia(string);
+	Pila<string> convertirExpresionInfijaAPrefija(string);
+	Pila<string> convertirExpresionInfijaAPosfija(string);
+	double evaluarOperacion(double, double, const string&);
+	
 };
 
 #endif  // CALCULATOR_H

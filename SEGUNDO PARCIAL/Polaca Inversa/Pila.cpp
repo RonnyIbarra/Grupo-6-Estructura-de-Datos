@@ -5,22 +5,22 @@
  * Purpose: Polaca Inversa
  ***********************************************************************/
 
-#include "Stack.h"
+#include "Pila.h"
 
 template <typename T>
-Stack<T>::Stack() {
+Pila<T>::Pila() {
     topNode = nullptr;
 } 
 
 template <typename T>
-Stack<T>::~Stack() {
+Pila<T>::~Pila() {
     while (!empty()) {
         pop();
     }
 }
 
 template <typename T>
-T Stack<T>::top() const {
+T Pila<T>::top() const {
     if (empty()) {
         throw std::runtime_error("La pila está vacía");
     }
@@ -28,7 +28,7 @@ T Stack<T>::top() const {
 }
 
 template <typename T>
-void Stack<T>::pop() {
+void Pila<T>::pop() {
     if (empty()) {
         throw std::runtime_error("La pila está vacía");
     }
@@ -38,14 +38,41 @@ void Stack<T>::pop() {
 }
 
 template <typename T>
-bool Stack<T>::empty() const {
+bool Pila<T>::empty() const {
     return topNode == nullptr;
 }
 
 template <typename T>
-void Stack<T>::push(const T& value) {
+void Pila<T>::push(const T& value) {
     Nodo<T>* newNode = new Nodo<T>(value);
     newNode->setNext(topNode);
     topNode = newNode;
 }
+
+template <typename T>
+int Pila<T>::size() const {
+    int count = 0;
+    Nodo<T>* current = topNode;
+
+    while (current != nullptr) {
+        count++;
+        current = current->getNext();
+    }
+
+    return count;
+}
+
+template <typename T>
+void Pila<T>::print() const {
+    Nodo<T>* current = topNode;
+
+    while (current != nullptr) {
+        std::cout << current->getData();
+        current = current->getNext();
+    }
+
+    std::cout << std::endl;
+}
+
+
 
