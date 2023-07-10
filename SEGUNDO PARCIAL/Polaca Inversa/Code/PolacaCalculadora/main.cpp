@@ -28,7 +28,7 @@ void mostrarMenu() {
     cout << "  c : Coseno" << endl;
     cout << "  t : Tangente" << endl;
     cout << "  q : Raiz cubica" << endl;
-    cout << "Ingrese la expresion matematica en notacion infija: ";
+    cout << "Ingrese la expresion matematica en notacion infija: " << endl;
 }
 
 int main() {

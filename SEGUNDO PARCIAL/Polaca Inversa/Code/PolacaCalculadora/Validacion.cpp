@@ -14,16 +14,15 @@ Validacion::Validacion()
 {
 }
 
-char* Validacion::ingresoExpresion(char const *msj)
+char* Validacion::ingresoExpresion()
  {
  
-           char* a = new char[0];
+    char* a = new char[0];
     char c;
     int i = 0;
     bool esPunto = false;
     
-    cout << msj;
-    while ((c = getch()) != 13) {
+    while ((c = _getch()) != 13) {
           if (c >= '0' && c <= '9' || c == 113|| c == 114 || c == 115 || c == 116|| c == 99
             || c == 47||c == 42 || c == 43|| c == 45 
             || c == 94 ) {
