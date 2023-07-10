@@ -2,7 +2,7 @@
  * Universidad de las Fuerzas Armadas ESPE
  * Module:  main.cpp
  * Author:  Ronny Ibarra, Milena Maldonado, Daniel Guaman
- * Modified: miércoles, 23 de Junio de 2023 8:20:18
+ * Modified: miÃ©rcoles, 23 de Junio de 2023 8:20:18
  * Purpose: Polaca Inversa
  ***********************************************************************/
 
@@ -34,11 +34,12 @@ void mostrarMenu() {
 int main() {
     Polaca polaca;
     string expresion;
+    Operaciones op;
     Validacion v;
 
     mostrarMenu();
-    getline(cin, expresion);
-    //expresion = v.validarExpresion();
+   // getline(cin, expresion);
+    expresion = v.ingresoExpresion(">");
 
     Pila<string> prefijo = polaca.convertirExpresionInfijaAPrefija(expresion);
     Pila<string> posfijo = polaca.convertirExpresionInfijaAPosfija(expresion);
