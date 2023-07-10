@@ -15,6 +15,7 @@ class Validacion {
 public:
     Validacion();
     string validarExpresion();
+    char *ingresoExpresion(char const *msj);
 };
 
 #endif
