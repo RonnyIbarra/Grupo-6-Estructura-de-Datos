@@ -49,6 +49,8 @@ int main() {
     cout << "Expresion en notacion posfija: ";
     posfijo.print();
 
+    printf("%.2lf\n",polaca.calcular(posfijo));
+
     system("pause");
 
     return 0;

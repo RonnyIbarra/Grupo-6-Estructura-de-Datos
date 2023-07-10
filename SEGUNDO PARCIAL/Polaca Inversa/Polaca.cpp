@@ -25,6 +25,15 @@ bool Polaca::isFuncion(char c) {
     return c == 's' || c == 'c' || c == 't'  || c == 'r' || c == 'q';
 }
 
+bool Polaca::isOperadorStr(string c) {
+    return c == "+" || c == "-" || c == "*" || c == "/" || c == "^";
+}
+
+bool Polaca::isFuncionStr(string c) {
+    return c == "s" || c == "c" || c == "t" || c == "r" || c == "q";
+}
+
+
 int Polaca::obtenerPrecedencia(string operador) {
     if (operador == "s" || operador == "c" || operador == "t")
         return 4;
@@ -76,7 +85,7 @@ Pila<string> Polaca::convertirExpresionInfijaAPrefija(string expresionInfija){
                 while (!pilaOperadores.empty() && obtenerPrecedencia(string(1, c)) <= obtenerPrecedencia(pilaOperadores.top())) {
                     pilaSalida.push(pilaOperadores.top());
                     pilaOperadores.pop();
-                }
+                } 
                 if(c != ')')
                     pilaOperadores.push(string(1, c));
             }
@@ -95,7 +104,6 @@ Pila<string> Polaca::convertirExpresionInfijaAPrefija(string expresionInfija){
 
     return pilaSalida;
 }
-
 
 Pila<string> Polaca::convertirExpresionInfijaAPosfija(string expresionInfija) {
     Pila<string> pilaPosfija;
@@ -153,7 +161,6 @@ Pila<string> Polaca::convertirExpresionInfijaAPosfija(string expresionInfija) {
 }
 
 
-
 double Polaca::evaluarOperacion(double operand1, double operand2, const string& operador) {
     Operaciones op;
 
@@ -189,3 +196,81 @@ double Polaca::evaluarOperacion(double operand1, double operand2, const string& 
     }
     return 0.0;
 }
+
+
+double Polaca::calcular(Pila<string>& expresion) {
+    Pila<double> pilaOperandos;
+    Operaciones op;
+
+    int tamInicial = expresion.size();
+
+    for (int i = 0; i < tamInicial; i++) {
+        string token = expresion.top();
+        expresion.pop();
+
+        if (isdigit(token[0])) {
+            // Si el token es un número, lo convertimos a double y lo agregamos a la pila de operandos
+            double numero = stod(token);
+            pilaOperandos.push(numero);
+        }
+        else if (isOperador(token[0])) {
+            // Si el token es un operador, realizamos la operación correspondiente
+            double operand2 = pilaOperandos.top();
+            pilaOperandos.pop();
+            double operand1 = pilaOperandos.top();
+            pilaOperandos.pop();
+
+            double resultado;
+
+            switch (token[0]) {
+            case '+':
+                resultado = operand1 + operand2;
+                break;
+            case '-':
+                resultado = operand1 - operand2;
+                break;
+            case '*':
+                resultado = operand1 * operand2;
+                break;
+            case '/':
+                resultado = operand1 / operand2;
+                break;
+            case '^':
+                resultado = op.potencia(operand1, operand2);
+                break;
+            }
+
+            pilaOperandos.push(resultado);
+        }
+        else if (isFuncion(token[0])) {
+            // Si el token es una función, aplicamos la función al operando de la pila
+            double operando = pilaOperandos.top();
+            pilaOperandos.pop();
+
+            double resultado;
+
+            switch (token[0]) {
+            case 's':
+                resultado = op.sin(operando);
+                break;
+            case 'c':
+                resultado = op.cos(operando);
+                break;
+            case 't':
+                resultado = op.tan(operando);
+                break;
+            case 'r':
+                resultado = op.raizCuadrada(operando);
+                break;
+            case 'q':
+                resultado = op.raizCubica(operando);
+                break;
+            }
+
+            pilaOperandos.push(resultado);
+        }
+    }
+
+    return pilaOperandos.top();
+}
+

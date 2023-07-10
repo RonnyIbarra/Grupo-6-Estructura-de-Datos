@@ -20,10 +20,13 @@ public:
 	Polaca(void);
 	bool isOperador(char);
 	bool isFuncion(char);
+	bool isOperadorStr(string);
+	bool isFuncionStr(string);
 	int obtenerPrecedencia(string);
 	Pila<string> convertirExpresionInfijaAPrefija(string);
 	Pila<string> convertirExpresionInfijaAPosfija(string);
 	double evaluarOperacion(double, double, const string&);
+	double calcular(Pila<string>&);
 	
 };
 
