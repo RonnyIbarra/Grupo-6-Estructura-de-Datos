@@ -22,7 +22,7 @@ bool Polaca::isOperador(char c) {
 }
 
 bool Polaca::isFuncion(char c) {
-    return c == 's' || c == 'c' || c == 't'  || c == 'r' || c == 'q';
+    return c == 'S' || c == 'C' || c == 'T'  || c == 'R' || c == 'Q';
 }
 
 bool Polaca::isOperadorStr(string c) {
@@ -214,19 +214,19 @@ double Polaca::calcular(Pila<string>& expresion) {
             double resultado;
 
             switch (token[0]) {
-            case 's':
+            case 'S':
                 resultado = op.sin(operando);
                 break;
-            case 'c':
+            case 'C':
                 resultado = op.cos(operando);
                 break;
-            case 't':
+            case 'T':
                 resultado = op.tan(operando);
                 break;
-            case 'r':
+            case 'R':
                 resultado = op.raizCuadrada(operando);
                 break;
-            case 'q':
+            case 'Q':
                 resultado = op.raizCubica(operando);
                 break;
             }
@@ -237,4 +237,3 @@ double Polaca::calcular(Pila<string>& expresion) {
 
     return pilaOperandos.top();
 }
-
