@@ -161,42 +161,6 @@ Pila<string> Polaca::convertirExpresionInfijaAPosfija(string expresionInfija) {
 }
 
 
-double Polaca::evaluarOperacion(double operand1, double operand2, const string& operador) {
-    Operaciones op;
-
-    if (operador == "+") {
-        return operand1 + operand2;
-    }
-    else if (operador == "-") {
-        return operand1 - operand2;
-    }
-    else if (operador == "*") {
-        return operand1 * operand2;
-    }
-    else if (operador == "/") {
-        return operand1 / operand2;
-    }
-    else if (operador == "^") {
-        return op.potencia(operand1, operand2);
-    }
-    else if (operador == "s") {
-        return op.sin(operand2);
-    }
-    else if (operador == "c") {
-        return op.cos(operand2);
-    }
-    else if (operador == "t") {
-        return op.tan(operand2);
-    }
-    else if (operador == "r") {
-        return op.raizCuadrada(operand2);
-    }
-    else if (operador == "q") {
-        return op.raizCubica(operand2);
-    }
-    return 0.0;
-}
-
 
 double Polaca::calcular(Pila<string>& expresion) {
     Pila<double> pilaOperandos;
