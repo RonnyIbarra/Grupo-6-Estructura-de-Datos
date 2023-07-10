@@ -1,121 +1,240 @@
 /***********************************************************************
+ * Universidad de las Fuerzas Armadas ESPE
  * Module:  Polaca.cpp
  * Author:  Ronny Ibarra, Milena Maldonado, Daniel Guaman
  * Modified: miércoles, 23 de Junio de 2023 8:20:18
  * Purpose: Polaca Inversa
  ***********************************************************************/
 #include <iostream>
-#include <stack>
 #include <string>
-#include <algorithm> // Para std::reverse
+#include <sstream>
+#include "Polaca.h"
 
 using namespace std;
 
-// Funciones para verificar si un carácter es un operador válido
-bool Operador(char c)
+Polaca::Polaca(void)
 {
-    return (c == '+' || c == '-' || c == '*' || c == '/' || c == '^');
 }
 
-// Función para determinar la precedencia de un operador
-int obtenerPrecedencia(char operador)
-{
-    if (operador == '^')
+
+bool Polaca::isOperador(char c) {
+    return c == '+' || c == '-' || c == '*' || c == '/' || c == '^';
+}
+
+bool Polaca::isFuncion(char c) {
+    return c == 's' || c == 'c' || c == 't'  || c == 'r' || c == 'q';
+}
+
+bool Polaca::isOperadorStr(string c) {
+    return c == "+" || c == "-" || c == "*" || c == "/" || c == "^";
+}
+
+bool Polaca::isFuncionStr(string c) {
+    return c == "s" || c == "c" || c == "t" || c == "r" || c == "q";
+}
+
+
+int Polaca::obtenerPrecedencia(string operador) {
+    if (operador == "s" || operador == "c" || operador == "t")
+        return 4;
+    else if (operador == "^" || operador == "r" || operador == "q")
         return 3;
-    else if (operador == '*' || operador == '/')
+    else if (operador == "*" || operador == "/")
         return 2;
-    else if (operador == '+' || operador == '-')
+    else if (operador == "+" || operador == "-")
         return 1;
     else
         return 0;
 }
 
-// Función para convertir una expresión infija a prefija
-string convertirInfijoAPrefijo(const string &expresion)
-{
-    stack<char> pilaOperadores;
-    string prefijo;
 
-    for (int i = expresion.length() - 1; i >= 0; i--)
-    {
-        char c = expresion[i];
+Pila<string> Polaca::convertirExpresionInfijaAPrefija(string expresionInfija){
+    Pila<string> pilaSalida;
+    Pila<string> pilaOperadores;
+    string infijoRevertido;
 
-        if (isdigit(c) || isalpha(c))
-        {
-            prefijo = c + prefijo;
-        }
-        else if (c == ')')
-        {
-            pilaOperadores.push(c);
-        }
-        else if (c == '(')
-        {
-            while (!pilaOperadores.empty() && pilaOperadores.top() != ')')
-            {
-                prefijo = pilaOperadores.top() + prefijo;
-                pilaOperadores.pop();
-            }
-
-            if (!pilaOperadores.empty() && pilaOperadores.top() == ')')
-                pilaOperadores.pop();
-        }
-        else if (Operador(c))
-        {
-            while (!pilaOperadores.empty() && obtenerPrecedencia(pilaOperadores.top()) >= obtenerPrecedencia(c))
-            {
-                prefijo = pilaOperadores.top() + prefijo;
-                pilaOperadores.pop();
-            }
-
-            pilaOperadores.push(c);
-        }
+    for (auto it = expresionInfija.rbegin(); it != expresionInfija.rend(); ++it) {
+        if (*it == '(')
+            infijoRevertido += ')';
+        else if (*it == ')')
+            infijoRevertido += '(';
+        else
+            infijoRevertido += *it;
     }
 
-    while (!pilaOperadores.empty())
-    {
-        prefijo = pilaOperadores.top() + prefijo;
-        pilaOperadores.pop();
+    string numero;
+    for (char c : infijoRevertido) {
+        if (std::isdigit(c) || c == '.') {
+            numero = c + numero; // Agregar el dígito o el punto al inicio del número
+        }
+        else {
+            if (!numero.empty()) {
+                pilaSalida.push(numero);
+                numero.clear(); // Limpiar la variable para el siguiente número
+            }
+            if (c == '(') {
+                while (!pilaOperadores.empty() && pilaOperadores.top() != ")") {
+                    pilaSalida.push(pilaOperadores.top());
+                    pilaOperadores.pop();
+                }
+                // Quitar el paréntesis de cierre de la pila de operadores
+                if (!pilaOperadores.empty())
+                    pilaOperadores.pop();
+            }
+            else {
+                while (!pilaOperadores.empty() && obtenerPrecedencia(string(1, c)) <= obtenerPrecedencia(pilaOperadores.top())) {
+                    pilaSalida.push(pilaOperadores.top());
+                    pilaOperadores.pop();
+                } 
+                if(c != ')')
+                    pilaOperadores.push(string(1, c));
+            }
+        }
+        
     }
-
-    return prefijo;
-}
-
-// Función para convertir una expresión infija a posfija
-string convertirInfijoAPosfijo(const string& expresion) {
-    stack<char> pilaOperadores;
-    string posfijo;
-
-    for (char c : expresion) {
-        if (isalnum(c)) {
-            posfijo += c;
-        }
-        else if (c == '(') {
-            pilaOperadores.push(c);
-        }
-        else if (c == ')') {
-            while (!pilaOperadores.empty() && pilaOperadores.top() != '(') {
-                posfijo += pilaOperadores.top();
-                pilaOperadores.pop();
-            }
-
-            if (!pilaOperadores.empty() && pilaOperadores.top() == '(')
-                pilaOperadores.pop();
-        }
-        else if (Operador(c)) {
-            while (!pilaOperadores.empty() && obtenerPrecedencia(pilaOperadores.top()) >= obtenerPrecedencia(c)) {
-                posfijo += pilaOperadores.top();
-                pilaOperadores.pop();
-            }
-
-            pilaOperadores.push(c);
-        }
+    if (!numero.empty()) {
+        // Agregar el último número construido (si existe) a la pila de operandos
+        pilaSalida.push(numero);
     }
 
     while (!pilaOperadores.empty()) {
-        posfijo += pilaOperadores.top();
+        pilaSalida.push(pilaOperadores.top());
         pilaOperadores.pop();
     }
 
-    return posfijo;
+    return pilaSalida;
+}
+
+Pila<string> Polaca::convertirExpresionInfijaAPosfija(string expresionInfija) {
+    Pila<string> pilaPosfija;
+    Pila<string> pilaOperadores;
+    string numero;
+
+    for (char c : expresionInfija) {
+        if (isdigit(c) || c == '.') {
+            numero += c;
+        }
+        else {
+            if (!numero.empty()) {
+                pilaPosfija.push(numero);
+                numero.clear();
+            }
+            if (c == '(') {
+                pilaOperadores.push(string(1, c));
+            }
+            else if (c == ')') {
+                while (!pilaOperadores.empty() && pilaOperadores.top() != "(") {
+                    pilaPosfija.push(pilaOperadores.top());
+                    pilaOperadores.pop();
+                }
+                if (!pilaOperadores.empty() && pilaOperadores.top() == "(") {
+                    pilaOperadores.pop();
+                }
+            }
+            else {
+                while (!pilaOperadores.empty() && obtenerPrecedencia(string(1, c)) <= obtenerPrecedencia(pilaOperadores.top())) {
+                    pilaPosfija.push(pilaOperadores.top());
+                    pilaOperadores.pop();
+                }
+                pilaOperadores.push(string(1, c));
+            }
+        }
+    }
+
+    if (!numero.empty()) {
+        // Agregar el último número construido (si existe) a la pila de operandos
+        pilaPosfija.push(numero);
+    }
+
+    while (!pilaOperadores.empty()) {
+        pilaPosfija.push(pilaOperadores.top());
+        pilaOperadores.pop();
+    }
+
+    Pila<string> pilaSalida;
+    while (!pilaPosfija.empty()) {
+        pilaSalida.push(pilaPosfija.top());
+        pilaPosfija.pop();
+    }
+
+    return pilaSalida;
+}
+
+
+
+double Polaca::calcular(Pila<string>& expresion) {
+    Pila<double> pilaOperandos;
+    Operaciones op;
+
+    int tamInicial = expresion.size();
+
+    for (int i = 0; i < tamInicial; i++) {
+        string token = expresion.top();
+        expresion.pop();
+
+        if (isdigit(token[0])) {
+            // Si el token es un número, lo convertimos a double y lo agregamos a la pila de operandos
+            double numero = stod(token);
+            pilaOperandos.push(numero);
+        }
+        else if (isOperador(token[0])) {
+            // Si el token es un operador, realizamos la operación correspondiente
+            double operand2 = pilaOperandos.top();
+            pilaOperandos.pop();
+            double operand1 = pilaOperandos.top();
+            pilaOperandos.pop();
+
+            double resultado;
+
+            switch (token[0]) {
+            case '+':
+                resultado = operand1 + operand2;
+                break;
+            case '-':
+                resultado = operand1 - operand2;
+                break;
+            case '*':
+                resultado = operand1 * operand2;
+                break;
+            case '/':
+                resultado = operand1 / operand2;
+                break;
+            case '^':
+                resultado = op.potencia(operand1, operand2);
+                break;
+            }
+
+            pilaOperandos.push(resultado);
+        }
+        else if (isFuncion(token[0])) {
+            // Si el token es una función, aplicamos la función al operando de la pila
+            double operando = pilaOperandos.top();
+            pilaOperandos.pop();
+
+            double resultado;
+
+            switch (token[0]) {
+            case 's':
+                resultado = op.sin(operando);
+                break;
+            case 'c':
+                resultado = op.cos(operando);
+                break;
+            case 't':
+                resultado = op.tan(operando);
+                break;
+            case 'r':
+                resultado = op.raizCuadrada(operando);
+                break;
+            case 'q':
+                resultado = op.raizCubica(operando);
+                break;
+            }
+
+            pilaOperandos.push(resultado);
+        }
+    }
+
+    return pilaOperandos.top();
 }
 
