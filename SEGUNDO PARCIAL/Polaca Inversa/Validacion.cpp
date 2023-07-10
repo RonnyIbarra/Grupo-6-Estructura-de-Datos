@@ -20,3 +20,31 @@ string Validacion::validarExpresion(){
 	return to_string(n);
 }
 
+char* Validacion::ingresoExpresion(char const *msj)
+    {
+        char *a = new char[0];
+        char c;
+        int i = 0;
+        cout << msj;
+        while ((c = getch()) != 13)
+        {
+            if (c >= '0' && c <= '9' || c == 113|| c == 114 || c == 115 || c == 116|| c == 99
+            || c == 47||c == 42 || c == 43|| c == 45
+            || c == 94 )
+            {
+                cout << c;
+                a[i++] = c;
+            }
+            else if (c == '\b')
+            {
+                i--;
+                cout << "\b \b";
+            }
+            if (a[0] >= 'a' && a[0] <= 'z')
+            {
+                a[0] = a[0] - 32;
+            }
+        }
+        a[i] = '\0';
+        return a;
+    }
