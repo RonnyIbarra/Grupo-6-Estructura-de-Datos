@@ -25,7 +25,6 @@ public:
 	int obtenerPrecedencia(string);
 	Pila<string> convertirExpresionInfijaAPrefija(string);
 	Pila<string> convertirExpresionInfijaAPosfija(string);
-	double evaluarOperacion(double, double, const string&);
 	double calcular(Pila<string>&);
 	
 };
