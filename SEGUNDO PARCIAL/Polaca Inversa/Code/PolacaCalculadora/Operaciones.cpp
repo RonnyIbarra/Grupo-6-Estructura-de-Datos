@@ -75,9 +75,7 @@ long Operaciones::factorial(int n)
     }
 }
 
-double Operaciones::potencia(double num, double pot)
-{
-    double result=1;
+double Operaciones::potencia(double num, double pot){
     if (pot == 0) {
         return 1;
     }
@@ -88,8 +86,13 @@ double Operaciones::potencia(double num, double pot)
         double raiz = raizCuadrada(num);
         return raiz;
     }
+    if (pot < 0) {
+        double inversoPot = 1.0 / potencia(num, -pot);
+        return inversoPot;
+    }
+    double result = 1.0;
     for (int i = 0; i < pot; i++) {
-        result = result * num;
+        result *= num;
     }
     return result;
 }

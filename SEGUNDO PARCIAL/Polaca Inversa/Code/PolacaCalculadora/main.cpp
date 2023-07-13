@@ -38,8 +38,8 @@ int main() {
     Validacion v;
 
     mostrarMenu();
-    // getline(cin, expresion);
-    expresion = v.ingresoExpresion();
+    getline(cin, expresion);
+    //expresion = v.ingresoExpresion();
 
     Pila<string> prefijo = polaca.convertirExpresionInfijaAPrefija(expresion);
     Pila<string> posfijo = polaca.convertirExpresionInfijaAPosfija(expresion);
@@ -51,6 +51,7 @@ int main() {
     posfijo.print();
 
     printf("resultado:  %.2lf\n", polaca.calcular(posfijo));
+
 
     system("pause");
 
