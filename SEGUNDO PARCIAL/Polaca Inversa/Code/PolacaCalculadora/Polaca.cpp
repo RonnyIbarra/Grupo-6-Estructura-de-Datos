@@ -49,7 +49,7 @@ int Polaca::obtenerPrecedencia(string operador) {
 }
 
 
-Pila<string> Polaca::convertirExpresionInfijaAPrefija(string expresionInfija){
+Pila<string> Polaca::convertirExpresionInfijaAPrefija(string expresionInfija) {
     Pila<string> pilaSalida;
     Pila<string> pilaOperadores;
     string infijoRevertido;
@@ -64,12 +64,22 @@ Pila<string> Polaca::convertirExpresionInfijaAPrefija(string expresionInfija){
     }
 
     string numero;
+    bool esNegativo = false;
+
     for (char c : infijoRevertido) {
         if (std::isdigit(c) || c == '.') {
             numero = c + numero; // Agregar el dígito o el punto al inicio del número
         }
+        else if (c == '-' && (numero.empty() || esNegativo)) {
+            // Detectar números negativos
+            esNegativo = true;
+        }
         else {
             if (!numero.empty()) {
+                if (esNegativo) {
+                    numero = "-" + numero; // Agregar el signo negativo al número
+                    esNegativo = false;
+                }
                 pilaSalida.push(numero);
                 numero.clear(); // Limpiar la variable para el siguiente número
             }
@@ -86,15 +96,17 @@ Pila<string> Polaca::convertirExpresionInfijaAPrefija(string expresionInfija){
                 while (!pilaOperadores.empty() && obtenerPrecedencia(string(1, c)) <= obtenerPrecedencia(pilaOperadores.top())) {
                     pilaSalida.push(pilaOperadores.top());
                     pilaOperadores.pop();
-                } 
-                if(c != ')')
+                }
+                if (c != ')')
                     pilaOperadores.push(string(1, c));
             }
         }
-        
     }
+
     if (!numero.empty()) {
-        // Agregar el último número construido (si existe) a la pila de operandos
+        if (esNegativo) {
+            numero = "-" + numero; // Agregar el signo negativo al número
+        }
         pilaSalida.push(numero);
     }
 
@@ -107,14 +119,22 @@ Pila<string> Polaca::convertirExpresionInfijaAPrefija(string expresionInfija){
 }
 
 
+
 Pila<string> Polaca::convertirExpresionInfijaAPosfija(string expresionInfija) {
     Pila<string> pilaPosfija;
     Pila<string> pilaOperadores;
     string numero;
+    bool ultimoCaracterFueOperador = true;  // Variable para detectar números negativos
 
     for (char c : expresionInfija) {
         if (isdigit(c) || c == '.') {
             numero += c;
+            ultimoCaracterFueOperador = false;
+        }
+        else if (c == '-' && ultimoCaracterFueOperador) {
+            // Manejo de números negativos
+            numero += c;
+            ultimoCaracterFueOperador = false;
         }
         else {
             if (!numero.empty()) {
@@ -140,6 +160,7 @@ Pila<string> Polaca::convertirExpresionInfijaAPosfija(string expresionInfija) {
                 }
                 pilaOperadores.push(string(1, c));
             }
+            ultimoCaracterFueOperador = true;
         }
     }
 
@@ -174,8 +195,8 @@ double Polaca::calcular(Pila<string>& expresion) {
         string token = expresion.top();
         expresion.pop();
 
-        if (isdigit(token[0])) {
-            // Si el token es un número, lo convertimos a double y lo agregamos a la pila de operandos
+        if (isdigit(token[0]) || (token[0] == '-' && token.length() > 1 && isdigit(token[1]))) {
+            // Si el token es un número (incluyendo números negativos), lo convertimos a double y lo agregamos a la pila de operandos
             double numero = stod(token);
             pilaOperandos.push(numero);
         }

@@ -67,11 +67,11 @@ void Pila<T>::print() const {
     Nodo<T>* current = topNode;
 
     while (current != nullptr) {
-        std::cout << current->getData();
+        cout << current->getData();
         current = current->getNext();
     }
 
-    std::cout << std::endl;
+   cout << endl;
 }
 
 
