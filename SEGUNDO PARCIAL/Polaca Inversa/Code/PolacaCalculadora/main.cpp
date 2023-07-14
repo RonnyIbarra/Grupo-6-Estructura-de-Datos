@@ -43,8 +43,6 @@ int main() {
         try {
             mostrarMenu();
             expresion= v.ingresoExpresion(">");
-            //expresion = v.ingresoExpresion1("> ");
-            //getline(cin, expresion);
             if(validacion==false){
                 Pila<string> prefijo = polaca.convertirExpresionInfijaAPrefija(expresion);
                 Pila<string> posfijo = polaca.convertirExpresionInfijaAPosfija(expresion);
