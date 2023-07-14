@@ -41,7 +41,8 @@ int main() {
     	system("cls");
         try {
             mostrarMenu();
-            getline(cin, expresion);
+             expresion= v.ingresoExpresion(">");
+            //getline(cin, expresion);
 
             Pila<string> prefijo = polaca.convertirExpresionInfijaAPrefija(expresion);
             Pila<string> posfijo = polaca.convertirExpresionInfijaAPosfija(expresion);
