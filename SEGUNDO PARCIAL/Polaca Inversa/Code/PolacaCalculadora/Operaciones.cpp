@@ -98,17 +98,47 @@ double Operaciones::potencia(double num, double pot){
 }
 
 double Operaciones::raizCuadrada(double num) {
+    if (num < 0) {
+        throw std::domain_error("No se puede calcular la raiz cuadrada de un numero negativo.");
+    }
+
     double raiz = 0;
     while ((num - raiz * raiz) > 0.00001) {
         raiz = raiz + 0.00001;
     }
+    
     return raiz;
 }
 
+
 double Operaciones::raizCubica(double num) {
-    double raiz = 0;
-    while ((num - raiz * raiz * raiz) > 0.00001) {
-        raiz = raiz + 0.00001;
+    double raiz;
+    if (num == 0) {
+        return 0;
+    } else if (num > 0) {
+        raiz = num;
+    } else {
+        raiz = -num;
     }
-    return raiz;
+
+    double aproximacionAnterior = raiz;
+    double epsilon = 0.00001;
+
+    while (true) {
+        double aproximacionActual = (2 * aproximacionAnterior + raiz / (aproximacionAnterior * aproximacionAnterior)) / 3;
+
+        if (std::abs(aproximacionActual - aproximacionAnterior) < epsilon) {
+            break;
+        }
+
+        aproximacionAnterior = aproximacionActual;
+    }
+
+    if (num < 0) {
+        return -aproximacionAnterior;
+    } else {
+        return aproximacionAnterior;
+    }
 }
+
+
