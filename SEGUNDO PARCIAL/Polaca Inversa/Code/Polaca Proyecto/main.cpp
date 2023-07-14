@@ -8,9 +8,9 @@
 
 
 #include<iostream>
-#include "Polaca.cpp"
-#include "Operaciones.cpp"
-#include "Validacion.cpp"
+#include "Polaca.h"
+#include "Operaciones.h"
+#include "Validacion.h"
 #include <string>
 #include <conio.h>
 

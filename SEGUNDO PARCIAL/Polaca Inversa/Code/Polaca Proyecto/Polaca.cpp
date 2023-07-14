@@ -260,4 +260,3 @@ double Polaca::calcular(Pila<string>& expresion) {
 
     return pilaOperandos.top();
 }
-
