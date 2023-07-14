@@ -140,5 +140,3 @@ double Operaciones::raizCubica(double num) {
         return aproximacionAnterior;
     }
 }
-
-
