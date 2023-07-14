@@ -2,7 +2,7 @@
  * Universidad de las Fuerzas Armadas ESPE
  * Module:  main.cpp
  * Author:  Ronny Ibarra, Milena Maldonado, Daniel Guaman
- * Modified: miércoles, 23 de Junio de 2023 8:20:18
+ * Modified: miÃ©rcoles, 23 de Junio de 2023 8:20:18
  * Purpose: Polaca Inversa
  ***********************************************************************/
 
@@ -37,23 +37,28 @@ int main() {
     Operaciones op;
     Validacion v;
 
-    mostrarMenu();
-    getline(cin, expresion);
-    //expresion = v.ingresoExpresion();
+    do {
+    	system("cls");
+        try {
+            mostrarMenu();
+            getline(cin, expresion);
 
-    Pila<string> prefijo = polaca.convertirExpresionInfijaAPrefija(expresion);
-    Pila<string> posfijo = polaca.convertirExpresionInfijaAPosfija(expresion);
+            Pila<string> prefijo = polaca.convertirExpresionInfijaAPrefija(expresion);
+            Pila<string> posfijo = polaca.convertirExpresionInfijaAPosfija(expresion);
 
-    cout << endl << "Expresion original: " << expresion << endl;
-    cout << "Expresion en notacion prefijo: ";
-    prefijo.print();
-    cout << "Expresion en notacion posfija: ";
-    posfijo.print();
+            cout << endl << "Expresion original: " << expresion << endl;
+            cout << "Expresion en notacion prefijo: ";
+            prefijo.print();
+            cout << "Expresion en notacion posfija: ";
+            posfijo.print();
 
-    printf("resultado:  %.2lf\n", polaca.calcular(posfijo));
+            printf("resultado:  %.2lf\n", polaca.calcular(posfijo));
+            system("pause");
 
-
-    system("pause");
+        } catch (const runtime_error& error) {
+            cout << "Error: " << error.what() << endl;
+        }
+    } while (!expresion.empty());
 
     return 0;
 }

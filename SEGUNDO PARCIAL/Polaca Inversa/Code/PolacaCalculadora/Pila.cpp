@@ -22,7 +22,7 @@ Pila<T>::~Pila() {
 template <typename T>
 T Pila<T>::top() const {
     if (empty()) {
-        throw std::runtime_error("La pila está vacía");
+        throw runtime_error("La pila esta vacia");
     }
     return topNode->getData();
 }
@@ -30,12 +30,13 @@ T Pila<T>::top() const {
 template <typename T>
 void Pila<T>::pop() {
     if (empty()) {
-        throw std::runtime_error("La pila está vacía");
+        throw runtime_error("La pila esta vacia");
     }
     Nodo<T>* temp = topNode;
     topNode = topNode->getNext();
     delete temp;
 }
+
 
 template <typename T>
 bool Pila<T>::empty() const {
