@@ -14,31 +14,39 @@ Validacion::Validacion()
 {
 }
 
-char* Validacion::ingresoExpresion()
- {
+  char* Validacion::ingresoExpresion(char const *msj)
+    {
  
-    char* a = new char[0];
+           char* a = new char[0];
     char c;
     int i = 0;
     bool esPunto = false;
+    bool esLetra= false;
     
-    while ((c = _getch()) != 13) {
+    cout << msj;
+    while ((c = getch()) != 13) {
           if (c >= '0' && c <= '9' || c == 113|| c == 114 || c == 115 || c == 116|| c == 99
-            || c == 47||c == 42 || c == 43|| c == 45 
-            || c == 94 ) {
+            || c == 47||c == 42 || c == 43|| c == 45 || c == 94|| c == 40|| c == 41 ) {
             cout << c;
             a[i++] = c;
             esPunto = false;
+           // esLetra= false;
         }
         else if (c == '.' && !esPunto) {
             cout << c;
             a[i++] = c;
             esPunto = true;
         }
+//         else if ( isalpha(c) && !esLetra) {
+//            cout << c;
+//            a[i++] = c;
+//            esLetra = true;
+//        }
         else if (c == '\b') {
             i--;
             if (a[i] == '.') {
                 esPunto = false;
+               // esLetra = false;
             }
             cout << "\b \b";
         }
