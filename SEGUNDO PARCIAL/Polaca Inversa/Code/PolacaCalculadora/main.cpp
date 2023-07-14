@@ -8,9 +8,9 @@
 
 
 #include<iostream>
-#include "Polaca.h"
-#include "Operaciones.h"
-#include "Validacion.h"
+#include "Polaca.cpp"
+#include "Operaciones.cpp"
+#include "Validacion.cpp"
 #include <string>
 #include <conio.h>
 
@@ -36,24 +36,28 @@ int main() {
     string expresion;
     Operaciones op;
     Validacion v;
+    bool validacion;
 
     do {
     	system("cls");
         try {
             mostrarMenu();
-             expresion= v.ingresoExpresion(">");
+            expresion= v.ingresoExpresion(">");
+            //expresion = v.ingresoExpresion1("> ");
             //getline(cin, expresion);
+            if(validacion==false){
+                Pila<string> prefijo = polaca.convertirExpresionInfijaAPrefija(expresion);
+                Pila<string> posfijo = polaca.convertirExpresionInfijaAPosfija(expresion);
 
-            Pila<string> prefijo = polaca.convertirExpresionInfijaAPrefija(expresion);
-            Pila<string> posfijo = polaca.convertirExpresionInfijaAPosfija(expresion);
+                cout << endl << "Expresion original: " << expresion << endl;
+                cout << "Expresion en notacion prefijo: ";
+                prefijo.print();
+                cout << "Expresion en notacion posfija: ";
+                posfijo.print();
 
-            cout << endl << "Expresion original: " << expresion << endl;
-            cout << "Expresion en notacion prefijo: ";
-            prefijo.print();
-            cout << "Expresion en notacion posfija: ";
-            posfijo.print();
-
-            printf("resultado:  %.2lf\n", polaca.calcular(posfijo));
+                printf("resultado:  %.2lf\n", polaca.calcular(posfijo));
+            }
+            cout<<endl;
             system("pause");
 
         } catch (const runtime_error& error) {
