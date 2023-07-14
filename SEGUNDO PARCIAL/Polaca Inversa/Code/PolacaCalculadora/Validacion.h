@@ -14,7 +14,9 @@ using namespace std;
 class Validacion {
 public:
     Validacion();
-    char* ingresoExpresion();
+    string validarExpresion();
+    bool validarExpresion(const string& expresion);
+    string ingresoExpresion(const char* msj);
 };
 
 #endif
