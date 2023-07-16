@@ -33,34 +33,64 @@ bool Validacion::validarExpresion(const string& expresion)
         if (c == '(') {
             contadorParentesis++;
             esOperadorPermitido = false;
-            esDecimalPermitido = true;
-            esFuncion = true;
+            esDecimalPermitido = true;  // Reiniciar la validación de decimales al abrir un paréntesis
+            esFuncion = true;  // Se encontró una función
 
-            if (!verificarParentesisNegativo(expresion, i)) {
-                return false;
+            // Verificar si el paréntesis es seguido por un signo de menos para permitir números negativos
+            if (i + 1 < expresion.length() && expresion[i + 1] == '-') {
+                esOperadorPermitido = true;
+                i++;  // Saltar al siguiente carácter después del signo de menos
             }
         }
         else if (c == ')') {
             contadorParentesis--;
             esOperadorPermitido = true;
-            esDecimalPermitido = false;
-            esFuncion = false;
+            esDecimalPermitido = false;  
+            esFuncion = false; 
         }
         else if (isdigit(c) || c == '.') {
-            if (!verificarDecimales(expresion, i)) {
-                return false;
+            size_t puntoDecimal = expresion.find('.', i + 1);
+            if (puntoDecimal != string::npos) {
+                return false;  // Más de un punto decimal en el mismo número
             }
+            esDecimalPermitido = false;  // Desactivar la validación de decimales después del primer punto decimal
             esOperadorPermitido = true;
         }
         else if (isalpha(c)) {
-            if (!verificarLetras(expresion, i, esFuncion)) {
-                return false;
+            char letra = tolower(c);
+            if (letra != 'q' && letra != 'r' && letra != 's' && letra != 't' && letra != 'c' ) {
+                return false; 
             }
+
+            // Verificar si es una función
+            if ((letra == 's' || letra == 'c' || letra == 't') && i + 2 < expresion.length() && expresion[i + 1] == '(') {
+                size_t posCierreParentesis = expresion.find(')', i + 2);
+                if (posCierreParentesis == string::npos) {
+                    return false;  
+                }
+                i = posCierreParentesis;  
+            }
+            else {
+                if (!esFuncion) {
+                    return false;  // Carácter no permitido fuera de una función
+                }
+            }
+
             esOperadorPermitido = true;
         }
-        else if (esOperadorAritmetico(c)) {
-            if (!verificarOperadores(expresion, i, esOperadorPermitido)) {
-                return false;
+        else if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^') {
+            if (!esOperadorPermitido) {
+                // Verificar si el signo de menos es para un número negativo
+                if (c == '-' && i + 1 < expresion.length() && (isdigit(expresion[i + 1]) || expresion[i + 1] == '.')) {
+                    esOperadorPermitido = true;
+                    i++;  // Saltar al siguiente carácter después del signo de menos
+                }
+                else {
+                    return false;  // Operador sin número o letra previo
+                }
+            }
+            else {
+                esOperadorPermitido = false;
             }
         }
         else {
@@ -76,80 +106,13 @@ bool Validacion::validarExpresion(const string& expresion)
         return false;  // Hay un paréntesis "(" sin cerrar
     }
 
-    if (verificarParentesisSinOperador(expresion)) {
+    // Verificar si hay paréntesis sin operador entre ellos
+    size_t pos = expresion.find(")(");
+    if (pos != string::npos) {
         return false;  // Existen paréntesis sin operador entre ellos
     }
 
     return expresion.length() > 0;
-}
-
-bool Validacion::verificarParentesisNegativo(const string& expresion, size_t index)
-{
-    if (index + 1 < expresion.length() && expresion[index + 1] == '-') {
-        return true;
-    }
-    return false;
-}
-
-bool Validacion::verificarDecimales(const string& expresion, size_t index)
-{
-    if (expresion[index] == '.') {
-        size_t puntoDecimal = expresion.find('.', index + 1);
-        if (puntoDecimal != string::npos) {
-            return false;  // Más de un punto decimal en el mismo número
-        }
-    }
-    return true;
-}
-
-bool Validacion::verificarLetras(const string& expresion, size_t index, bool esFuncion)
-{
-    char letra = tolower(expresion[index]);
-    if (letra != 'q' && letra != 'r' && letra != 's' && letra != 't' && letra != 'c') {
-        return false;  // Letra no permitida
-    }
-
-    if ((letra == 's' || letra == 'c' || letra == 't') && index + 2 < expresion.length() && expresion[index + 1] == '(') {
-        size_t posCierreParentesis = expresion.find(')', index + 2);
-        if (posCierreParentesis == string::npos) {
-            return false;  // Falta el paréntesis de cierre en la función
-        }
-        return true;
-    }
-    else {
-        if (!esFuncion) {
-            return false;  // Carácter no permitido fuera de una función
-        }
-    }
-
-    return true;
-}
-
-bool Validacion::verificarOperadores(const string& expresion, size_t index, bool& esOperadorPermitido)
-{
-    if (!esOperadorPermitido) {
-        if (expresion[index] == '-' && index + 1 < expresion.length() && (isdigit(expresion[index + 1]) || expresion[index + 1] == '.')) {
-            esOperadorPermitido = true;
-            return true;
-        }
-        else {
-            return false;  // Operador sin número o letra previo
-        }
-    }
-    else {
-        esOperadorPermitido = false;
-    }
-
-    return true;
-}
-
-bool Validacion::verificarParentesisSinOperador(const string& expresion)
-{
-    size_t pos = expresion.find(")(");
-    if (pos != string::npos) {
-        return true;  // Existen paréntesis sin operador entre ellos
-    }
-    return false;
 }
 string Validacion::ingresoExpresion(const char* msj)
 {
