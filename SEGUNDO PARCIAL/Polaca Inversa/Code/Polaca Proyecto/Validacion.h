@@ -15,6 +15,11 @@ class Validacion {
 public:
     Validacion();
     string validarExpresion();
+    bool verificarParentesisSinOperador(const string& expresion);
+    bool verificarOperadores(const string& expresion, size_t index, bool& esOperadorPermitido);
+    bool verificarLetras(const string& expresion, size_t index, bool esFuncion);
+    bool verificarDecimales(const string& expresion, size_t index);
+    bool verificarParentesisNegativo(const string& expresion, size_t index);
     bool validarExpresion(const string& expresion);
     string ingresoExpresion(const char* msj);
 };
