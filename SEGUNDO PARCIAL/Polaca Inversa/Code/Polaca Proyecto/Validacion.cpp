@@ -10,7 +10,9 @@
 #include "Validacion.h"
 
 
-Validacion::Validacion(){}
+Validacion::Validacion()
+{
+}
 
 string Validacion::validarExpresion(){
 	int n = 0;
@@ -23,6 +25,7 @@ bool Validacion::validarExpresion(const string& expresion)
     int contadorParentesis = 0;
     bool esOperadorPermitido = false;
     bool esDecimalPermitido = true;  // Variable para controlar la validez de los decimales
+    bool esFuncion = false;  // Variable para controlar si se encuentra una función
 
     for (size_t i = 0; i < expresion.length(); i++) {
         char c = expresion[i];
@@ -31,6 +34,7 @@ bool Validacion::validarExpresion(const string& expresion)
             contadorParentesis++;
             esOperadorPermitido = false;
             esDecimalPermitido = true;  // Reiniciar la validación de decimales al abrir un paréntesis
+            esFuncion = true;  // Se encontró una función
 
             // Verificar si el paréntesis es seguido por un signo de menos para permitir números negativos
             if (i + 1 < expresion.length() && expresion[i + 1] == '-') {
@@ -42,14 +46,14 @@ bool Validacion::validarExpresion(const string& expresion)
             contadorParentesis--;
             esOperadorPermitido = true;
             esDecimalPermitido = false;  // Desactivar la validación de decimales al cerrar un paréntesis
+            esFuncion = false;  // Se cerró la función
         }
-        else if (isdigit(c)) {
-            esOperadorPermitido = true;
-        }
-        else if (c == '.') {
-            if (!esDecimalPermitido) {
-                return false;  // Decimal no permitido en esta posición
+        else if (isdigit(c) || c == '.') {
+            size_t puntoDecimal = expresion.find('.', i + 1);
+            if (puntoDecimal != string::npos) {
+                return false;  // Más de un punto decimal en el mismo número
             }
+
             esDecimalPermitido = false;  // Desactivar la validación de decimales después del primer punto decimal
             esOperadorPermitido = true;
         }
@@ -58,6 +62,21 @@ bool Validacion::validarExpresion(const string& expresion)
             if (letra != 'q' && letra != 'r' && letra != 's' && letra != 't' && letra != 'c' && letra != 'y') {
                 return false;  // Letra no permitida
             }
+
+            // Verificar si es una función
+            if ((letra == 's' || letra == 'c' || letra == 't') && i + 2 < expresion.length() && expresion[i + 1] == '(') {
+                size_t posCierreParentesis = expresion.find(')', i + 2);
+                if (posCierreParentesis == string::npos) {
+                    return false;  // No se encontró el cierre del paréntesis para la función
+                }
+                i = posCierreParentesis;  // Saltar al cierre del paréntesis de la función
+            }
+            else {
+                if (!esFuncion) {
+                    return false;  // Carácter no permitido fuera de una función
+                }
+            }
+
             esOperadorPermitido = true;
         }
         else if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^') {
@@ -91,13 +110,11 @@ bool Validacion::validarExpresion(const string& expresion)
     // Verificar si hay paréntesis sin operador entre ellos
     size_t pos = expresion.find(")(");
     if (pos != string::npos) {
-        return false; 
+        return false;  // Existen paréntesis sin operador entre ellos
     }
 
     return expresion.length() > 0;
-   
 }
-
 string Validacion::ingresoExpresion(const char* msj)
 {
     string expresion;
