@@ -24,11 +24,12 @@ void mostrarMenu() {
     cout << "  / : Division" << endl;
     cout << "  ^ : Potencia" << endl;
     cout << "  r : Raiz cuadrada" << endl;
+    cout << "  q : Raiz cubica" << endl;
     cout << "  s : Seno" << endl;
     cout << "  c : Coseno" << endl;
     cout << "  t : Tangente" << endl;
-    cout << "  q : Raiz cubica" << endl;
-    cout << "Ingrese la expresion matematica en notacion infija: " << endl;
+	cout << "\033[33mLas funciones trigonometricas deben estar entre parentesis.\033[0m" << endl;
+    cout << "Ingrese la expresion matematica: " << endl;
 }
 
 int main() {
@@ -53,7 +54,7 @@ int main() {
                 cout << "Expresion en notacion posfija: ";
                 posfijo.print();
 
-                printf("resultado:  %.2lf\n", polaca.calcular(posfijo));
+                printf("resultado:  %.10lf\n", polaca.calcular(posfijo));
             }
             cout<<endl;
             system("pause");
