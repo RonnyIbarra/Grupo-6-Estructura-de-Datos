@@ -143,6 +143,7 @@ Pila<string> Polaca::convertirExpresionInfijaAPosfija(string expresionInfija) {
             }
             if (c == '(') {
                 pilaOperadores.push(string(1, c));
+                ultimoCaracterFueOperador = true;  // Reiniciar la variable para detectar números negativos
             }
             else if (c == ')') {
                 while (!pilaOperadores.empty() && pilaOperadores.top() != "(") {
@@ -152,6 +153,7 @@ Pila<string> Polaca::convertirExpresionInfijaAPosfija(string expresionInfija) {
                 if (!pilaOperadores.empty() && pilaOperadores.top() == "(") {
                     pilaOperadores.pop();
                 }
+                ultimoCaracterFueOperador = false;  // No considerar el carácter ')' como operador
             }
             else {
                 while (!pilaOperadores.empty() && obtenerPrecedencia(string(1, c)) <= obtenerPrecedencia(pilaOperadores.top())) {
@@ -159,8 +161,8 @@ Pila<string> Polaca::convertirExpresionInfijaAPosfija(string expresionInfija) {
                     pilaOperadores.pop();
                 }
                 pilaOperadores.push(string(1, c));
+                ultimoCaracterFueOperador = true;
             }
-            ultimoCaracterFueOperador = true;
         }
     }
 
@@ -182,6 +184,7 @@ Pila<string> Polaca::convertirExpresionInfijaAPosfija(string expresionInfija) {
 
     return pilaSalida;
 }
+
 
 
 
