@@ -26,6 +26,7 @@ bool Validacion::validarExpresion(const string& expresion)
     bool esOperadorPermitido = false;
     bool esDecimalPermitido = true; 
     bool esFuncion = false; 
+    bool esNumero = false;  // Agregar una bandera para verificar si es un número
 
     for (size_t i = 0; i < expresion.length(); i++) {
         char c = expresion[i];
@@ -35,6 +36,7 @@ bool Validacion::validarExpresion(const string& expresion)
             esOperadorPermitido = false;
             esDecimalPermitido = true;  // Reiniciar la validación de decimales al abrir un paréntesis
             esFuncion = true;  // Se encontró una función
+            esNumero = false;  // Reiniciar la bandera de número al abrir un paréntesis
 
             // Verificar si el paréntesis es seguido por un signo de menos para permitir números negativos
             if (i + 1 < expresion.length() && expresion[i + 1] == '-') {
@@ -47,18 +49,22 @@ bool Validacion::validarExpresion(const string& expresion)
             esOperadorPermitido = true;
             esDecimalPermitido = false;  
             esFuncion = false; 
+            esNumero = false;  // Reiniciar la bandera de número al cerrar un paréntesis
         }
         else if (isdigit(c) || c == '.') {
-            size_t puntoDecimal = expresion.find('.', i + 1);
-            if (puntoDecimal != string::npos) {
-                return false;  // Más de un punto decimal en el mismo número
+            if (esNumero && c == '.') {
+                return false;  // Número con más de un punto decimal seguido es inválido
             }
-            esDecimalPermitido = false;  // Desactivar la validación de decimales después del primer punto decimal
+            
+            if (c == '.') {
+                esNumero = true;  // Establecer la bandera de número
+            }
+            
             esOperadorPermitido = true;
         }
         else if (isalpha(c)) {
             char letra = tolower(c);
-            if (letra != 'q' && letra != 'r' && letra != 's' && letra != 't' && letra != 'c' ) {
+            if (letra != 'q' && letra != 'r' && letra != 's' && letra != 't' && letra != 'c') {
                 return false; 
             }
 
@@ -67,6 +73,11 @@ bool Validacion::validarExpresion(const string& expresion)
                 size_t posCierreParentesis = expresion.find(')', i + 2);
                 if (posCierreParentesis == string::npos) {
                     return false;  
+                }
+                // Validar expresión dentro de paréntesis
+                string expresionDentroParentesis = expresion.substr(i + 2, posCierreParentesis - i - 2);
+                if (!validarExpresion(expresionDentroParentesis)) {
+                    return false;  // Expresión dentro de paréntesis inválida
                 }
                 i = posCierreParentesis;  
             }
@@ -77,6 +88,7 @@ bool Validacion::validarExpresion(const string& expresion)
             }
 
             esOperadorPermitido = true;
+            esNumero = false;  // Reiniciar la bandera de número
         }
         else if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^') {
             if (!esOperadorPermitido) {
@@ -92,6 +104,8 @@ bool Validacion::validarExpresion(const string& expresion)
             else {
                 esOperadorPermitido = false;
             }
+            
+            esNumero = false;  // Reiniciar la bandera de número
         }
         else {
             return false;  // Carácter no permitido
@@ -114,6 +128,7 @@ bool Validacion::validarExpresion(const string& expresion)
 
     return expresion.length() > 0;
 }
+
 string Validacion::ingresoExpresion(const char* msj)
 {
     string expresion;
