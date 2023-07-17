@@ -9,6 +9,7 @@
 #define VALIDACION_H
 
 #include <string>
+#include <regex>
 using namespace std;
 
 class Validacion {
