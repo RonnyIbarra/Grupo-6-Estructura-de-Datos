@@ -59,23 +59,17 @@ bool Validacion::validarExpresion(const string& expresion)
             despuesDePunto = true;
         }
         else if (isalpha(c)) {
-            char letra = tolower(c);
+            char letra = c;
             if (letra != 'q' && letra != 'r' && letra != 's' && letra != 't' && letra != 'c') {
                 return false;
             }
 
             // Verificar si es una función
             if ((letra == 's' || letra == 'c' || letra == 't') && i + 2 < expresion.length() && expresion[i + 1] == '(') {
-                size_t posCierreParentesis = expresion.find(')', i + 2);
-                if (posCierreParentesis == string::npos) {
-                    return false;
-                }
-                i = posCierreParentesis;
+				continue;
             }
-            else {
-                if (!esFuncion) {
-                    return false;  // Carácter no permitido fuera de una función
-                }
+            else if (esOperadorPermitido || (letra == 's' || letra == 'c' || letra == 't')){
+                return false;  // Función después de un número
             }
 
             esOperadorPermitido = true;
@@ -116,7 +110,7 @@ bool Validacion::validarExpresion(const string& expresion)
         return false;  // Existen paréntesis sin operador entre ellos
     }
     
-	std::regex patron("\\d+\\.+\\d+\\.");
+    std::regex patron("\\d+\\.\\d+\\.");
     if (std::regex_search(expresion, patron)) {
         return false;
     }
@@ -125,8 +119,11 @@ bool Validacion::validarExpresion(const string& expresion)
     if (std::regex_search(expresion, patronPuntos)) {
         return false;
     }
+    
     return expresion.length() > 0;
 }
+
+
 
 
 string Validacion::ingresoExpresion(const char* msj)

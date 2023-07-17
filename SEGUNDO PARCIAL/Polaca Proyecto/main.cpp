@@ -28,7 +28,7 @@ void mostrarMenu() {
     cout << "  s : Seno" << endl;
     cout << "  c : Coseno" << endl;
     cout << "  t : Tangente" << endl;
-	cout << "\033[33mLas funciones trigonometricas deben estar entre parentesis.\033[0m" << endl;
+	cout << "\033[33mLas funciones trigonometricas deben estar con parentesis.\ns(#)\tc(#)\tt(#)\033[0m" << endl;
     cout << "Ingrese la expresion matematica: " << endl;
 }
 
