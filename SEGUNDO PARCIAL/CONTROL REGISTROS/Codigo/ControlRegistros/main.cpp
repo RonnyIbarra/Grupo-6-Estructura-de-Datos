@@ -19,9 +19,9 @@
 #include "Empleado.h"
 #include "Validacion.h"
 #include "Registro.h"
-#include "Imagen.cpp"
-#include "Backup.cpp"
-#include "Generar.cpp"
+#include "Imagen.h"
+#include "Backup.h"
+#include "Generar.h"
 
 
 using namespace std;
