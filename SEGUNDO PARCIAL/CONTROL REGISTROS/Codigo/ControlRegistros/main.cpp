@@ -91,6 +91,7 @@ int main() {
 	Fecha fechaNacimiento;
 	int selectedItem = 0;
 	bool bool_buscar = false;
+	bool bool_eliminar = false;
 	bool salir = false;
 	string dni, nombre, apellido;
 	Nodo<Empleado>* raiz{ nullptr };
@@ -173,14 +174,7 @@ int main() {
 						}
 					}
 					else {
-						Registro registro3;
-						registro3.setDni(dni);
-						registro3.setEntradaFromSystem();
-						registro3.setSw(0);
-						listaRegistro->insertarPorCola(registro3);
-						GestorArchivos<Registro>::guardarListaRegistroEnArchivo("registros.txt", listaRegistro);
-						printf("\033[1;33mINFORMACION:\033[0m\n");
-						registro3.toStringEntrada();
+						printf("Se produjo un error\n");
 					}
 
 				}
@@ -234,7 +228,12 @@ int main() {
 				bool_buscar = arbol->buscar(raiz,dni);
 				if (bool_buscar) {
 					Empleado empleadoBuscado = arbol->buscarNodo(raiz, dni);
-					empleadoBuscado.toString();
+					if (empleadoBuscado.getDni() != "") {
+						empleadoBuscado.toString();
+					}
+					else {
+						cout << dni << " No se encuentra registrada" << endl;
+					}
 				}
 				else {
 					cout << dni << " No se encuentra registrada" << endl;
@@ -243,19 +242,36 @@ int main() {
 				system("PAUSE");
 				break;
 			case 3:
-				printf("\tEliminar\n");
+				printf("\tEliminar Empleado\n\nDni\t	Nombre\n");
+				arbol->inOrden(raiz);
+				printf("\n");
 				dni = validacion.validarDni();
 				while (dni == "-1") {
 					printf("DNI ingresada no valido, intente de nuevo\n");
 					dni = validacion.validarDni();
 				}
-				bool_buscar = arbol->buscar(raiz,dni);
-				if (bool_buscar) {
+				bool_eliminar = arbol->buscar(raiz,dni);
+				if (bool_eliminar) {
 					listaEmpleados->eliminar(dni);
-					arbol->eliminarNodo(raiz,dni);
+					raiz = arbol->eliminarNodo(raiz,dni);
+
+					NodoDoble<Registro>* nodoRegistro = listaRegistro->buscarNodoPorCola(dni);
+					if (nodoRegistro != nullptr) {
+						Registro registroActual = nodoRegistro->getDato();
+						if (registroActual.getSw() == 0) { 	//SALIDA
+							registroActual.setSalidaFromSystem();
+							registroActual.setSw(1);
+							// Actualizar el nodo
+							nodoRegistro->setDato(registroActual);
+							GestorArchivos<Registro>::guardarListaRegistroEnArchivo("registros.txt", listaRegistro);
+							printf("\033[1;33mINFORMACION:\033[0m\n");
+							registroActual.toStringSalida();
+
+						}
+					}
 					// Guardar la lista actualizada en el archivo
 					GestorArchivos<Empleado>::guardarListaEmpleadoEnArchivo("empleados.txt", listaEmpleados);
-					printf("\nSe elimino correctamante...\n");
+					printf("Se elimino correctamante...\n");
 				}
 				else {
 					printf("\nNo se encontro el DNI que deseaba eliminar\n");

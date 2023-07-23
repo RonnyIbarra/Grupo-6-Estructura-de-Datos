@@ -180,21 +180,22 @@ Nodo<T>* Arbol<T>::eliminarNodo(Nodo<T>* raiz, string dato) {
             return temp;
         }
         else {
-            // Encontrar el nodo máximo en el subárbol izquierdo
-            Nodo<T>* temp = raiz->getIzquierda();
-            while (temp->getDerecha()) {
-                temp = temp->getDerecha();
+            // Encontrar el nodo mínimo en el subárbol derecho
+            Nodo<T>* temp = raiz->getDerecha();
+            while (temp->getIzquierda()) {
+                temp = temp->getIzquierda();
             }
 
-            // Copiar el valor del nodo máximo en el nodo actual
+            // Copiar el valor del nodo mínimo en el nodo actual
             raiz->setValor(temp->getValor());
 
-            // Eliminar el nodo máximo del subárbol izquierdo
-            raiz->setIzquierda(eliminarNodo(raiz->getIzquierda(), temp->getValor().getDni()));
+            // Eliminar el nodo mínimo del subárbol derecho
+            raiz->setDerecha(eliminarNodo(raiz->getDerecha(), temp->getValor().getDni()));
         }
     }
     return raiz;
 }
+
 
 
 
@@ -241,7 +242,8 @@ void Arbol<T>::inOrden(Nodo<T>* arbol)
     else
     {
         inOrden(arbol->getIzquierda());
-        arbol->getValor().toString();
+        cout << arbol->getValor().getDni() << " -> ";
+        cout << arbol->getValor().getApellido() << " " << arbol->getValor().getNombre() << endl;
         inOrden(arbol->getDerecha());
     }
 }

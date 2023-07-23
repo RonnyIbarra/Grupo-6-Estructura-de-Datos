@@ -137,7 +137,7 @@ void ListaCircularDoble<T>::mostrarRegistros(ListaCircularDoble<Empleado>* lista
     NodoDoble<Empleado>* actualPersona = listaEmpleados->getCabeza();
 
     if (cabeza == nullptr || actualPersona == nullptr) {
-        cout << "La lista o la lista de personas está vacía." << endl;
+        cout << "No se han registrado empleados\n" << endl;
         return;
     }
 
