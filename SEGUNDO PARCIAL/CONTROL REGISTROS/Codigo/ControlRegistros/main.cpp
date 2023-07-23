@@ -146,10 +146,10 @@ int main() {
 			key = _getch();
 			switch (key) {
 			case 72:  // Tecla flecha arriba
-				selectedItem = (selectedItem - 1 + 6) % 6;
+				selectedItem = (selectedItem - 1 + 9) % 9;
 				break;
 			case 80:  // Tecla flecha abajo
-				selectedItem = (selectedItem + 1) % 6;
+				selectedItem = (selectedItem + 1) % 9;
 				break;
 			}
 			break;
