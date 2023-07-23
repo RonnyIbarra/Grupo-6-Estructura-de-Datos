@@ -19,6 +19,9 @@
 #include "Empleado.h"
 #include "Validacion.h"
 #include "Registro.h"
+#include "Imagen.cpp"
+#include "Backup.cpp"
+#include "Generar.cpp"
 
 
 using namespace std;
@@ -82,6 +85,31 @@ void drawMenu(int selectedItem) {
 	else {
 		cout << "   Ordenar (Radix)" << endl;
 	}
+	if (selectedItem == 6) {
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);  // Color rojo
+		cout << "Generar PDF" << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);  // Restaurar color normal
+	}
+	else {
+		cout << " Generar PDF" << endl;
+	}
+	if (selectedItem == 7) {
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);  // Color rojo
+		cout << "Generar Backup" << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);  // Restaurar color normal
+	}
+	else {
+		cout << " Generar Backup" << endl;
+	}
+	if (selectedItem == 8) {
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);  // Color rojo
+		cout << "Generar Imagen" << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);  // Restaurar color normal
+	}
+	else {
+		cout << " Generar Imagen" << endl;
+	}
+	
 }
 
 int main() {
@@ -111,7 +139,7 @@ int main() {
 		int key = _getch();
 
 		switch (key) {
-		case 224:  // Código para teclas especiales en Windows
+		case 224:  // CÃ³digo para teclas especiales en Windows
 			key = _getch();
 			switch (key) {
 			case 72:  // Tecla flecha arriba
@@ -298,6 +326,28 @@ int main() {
 				listaEmpleados->ordenarRadixPorApellido();
 				listaEmpleados->mostrarTabla();
 				GestorArchivos<Empleado>::guardarListaEmpleadoEnArchivo("empleados.txt", listaEmpleados);
+				selectedItem--;
+				system("PAUSE");
+				break;
+			case 7:
+				printf("\t Generar PDF\n\n");
+				p.generarPDF("ControlRegistro.pdf");
+                 		cout<<"\nArchivo PDF generado correctamente\n";
+				selectedItem--;
+				system("PAUSE");
+				break;
+			case 8:
+				printf("\t BACKUP\n\n");
+				//backup
+			    	b.generarBackup();
+            			cout<<"\n\n--Backup realizado--\n\n";
+				selectedItem--;
+				system("PAUSE");
+				break;
+			case 9:
+				printf("\t IMAGEN\n\n");
+				//imagen
+                		i.Imagenes();
 				selectedItem--;
 				system("PAUSE");
 				break;
