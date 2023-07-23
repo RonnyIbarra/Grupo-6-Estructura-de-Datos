@@ -124,6 +124,9 @@ int main() {
 	string dni, nombre, apellido;
 	Nodo<Empleado>* raiz{ nullptr };
 	Arbol<Empleado>* arbol = new Arbol<Empleado>();
+	Generar p;
+	Backup b;
+	Imagen i;
 
 	if (listaEmpleados->getCabeza()) {
 		NodoDoble<Empleado>* actual = listaEmpleados->getCabeza();
