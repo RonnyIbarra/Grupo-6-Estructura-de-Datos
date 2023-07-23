@@ -29,7 +29,7 @@ public:
    void mostrarTabla(void);
    bool buscar(string);
    void ordenarRadixPorApellido(void);
-   void ordenarRadixPorApellidoRecursivo(NodoDoble<T>*, int );
+   void ordenarRadixPorApellidoRecursivo(NodoDoble<T>*& cabeza, int posicion);
    NodoDoble<T>* buscarNodo(string);
    NodoDoble<T>* buscarNodoPorCola(string);
 

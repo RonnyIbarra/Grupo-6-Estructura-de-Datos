@@ -10,6 +10,8 @@
 #include <list>
 #include "ListaCircularDoble.h"
 
+using namespace std;
+
 template <typename T>
 ListaCircularDoble<T>::ListaCircularDoble() {
     cabeza = nullptr;
@@ -193,6 +195,8 @@ bool ListaCircularDoble<T>::buscar(std::string cedula) {
 }
 
 //ordenar Radix
+
+
 template <typename T>
 void ListaCircularDoble<T>::ordenarRadixPorApellido() {
     if (this->cabeza == nullptr || this->cabeza->getSiguiente() == this->cabeza) {
@@ -215,13 +219,13 @@ void ListaCircularDoble<T>::ordenarRadixPorApellido() {
 }
 
 template <typename T>
-void ListaCircularDoble<T>::ordenarRadixPorApellidoRecursivo(NodoDoble<T>* cabeza, int posicion) {
+void ListaCircularDoble<T>::ordenarRadixPorApellidoRecursivo(NodoDoble<T>*& cabeza, int posicion) {
     if (posicion < 0) {
         return;
     }
 
     // Crear listas vacías para cada carácter
-    std::list<NodoDoble<T>*> listas[256];
+    list<NodoDoble<T>*> listas[256];
 
     // Llenar las listas según el carácter actual en la posición 'posicion'
     NodoDoble<T>* aux = cabeza;
@@ -258,7 +262,6 @@ void ListaCircularDoble<T>::ordenarRadixPorApellidoRecursivo(NodoDoble<T>* cabez
     // Llamar recursivamente para el siguiente dígito
     ordenarRadixPorApellidoRecursivo(cabeza, posicion - 1);
 }
-
 
 template<typename T>
 NodoDoble<T>* ListaCircularDoble<T>::buscarNodo(std::string cedula) {
