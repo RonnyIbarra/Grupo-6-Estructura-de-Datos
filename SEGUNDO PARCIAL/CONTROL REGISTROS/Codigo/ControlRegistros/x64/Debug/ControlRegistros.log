@@ -1,0 +1,6 @@
+﻿  main.cpp
+C:\Users\Det-Pc\Documents\ESPE\Estructuras de datos\Visual Studio\ControlRegistros\ListaCircularDoble.cpp(206,27): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Det-Pc\Documents\ESPE\Estructuras de datos\Visual Studio\ControlRegistros\ListaCircularDoble.cpp(197,55): message : while compiling class template member function 'void ListaCircularDoble<Empleado>::ordenarRadixPorApellido(void)'
+C:\Users\Det-Pc\Documents\ESPE\Estructuras de datos\Visual Studio\ControlRegistros\main.cpp(282,44): message : see the first reference to 'ListaCircularDoble<Empleado>::ordenarRadixPorApellido' in 'main'
+C:\Users\Det-Pc\Documents\ESPE\Estructuras de datos\Visual Studio\ControlRegistros\ListaCircularDoble.cpp(137,1): message : see reference to class template instantiation 'ListaCircularDoble<Empleado>' being compiled
+  ControlRegistros.vcxproj -> C:\Users\Det-Pc\Documents\ESPE\Estructuras de datos\Visual Studio\ControlRegistros\x64\Debug\ControlRegistros.exe
