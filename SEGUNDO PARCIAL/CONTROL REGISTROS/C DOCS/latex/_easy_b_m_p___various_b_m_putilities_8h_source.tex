@@ -1,0 +1,47 @@
+\hypertarget{_easy_b_m_p___various_b_m_putilities_8h_source}{}\doxysection{Easy\+BMP\+\_\+\+Various\+BMPutilities.\+h}
+\mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE}}
+\DoxyCodeLine{3 \textcolor{comment}{DEPARTAMENTO DE CIENCIAS DE LA COMPUTACION}}
+\DoxyCodeLine{4 \textcolor{comment}{INGENIERIA DE SOFTWARE             }}
+\DoxyCodeLine{5 \textcolor{comment}{    AUTORES:}}
+\DoxyCodeLine{6 \textcolor{comment}{        Johan Romo}}
+\DoxyCodeLine{7 \textcolor{comment}{        Cristhopher Villamarin}}
+\DoxyCodeLine{8 \textcolor{comment}{        Sebastian Torres}}
+\DoxyCodeLine{9 \textcolor{comment}{                Jeanhela Nazate}}
+\DoxyCodeLine{10 \textcolor{comment}{                Milena Maldonado}}
+\DoxyCodeLine{11 \textcolor{comment}{                Shared Tinoco}}
+\DoxyCodeLine{12 \textcolor{comment}{        Brandon Masacela}}
+\DoxyCodeLine{13 \textcolor{comment}{        Juan Reyes}}
+\DoxyCodeLine{14 \textcolor{comment}{        GRUPOS: 7 -\/ 10 -\/ 11 -\/ 14}}
+\DoxyCodeLine{15 \textcolor{comment}{        FECHA DE CREACION:        Viernes, 1 de julio de 2022 7:34:00 p. m.     }}
+\DoxyCodeLine{16 \textcolor{comment}{    FECHA DE MODIFICACION:    Martes, 19 de junio de 2022 4:58:00 p. m.}}
+\DoxyCodeLine{17 \textcolor{comment}{        PROPOSITO: Proyecto Segundo Parcial -\/ Arboles B}}
+\DoxyCodeLine{18 \textcolor{comment}{*/}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#ifndef \_EasyBMP\_VariousBMPutilities\_h\_}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define \_EasyBMP\_VariousBMPutilities\_h\_}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \mbox{\hyperlink{class_b_m_f_h}{BMFH}} \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_a66cd5022854084cc377337cced3866e6}{GetBMFH}}( \textcolor{keyword}{const} \textcolor{keywordtype}{char}* szFileNameIn );}
+\DoxyCodeLine{24 \mbox{\hyperlink{class_b_m_i_h}{BMIH}} \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_ad3884939602af9979dab7e63b8892ce6}{GetBMIH}}( \textcolor{keyword}{const} \textcolor{keywordtype}{char}* szFileNameIn );}
+\DoxyCodeLine{25 \textcolor{keywordtype}{void} \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_af5917ccb612d45cdb324804c573052e6}{DisplayBitmapInfo}}( \textcolor{keyword}{const} \textcolor{keywordtype}{char}* szFileNameIn );}
+\DoxyCodeLine{26 \textcolor{keywordtype}{int} \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_a8a847e3d65680531be233837bccd46e1}{GetBitmapColorDepth}}( \textcolor{keyword}{const} \textcolor{keywordtype}{char}* szFileNameIn );}
+\DoxyCodeLine{27 \textcolor{keywordtype}{void} \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_a3c8216fda2e5e5f4572836f2faf3ae13}{PixelToPixelCopy}}( \mbox{\hyperlink{class_b_m_p}{BMP}}\& From, \textcolor{keywordtype}{int} FromX, \textcolor{keywordtype}{int} FromY,  }
+\DoxyCodeLine{28                        \mbox{\hyperlink{class_b_m_p}{BMP}}\& To, \textcolor{keywordtype}{int} ToX, \textcolor{keywordtype}{int} ToY);}
+\DoxyCodeLine{29 \textcolor{keywordtype}{void} \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_a3f5c525a5b92fb2eea2cd6ed205f49e2}{PixelToPixelCopyTransparent}}( \mbox{\hyperlink{class_b_m_p}{BMP}}\& From, \textcolor{keywordtype}{int} FromX, \textcolor{keywordtype}{int} FromY,  }
+\DoxyCodeLine{30                                   \mbox{\hyperlink{class_b_m_p}{BMP}}\& To, \textcolor{keywordtype}{int} ToX, \textcolor{keywordtype}{int} ToY,}
+\DoxyCodeLine{31                                   \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}}\& Transparent );}
+\DoxyCodeLine{32 \textcolor{keywordtype}{void} \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_a6cbc498ae44154544d175c431401d080}{RangedPixelToPixelCopy}}( \mbox{\hyperlink{class_b_m_p}{BMP}}\& From, \textcolor{keywordtype}{int} FromL , \textcolor{keywordtype}{int} FromR, \textcolor{keywordtype}{int} FromB, \textcolor{keywordtype}{int} FromT, }
+\DoxyCodeLine{33                              \mbox{\hyperlink{class_b_m_p}{BMP}}\& To, \textcolor{keywordtype}{int} ToX, \textcolor{keywordtype}{int} ToY );}
+\DoxyCodeLine{34 \textcolor{keywordtype}{void} \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_aa7effa5d8068916381bed1850cd21112}{RangedPixelToPixelCopyTransparent}}( }
+\DoxyCodeLine{35      \mbox{\hyperlink{class_b_m_p}{BMP}}\& From, \textcolor{keywordtype}{int} FromL , \textcolor{keywordtype}{int} FromR, \textcolor{keywordtype}{int} FromB, \textcolor{keywordtype}{int} FromT, }
+\DoxyCodeLine{36      \mbox{\hyperlink{class_b_m_p}{BMP}}\& To, \textcolor{keywordtype}{int} ToX, \textcolor{keywordtype}{int} ToY ,}
+\DoxyCodeLine{37      \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}}\& Transparent );}
+\DoxyCodeLine{38 \textcolor{keywordtype}{bool} \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_a64446d5ba994ea2d9e15f1fb2bdcf213}{CreateGrayscaleColorTable}}( \mbox{\hyperlink{class_b_m_p}{BMP}}\& InputImage );}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{keywordtype}{bool} \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_a27f69b10b344a0bb9f82175f1973ffe6}{Rescale}}( \mbox{\hyperlink{class_b_m_p}{BMP}}\& InputImage , \textcolor{keywordtype}{char} mode, \textcolor{keywordtype}{int} NewDimension );}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

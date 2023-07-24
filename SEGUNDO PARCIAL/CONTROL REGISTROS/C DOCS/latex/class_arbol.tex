@@ -1,0 +1,217 @@
+\hypertarget{class_arbol}{}\doxysection{Arbol\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_arbol}\index{Arbol$<$ T $>$@{Arbol$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Arbol.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_arbol_a751d21aee4c8d1db4e1b41e68b9da021}{set\+Arbol}} (\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$)
+\item 
+\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$ \mbox{\hyperlink{class_arbol_aa6e208537c62ba6927fafb5a7e803d85}{get\+Arbol}} ()
+\item 
+\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$ \mbox{\hyperlink{class_arbol_ab33a273dba754af0a18baffbacb26dfb}{crear\+Nodo}} (T)
+\item 
+void \mbox{\hyperlink{class_arbol_aad8985e9d07acc675bc35a44367b523b}{insertar\+Nodo}} (\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$\&, T)
+\item 
+void \mbox{\hyperlink{class_arbol_a253313c7d0fecb0a2ee3a374bea36efb}{mostrar}} (\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$, int)
+\item 
+bool \mbox{\hyperlink{class_arbol_a199b6076544127c3768d692ac2af10ec}{buscar}} (\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$, string \&)
+\item 
+T \mbox{\hyperlink{class_arbol_a134dfdc4e97969a1905f6c561e259594}{buscar\+Nodo}} (\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$, string \&)
+\item 
+\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$ \mbox{\hyperlink{class_arbol_a6e34448902ff749d9e0074355850cc21}{eliminar\+Nodo}} (\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$, string)
+\item 
+void \mbox{\hyperlink{class_arbol_a6dda36b908e21d4505e639dbf6c28b7f}{pre\+Orden}} (\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$)
+\item 
+void \mbox{\hyperlink{class_arbol_adbc74ee83cc73994d077d8a62ee4ea64}{in\+Orden}} (\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$)
+\item 
+void \mbox{\hyperlink{class_arbol_a2ac5d4030833fde8b0509e888318f841}{post\+Orden}} (\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_arbol_a199b6076544127c3768d692ac2af10ec}\label{class_arbol_a199b6076544127c3768d692ac2af10ec}} 
+\index{Arbol$<$ T $>$@{Arbol$<$ T $>$}!buscar@{buscar}}
+\index{buscar@{buscar}!Arbol$<$ T $>$@{Arbol$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{buscar()}{buscar()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{class_arbol}{Arbol}}$<$ T $>$\+::buscar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$}]{arbol,  }\item[{string \&}]{dni }\end{DoxyParamCaption})}
+
+Buscar un nodo con el valor del parámetro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dato} & El valor del nodo \\
+\hline
+{\em string} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_arbol_a134dfdc4e97969a1905f6c561e259594}\label{class_arbol_a134dfdc4e97969a1905f6c561e259594}} 
+\index{Arbol$<$ T $>$@{Arbol$<$ T $>$}!buscarNodo@{buscarNodo}}
+\index{buscarNodo@{buscarNodo}!Arbol$<$ T $>$@{Arbol$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{buscarNodo()}{buscarNodo()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{class_arbol}{Arbol}}$<$ T $>$\+::buscar\+Nodo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$}]{arbol,  }\item[{string \&}]{dni }\end{DoxyParamCaption})}
+
+Buscar un nodo con el valor del parámetro y retonar un objeto.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dato} & El valor del nodo \\
+\hline
+{\em string} & DNI\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+el valor del objeto \mbox{\hyperlink{class_nodo}{Nodo}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_arbol_ab33a273dba754af0a18baffbacb26dfb}\label{class_arbol_ab33a273dba754af0a18baffbacb26dfb}} 
+\index{Arbol$<$ T $>$@{Arbol$<$ T $>$}!crearNodo@{crearNodo}}
+\index{crearNodo@{crearNodo}!Arbol$<$ T $>$@{Arbol$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{crearNodo()}{crearNodo()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$ \mbox{\hyperlink{class_arbol}{Arbol}}$<$ T $>$\+::crear\+Nodo (\begin{DoxyParamCaption}\item[{T}]{dato }\end{DoxyParamCaption})}
+
+Crea un nuevo nodo con el valor del parámetro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dato} & El valor del nodo\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un puntero a un objeto \mbox{\hyperlink{class_nodo}{Nodo}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_arbol_a6e34448902ff749d9e0074355850cc21}\label{class_arbol_a6e34448902ff749d9e0074355850cc21}} 
+\index{Arbol$<$ T $>$@{Arbol$<$ T $>$}!eliminarNodo@{eliminarNodo}}
+\index{eliminarNodo@{eliminarNodo}!Arbol$<$ T $>$@{Arbol$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{eliminarNodo()}{eliminarNodo()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$ \mbox{\hyperlink{class_arbol}{Arbol}}$<$ T $>$\+::eliminar\+Nodo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$}]{raiz,  }\item[{string}]{dato }\end{DoxyParamCaption})}
+
+Eliminar un nodo con el valor del parámetro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dato} & El valor del nodo \\
+\hline
+{\em string} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_arbol_aa6e208537c62ba6927fafb5a7e803d85}\label{class_arbol_aa6e208537c62ba6927fafb5a7e803d85}} 
+\index{Arbol$<$ T $>$@{Arbol$<$ T $>$}!getArbol@{getArbol}}
+\index{getArbol@{getArbol}!Arbol$<$ T $>$@{Arbol$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getArbol()}{getArbol()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$ \mbox{\hyperlink{class_arbol}{Arbol}}$<$ T $>$\+::get\+Arbol}
+
+Devuelve la raíz del árbol.
+
+\begin{DoxyReturn}{Returns}
+El nodo raíz del árbol. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_arbol_adbc74ee83cc73994d077d8a62ee4ea64}\label{class_arbol_adbc74ee83cc73994d077d8a62ee4ea64}} 
+\index{Arbol$<$ T $>$@{Arbol$<$ T $>$}!inOrden@{inOrden}}
+\index{inOrden@{inOrden}!Arbol$<$ T $>$@{Arbol$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{inOrden()}{inOrden()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_arbol}{Arbol}}$<$ T $>$\+::in\+Orden (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$}]{arbol }\end{DoxyParamCaption})}
+
+Recorrido in\+Orden.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arbol} & Un puntero al nodo de la raíz.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Dato entero del nodo. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_arbol_aad8985e9d07acc675bc35a44367b523b}\label{class_arbol_aad8985e9d07acc675bc35a44367b523b}} 
+\index{Arbol$<$ T $>$@{Arbol$<$ T $>$}!insertarNodo@{insertarNodo}}
+\index{insertarNodo@{insertarNodo}!Arbol$<$ T $>$@{Arbol$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{insertarNodo()}{insertarNodo()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_arbol}{Arbol}}$<$ T $>$\+::insertar\+Nodo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$\&}]{arbol,  }\item[{T}]{dato }\end{DoxyParamCaption})}
+
+Si el árbol está vacío, cree un nuevo nodo y asígnelo al árbol. De lo contrario, si los datos son menores que la raíz, insértelos en el subárbol izquierdo. De lo contrario, insértelo en el subárbol derecho
+
+
+\begin{DoxyParams}{Parameters}
+{\em arbol} & El árbol \\
+\hline
+{\em dato} & el valor a insertar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_arbol_a253313c7d0fecb0a2ee3a374bea36efb}\label{class_arbol_a253313c7d0fecb0a2ee3a374bea36efb}} 
+\index{Arbol$<$ T $>$@{Arbol$<$ T $>$}!mostrar@{mostrar}}
+\index{mostrar@{mostrar}!Arbol$<$ T $>$@{Arbol$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{mostrar()}{mostrar()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_arbol}{Arbol}}$<$ T $>$\+::mostrar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$}]{arbol,  }\item[{int}]{contador }\end{DoxyParamCaption})}
+
+Mostrar el contenido del arbol
+
+
+\begin{DoxyParams}{Parameters}
+{\em dato} & El valor del nodo \\
+\hline
+{\em contador} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_arbol_a2ac5d4030833fde8b0509e888318f841}\label{class_arbol_a2ac5d4030833fde8b0509e888318f841}} 
+\index{Arbol$<$ T $>$@{Arbol$<$ T $>$}!postOrden@{postOrden}}
+\index{postOrden@{postOrden}!Arbol$<$ T $>$@{Arbol$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{postOrden()}{postOrden()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_arbol}{Arbol}}$<$ T $>$\+::post\+Orden (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$}]{arbol }\end{DoxyParamCaption})}
+
+Imprime el árbol en orden posterior.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arbol} & El nodo raíz del árbol.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Dato entero del nodo. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_arbol_a6dda36b908e21d4505e639dbf6c28b7f}\label{class_arbol_a6dda36b908e21d4505e639dbf6c28b7f}} 
+\index{Arbol$<$ T $>$@{Arbol$<$ T $>$}!preOrden@{preOrden}}
+\index{preOrden@{preOrden}!Arbol$<$ T $>$@{Arbol$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{preOrden()}{preOrden()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_arbol}{Arbol}}$<$ T $>$\+::pre\+Orden (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$}]{arbol }\end{DoxyParamCaption})}
+
+$\ast$$\vert$\+CURSOR\+\_\+\+MARCADOR$\vert$$\ast$
+
+
+\begin{DoxyParams}{Parameters}
+{\em arbol} & es la raiz del arbol\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+el valor del nodo. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_arbol_a751d21aee4c8d1db4e1b41e68b9da021}\label{class_arbol_a751d21aee4c8d1db4e1b41e68b9da021}} 
+\index{Arbol$<$ T $>$@{Arbol$<$ T $>$}!setArbol@{setArbol}}
+\index{setArbol@{setArbol}!Arbol$<$ T $>$@{Arbol$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setArbol()}{setArbol()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_arbol}{Arbol}}$<$ T $>$\+::set\+Arbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_nodo}{Nodo}}$<$ T $>$ $\ast$}]{\+\_\+arbol }\end{DoxyParamCaption})}
+
+Establece el valor de la variable privada arbol al valor del parámetro \+\_\+arbol.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+arbol} & El nodo raíz del árbol. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_arbol_8h}{Arbol.\+h}}\item 
+\mbox{\hyperlink{_arbol_8cpp}{Arbol.\+cpp}}\end{DoxyCompactItemize}

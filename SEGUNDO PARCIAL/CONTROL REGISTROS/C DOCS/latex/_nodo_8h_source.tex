@@ -1,0 +1,43 @@
+\hypertarget{_nodo_8h_source}{}\doxysection{Nodo.\+h}
+\mbox{\hyperlink{_nodo_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{2 \textcolor{comment}{ * UNIVERSIDAD DE LAS FUERZAS ARMADAS -\/ ESPE}}
+\DoxyCodeLine{3 \textcolor{comment}{ * Module:  Nodo.h}}
+\DoxyCodeLine{4 \textcolor{comment}{ * Author: Milena Maldonado, Alexander Guaman, Ronny Ibarra}}
+\DoxyCodeLine{5 \textcolor{comment}{ * Modified:  Lunes, Julio 17, 2023 18:24:36}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Purpose: Declaration of the class Nodo}}
+\DoxyCodeLine{7 \textcolor{comment}{ ***********************************************************************/}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#ifndef NODO\_H}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define NODO\_H}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_empleado_8h}{Empleado.h}}"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{class_nodo}{Nodo}}}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21 \textcolor{keyword}{public}:}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_nodo_aeefb2e4bd278e870e791d40c98bedd4c}{Nodo}}();}
+\DoxyCodeLine{23     T \mbox{\hyperlink{class_nodo_a754c21bd149591475694a12dcb031655}{getValor}}();}
+\DoxyCodeLine{24     \mbox{\hyperlink{class_nodo}{Nodo<T>}}*\& \mbox{\hyperlink{class_nodo_a833dae64f4b7b3d573864fd5477563c1}{getDerecha}}();}
+\DoxyCodeLine{25     \mbox{\hyperlink{class_nodo}{Nodo<T>}}*\& \mbox{\hyperlink{class_nodo_a8aaf7691cb94f12d9a1bec699c8fa803}{getIzquierda}}();}
+\DoxyCodeLine{26     \mbox{\hyperlink{class_nodo}{Nodo<T>}}*\& \mbox{\hyperlink{class_nodo_afe892c5ac8b487866b9969bf2e1abe4e}{getNivel}}();}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nodo_a20c4d359064051494fca72c32fb0eab2}{setValor}}(T);}
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nodo_a98531f912e59440bf29b83c5552ca919}{setDerecha}}(\mbox{\hyperlink{class_nodo}{Nodo<T>}}*);}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nodo_a9c1d2e2ee369d3ee1a3511aa9b86e4b1}{setIzquierda}}(\mbox{\hyperlink{class_nodo}{Nodo<T>}}*);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{private}:}
+\DoxyCodeLine{32     T valor;}
+\DoxyCodeLine{33     \mbox{\hyperlink{class_nodo}{Nodo<T>}}* derecha;}
+\DoxyCodeLine{34     \mbox{\hyperlink{class_nodo}{Nodo<T>}}* izquierda;}
+\DoxyCodeLine{35     \mbox{\hyperlink{class_nodo}{Nodo<T>}}* nivel;}
+\DoxyCodeLine{36 \};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,90 @@
+\hypertarget{_easy_b_m_p___b_m_p_8h_source}{}\doxysection{Easy\+BMP\+\_\+\+BMP.\+h}
+\mbox{\hyperlink{_easy_b_m_p___b_m_p_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE}}
+\DoxyCodeLine{3 \textcolor{comment}{DEPARTAMENTO DE CIENCIAS DE LA COMPUTACION}}
+\DoxyCodeLine{4 \textcolor{comment}{INGENIERIA DE SOFTWARE             }}
+\DoxyCodeLine{5 \textcolor{comment}{    AUTORES:}}
+\DoxyCodeLine{6 \textcolor{comment}{        Johan Romo}}
+\DoxyCodeLine{7 \textcolor{comment}{        Cristhopher Villamarin}}
+\DoxyCodeLine{8 \textcolor{comment}{        Sebastian Torres}}
+\DoxyCodeLine{9 \textcolor{comment}{                Jeanhela Nazate}}
+\DoxyCodeLine{10 \textcolor{comment}{                Milena Maldonado}}
+\DoxyCodeLine{11 \textcolor{comment}{                Shared Tinoco}}
+\DoxyCodeLine{12 \textcolor{comment}{        Brandon Masacela}}
+\DoxyCodeLine{13 \textcolor{comment}{        Juan Reyes}}
+\DoxyCodeLine{14 \textcolor{comment}{        GRUPOS: 7 -\/ 10 -\/ 11 -\/ 14}}
+\DoxyCodeLine{15 \textcolor{comment}{        FECHA DE CREACION:        Viernes, 1 de julio de 2022 7:34:00 p. m.     }}
+\DoxyCodeLine{16 \textcolor{comment}{    FECHA DE MODIFICACION:    Martes, 19 de junio de 2022 4:58:00 p. m.}}
+\DoxyCodeLine{17 \textcolor{comment}{        PROPOSITO: Proyecto Segundo Parcial -\/ Arboles B}}
+\DoxyCodeLine{18 \textcolor{comment}{*/}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#ifndef \_EasyBMP\_BMP\_h\_}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define \_EasyBMP\_BMP\_h\_}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{keywordtype}{bool} \mbox{\hyperlink{_easy_b_m_p___b_m_p_8h_a7151a3d14fa85dc0d9f4909b188c6b91}{SafeFread}}( \textcolor{keywordtype}{char}* buffer, \textcolor{keywordtype}{int} size, \textcolor{keywordtype}{int} number, FILE* fp );}
+\DoxyCodeLine{24 \textcolor{keywordtype}{bool} \mbox{\hyperlink{_easy_b_m_p___b_m_p_8h_a06ce9e359783f4a482de8e3055957dce}{EasyBMPcheckDataSize}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keyword}{class }\mbox{\hyperlink{class_b_m_p}{BMP}}}
+\DoxyCodeLine{27 \{\textcolor{keyword}{private}:}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29  \textcolor{keywordtype}{int} BitDepth;}
+\DoxyCodeLine{30  \textcolor{keywordtype}{int} Width;}
+\DoxyCodeLine{31  \textcolor{keywordtype}{int} Height;}
+\DoxyCodeLine{32  \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}}** Pixels;}
+\DoxyCodeLine{33  \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}}* Colors;}
+\DoxyCodeLine{34  \textcolor{keywordtype}{int} XPelsPerMeter;}
+\DoxyCodeLine{35  \textcolor{keywordtype}{int} YPelsPerMeter;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}}* MetaData1;}
+\DoxyCodeLine{38  \textcolor{keywordtype}{int} SizeOfMetaData1;}
+\DoxyCodeLine{39  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}}* MetaData2;}
+\DoxyCodeLine{40  \textcolor{keywordtype}{int} SizeOfMetaData2;}
+\DoxyCodeLine{41    }
+\DoxyCodeLine{42  \textcolor{keywordtype}{bool} Read32bitRow( \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}}* Buffer, \textcolor{keywordtype}{int} BufferSize, \textcolor{keywordtype}{int} Row );   }
+\DoxyCodeLine{43  \textcolor{keywordtype}{bool} Read24bitRow( \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}}* Buffer, \textcolor{keywordtype}{int} BufferSize, \textcolor{keywordtype}{int} Row );   }
+\DoxyCodeLine{44  \textcolor{keywordtype}{bool} Read8bitRow(  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}}* Buffer, \textcolor{keywordtype}{int} BufferSize, \textcolor{keywordtype}{int} Row );  }
+\DoxyCodeLine{45  \textcolor{keywordtype}{bool} Read4bitRow(  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}}* Buffer, \textcolor{keywordtype}{int} BufferSize, \textcolor{keywordtype}{int} Row );  }
+\DoxyCodeLine{46  \textcolor{keywordtype}{bool} Read1bitRow(  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}}* Buffer, \textcolor{keywordtype}{int} BufferSize, \textcolor{keywordtype}{int} Row );}
+\DoxyCodeLine{47    }
+\DoxyCodeLine{48  \textcolor{keywordtype}{bool} Write32bitRow( \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}}* Buffer, \textcolor{keywordtype}{int} BufferSize, \textcolor{keywordtype}{int} Row );   }
+\DoxyCodeLine{49  \textcolor{keywordtype}{bool} Write24bitRow( \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}}* Buffer, \textcolor{keywordtype}{int} BufferSize, \textcolor{keywordtype}{int} Row );   }
+\DoxyCodeLine{50  \textcolor{keywordtype}{bool} Write8bitRow(  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}}* Buffer, \textcolor{keywordtype}{int} BufferSize, \textcolor{keywordtype}{int} Row );  }
+\DoxyCodeLine{51  \textcolor{keywordtype}{bool} Write4bitRow(  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}}* Buffer, \textcolor{keywordtype}{int} BufferSize, \textcolor{keywordtype}{int} Row );  }
+\DoxyCodeLine{52  \textcolor{keywordtype}{bool} Write1bitRow(  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}}* Buffer, \textcolor{keywordtype}{int} BufferSize, \textcolor{keywordtype}{int} Row );}
+\DoxyCodeLine{53  }
+\DoxyCodeLine{54  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}} FindClosestColor( \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}}\& input );}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56  \textcolor{keyword}{public}: }
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58  \textcolor{keywordtype}{int} \mbox{\hyperlink{class_b_m_p_a4ce7ba10524707a536bfd3f69e4a7934}{TellBitDepth}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{59  \textcolor{keywordtype}{int} \mbox{\hyperlink{class_b_m_p_addbaef07743df3bc6b15195709015d1a}{TellWidth}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{60  \textcolor{keywordtype}{int} \mbox{\hyperlink{class_b_m_p_a76cff2e39ca9e1c3d7f2d6bbec0a3091}{TellHeight}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{61  \textcolor{keywordtype}{int} \mbox{\hyperlink{class_b_m_p_a2db1f1954c322028359d2c8db084f8d6}{TellNumberOfColors}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{62  \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_m_p_a7ff803dfff74e560f648ac25dce0846d}{SetDPI}}( \textcolor{keywordtype}{int} HorizontalDPI, \textcolor{keywordtype}{int} VerticalDPI );}
+\DoxyCodeLine{63  \textcolor{keywordtype}{int} \mbox{\hyperlink{class_b_m_p_ad0d9bf394d15684619ff7516457059b3}{TellVerticalDPI}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{64  \textcolor{keywordtype}{int} \mbox{\hyperlink{class_b_m_p_a2000c6bed1e4a1776fa625e6a8c7c8a3}{TellHorizontalDPI}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{65   }
+\DoxyCodeLine{66  \mbox{\hyperlink{class_b_m_p_a4876e9c343e660f4fff12d223da8f172}{BMP}}();}
+\DoxyCodeLine{67  \mbox{\hyperlink{class_b_m_p_a4876e9c343e660f4fff12d223da8f172}{BMP}}( \mbox{\hyperlink{class_b_m_p}{BMP}}\& Input );}
+\DoxyCodeLine{68  \mbox{\hyperlink{class_b_m_p_a9fb4f868c2ee3a26357729c48482c8c5}{\string~BMP}}();}
+\DoxyCodeLine{69  \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}}* \mbox{\hyperlink{class_b_m_p_adcae214f9928fb816962f39f08d33744}{operator()}}(\textcolor{keywordtype}{int} i,\textcolor{keywordtype}{int} j);}
+\DoxyCodeLine{70  }
+\DoxyCodeLine{71  \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} \mbox{\hyperlink{class_b_m_p_a10512de9346451e2cf3c9955af769d99}{GetPixel}}( \textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} j ) \textcolor{keyword}{const};}
+\DoxyCodeLine{72  \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_b_m_p_ae378a2baa9e7690b94a0b37d29719818}{SetPixel}}( \textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} j, \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} NewPixel );}
+\DoxyCodeLine{73  }
+\DoxyCodeLine{74  \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_b_m_p_a10f253e8dabe8ee5f4c1825579a985d3}{CreateStandardColorTable}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{75  }
+\DoxyCodeLine{76  \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_b_m_p_a2508215650ae9b72ab85d7b7e336378e}{SetSize}}( \textcolor{keywordtype}{int} NewWidth, \textcolor{keywordtype}{int} NewHeight );}
+\DoxyCodeLine{77  \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_b_m_p_a8274e16938a5ae0a71210f140e2fc016}{SetBitDepth}}( \textcolor{keywordtype}{int} NewDepth );}
+\DoxyCodeLine{78  \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_b_m_p_abb9f9f6a073c1eb9dfcc3799a25d15ab}{WriteToFile}}( \textcolor{keyword}{const} \textcolor{keywordtype}{char}* FileName );}
+\DoxyCodeLine{79  \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_b_m_p_ae396a195224d9ab9f4659d4d84683cc2}{ReadFromFile}}( \textcolor{keyword}{const} \textcolor{keywordtype}{char}* FileName );}
+\DoxyCodeLine{80  }
+\DoxyCodeLine{81  \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} \mbox{\hyperlink{class_b_m_p_a3bad05db381bfcb97abb8d385f43097f}{GetColor}}( \textcolor{keywordtype}{int} ColorNumber );}
+\DoxyCodeLine{82  \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_b_m_p_aa1b4400834341da1e6551f52a32b3956}{SetColor}}( \textcolor{keywordtype}{int} ColorNumber, \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} NewColor ); }
+\DoxyCodeLine{83 \};}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

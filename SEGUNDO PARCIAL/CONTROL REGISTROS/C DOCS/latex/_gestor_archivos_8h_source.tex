@@ -1,0 +1,227 @@
+\hypertarget{_gestor_archivos_8h_source}{}\doxysection{Gestor\+Archivos.\+h}
+\mbox{\hyperlink{_gestor_archivos_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{2 \textcolor{comment}{ * UNIVERSIDAD DE LAS FUERZAS ARMADAS -\/ ESPE}}
+\DoxyCodeLine{3 \textcolor{comment}{ * Module:  GestorArchivos.h}}
+\DoxyCodeLine{4 \textcolor{comment}{ * Author:  Kevin Amaguaña, Alexander Guaman, Ronny Ibarra}}
+\DoxyCodeLine{5 \textcolor{comment}{ * Modified: Sunday, June 4, 2023 8:24:36 AM}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Purpose: Declaration of the class GestorArchivos}}
+\DoxyCodeLine{7 \textcolor{comment}{ ***********************************************************************/}}
+\DoxyCodeLine{8  }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#if !defined(\_\_ProyectoControlRegistro\_GestorArchivos\_h)}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define \_\_ProyectoControlRegistro\_GestorArchivos\_h}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_lista_circular_doble_8h}{ListaCircularDoble.h}}"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_empleado_8h}{Empleado.h}}"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_registro_8h}{Registro.h}}"{}}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{class_gestor_archivos}{GestorArchivos}} \{}
+\DoxyCodeLine{24 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_gestor_archivos_a156dc491df7fbf7d48d4b4f184510fa7}{guardarListaEmpleadoEnArchivo}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* nombreArchivo, \mbox{\hyperlink{class_lista_circular_doble}{ListaCircularDoble<T>}}* lista) \{}
+\DoxyCodeLine{27     ofstream archivo(nombreArchivo);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keywordflow}{if} (archivo.is\_open()) \{}
+\DoxyCodeLine{30         \mbox{\hyperlink{class_nodo_doble}{NodoDoble<T>}}* nodoActual = lista-\/>\mbox{\hyperlink{class_lista_circular_doble_a6c52dcc200e25372f191a051bf7a85b4}{getCabeza}}(); \textcolor{comment}{// Suponiendo que primerNodo es un puntero al primer nodo de la lista}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{keywordflow}{if} (nodoActual != \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{33         \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{34             archivo << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getDni() << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getNombre() << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getApellido();}
+\DoxyCodeLine{35             archivo << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getFecha().getDia() << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getFecha().getMes() << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getFecha().getYear();}
+\DoxyCodeLine{36             archivo << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getSueldo() << endl;}
+\DoxyCodeLine{37             nodoActual = nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_aff1bacf8e000c554d1f7f563f932e8dc}{getSiguiente}}();}
+\DoxyCodeLine{38         \} \textcolor{keywordflow}{while} (nodoActual != lista-\/>\mbox{\hyperlink{class_lista_circular_doble_a6c52dcc200e25372f191a051bf7a85b4}{getCabeza}}()); \textcolor{comment}{// Continuar hasta que se vuelva al primer nodo}}
+\DoxyCodeLine{39     \}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42         archivo.close();}
+\DoxyCodeLine{43         cout << endl;}
+\DoxyCodeLine{44     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{45         cout << endl << \textcolor{stringliteral}{"{}No se pudo abrir el archivo."{}} << endl;}
+\DoxyCodeLine{46     \}}
+\DoxyCodeLine{47 \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{keyword}{static} \mbox{\hyperlink{class_lista_circular_doble}{ListaCircularDoble<T>}}* \mbox{\hyperlink{class_gestor_archivos_a39d7b32b6a0a6f4f1a71a8a3a63fcdf7}{cargarListaEmpleadoDesdeArchivo}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* nombreArchivo) \{}
+\DoxyCodeLine{51     \mbox{\hyperlink{class_lista_circular_doble}{ListaCircularDoble<T>}}* lista = \textcolor{keyword}{new} \mbox{\hyperlink{class_lista_circular_doble}{ListaCircularDoble<T>}}();}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     std::ifstream archivo(nombreArchivo);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     \textcolor{keywordflow}{if} (archivo.is\_open()) \{}
+\DoxyCodeLine{56         std::string linea;}
+\DoxyCodeLine{57         \textcolor{keywordflow}{while} (std::getline(archivo, linea)) \{}
+\DoxyCodeLine{58             std::istringstream iss(linea);}
+\DoxyCodeLine{59             std::string dni, nombre, apellido, swStr, diaStr, mesStr, yearStr, sueldoStr;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61             \textcolor{keywordflow}{if} (std::getline(iss, dni, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{62                 std::getline(iss, nombre, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{63                 std::getline(iss, apellido, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{64                 std::getline(iss, diaStr, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{65                 std::getline(iss, mesStr, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{66                 std::getline(iss, yearStr, \textcolor{charliteral}{','})\&\&}
+\DoxyCodeLine{67                 std::getline(iss, sueldoStr, \textcolor{charliteral}{','}) ) \{}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69                 \textcolor{comment}{// Convertir a los tipos de datos correctos}}
+\DoxyCodeLine{70                 \textcolor{keywordtype}{int} dia = std::stoi(diaStr);}
+\DoxyCodeLine{71                 \textcolor{keywordtype}{int} mes = std::stoi(mesStr);}
+\DoxyCodeLine{72                 \textcolor{keywordtype}{int} year = std::stoi(yearStr);}
+\DoxyCodeLine{73                 \textcolor{keywordtype}{float} sueldo = std::stof(sueldoStr);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75                 \textcolor{comment}{// Crear un objeto Persona y establecer sus atributos}}
+\DoxyCodeLine{76                 \mbox{\hyperlink{class_empleado}{Empleado}} empleado;}
+\DoxyCodeLine{77                 empleado.\mbox{\hyperlink{class_persona_ad4823e472af0fc986ba57f61aab2cecf}{setDni}}(dni);}
+\DoxyCodeLine{78                 empleado.\mbox{\hyperlink{class_persona_a815122dcd9e9fcc77deeba9a86b2f4eb}{setNombre}}(nombre);}
+\DoxyCodeLine{79                 empleado.\mbox{\hyperlink{class_persona_ab2ed83871322771824a8e6af5292cf78}{setApellido}}(apellido);}
+\DoxyCodeLine{80                 empleado.\mbox{\hyperlink{class_persona_a42a718dab85a53e0c699a73807d5521d}{setFecha}}(\mbox{\hyperlink{class_fecha}{Fecha}}(dia, mes, year));}
+\DoxyCodeLine{81                 empleado.\mbox{\hyperlink{class_empleado_a2bc0aaa57c32d7514e2892222bc7307d}{setSueldo}}(sueldo);}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83                 }
+\DoxyCodeLine{84                 \textcolor{comment}{// Agregar la persona a la lista}}
+\DoxyCodeLine{85                 lista-\/>\mbox{\hyperlink{class_lista_circular_doble_a667641e5000aafb614848100d0f1849a}{insertar}}(empleado);}
+\DoxyCodeLine{86             \}}
+\DoxyCodeLine{87         \}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89         archivo.close();}
+\DoxyCodeLine{90         cout << endl << \textcolor{stringliteral}{"{}La lista se ha cargado correctamente desde el archivo."{}} << endl;}
+\DoxyCodeLine{91     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{92         cout << endl << \textcolor{stringliteral}{"{}No se pudo abrir el archivo."{}} << endl;}
+\DoxyCodeLine{93     \}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95     \textcolor{keywordflow}{return} lista;}
+\DoxyCodeLine{96 \}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_gestor_archivos_a64c7c69ae0b8b304dfd6daf74dbc3f9c}{guardarListaRegistroEnArchivo}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *nombreArchivo, \mbox{\hyperlink{class_lista_circular_doble}{ListaCircularDoble<T>}} *lista)}
+\DoxyCodeLine{99     \{}
+\DoxyCodeLine{100         ofstream archivo(nombreArchivo);}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102         \textcolor{keywordflow}{if} (archivo.is\_open())}
+\DoxyCodeLine{103         \{}
+\DoxyCodeLine{104             \mbox{\hyperlink{class_nodo_doble}{NodoDoble<T>}} *nodoActual = lista-\/>\mbox{\hyperlink{class_lista_circular_doble_a6c52dcc200e25372f191a051bf7a85b4}{getCabeza}}(); \textcolor{comment}{// Suponiendo que primerNodo es un puntero al primer nodo de la lista}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106             \textcolor{keywordflow}{if} (nodoActual != \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{107             \{}
+\DoxyCodeLine{108                 \textcolor{keywordflow}{do}}
+\DoxyCodeLine{109                 \{}
+\DoxyCodeLine{110                     archivo <<nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getDni() << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getSw() << \textcolor{stringliteral}{"{},"{}}}
+\DoxyCodeLine{111                             << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getEntrada().getDia() << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getEntrada().getMes() << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getEntrada().getYear()}
+\DoxyCodeLine{112                             << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getEntrada().getHora() << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getEntrada().getMinuto() << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getEntrada().getSegundo()}
+\DoxyCodeLine{113                             << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getSalida().getDia() << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getSalida().getMes() << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getSalida().getYear()}
+\DoxyCodeLine{114                             << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getSalida().getHora() << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getSalida().getMinuto() << \textcolor{stringliteral}{"{},"{}} << nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_a485363ccbd4b50c095c6d08e7eed42d4}{getDato}}().getSalida().getSegundo() << endl;}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116                     nodoActual = nodoActual-\/>\mbox{\hyperlink{class_nodo_doble_aff1bacf8e000c554d1f7f563f932e8dc}{getSiguiente}}();}
+\DoxyCodeLine{117                 \} \textcolor{keywordflow}{while} (nodoActual != lista-\/>\mbox{\hyperlink{class_lista_circular_doble_a6c52dcc200e25372f191a051bf7a85b4}{getCabeza}}()); \textcolor{comment}{// Continuar hasta que se vuelva al primer nodo}}
+\DoxyCodeLine{118             \}}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120             archivo.close();}
+\DoxyCodeLine{121             cout << endl;}
+\DoxyCodeLine{122         \}}
+\DoxyCodeLine{123         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{124         \{}
+\DoxyCodeLine{125             cout << endl}
+\DoxyCodeLine{126                  << \textcolor{stringliteral}{"{}No se pudo abrir el archivo."{}} << endl;}
+\DoxyCodeLine{127         \}}
+\DoxyCodeLine{128     \}}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130     \textcolor{keyword}{static} \mbox{\hyperlink{class_lista_circular_doble}{ListaCircularDoble<T>}} *\mbox{\hyperlink{class_gestor_archivos_a9e09e3ba7b31e68c3890d8fa80e89485}{cargarListaRegistroDesdeArchivo}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *nombreArchivo)}
+\DoxyCodeLine{131     \{}
+\DoxyCodeLine{132         \mbox{\hyperlink{class_lista_circular_doble}{ListaCircularDoble<T>}} *lista = \textcolor{keyword}{new} \mbox{\hyperlink{class_lista_circular_doble}{ListaCircularDoble<T>}}();}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134         std::ifstream archivo(nombreArchivo);}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136         \textcolor{keywordflow}{if} (archivo.is\_open())}
+\DoxyCodeLine{137         \{}
+\DoxyCodeLine{138             std::string linea;}
+\DoxyCodeLine{139             \textcolor{keywordflow}{while} (std::getline(archivo, linea))}
+\DoxyCodeLine{140             \{}
+\DoxyCodeLine{141                 std::istringstream iss(linea);}
+\DoxyCodeLine{142                 std::string dni, swStr, diaSalidaStr, mesSalidaStr, yearSalidaStr;}
+\DoxyCodeLine{143                 std::string horaSalidaStr, minutosSalidaStr, segundosSalidaStr;}
+\DoxyCodeLine{144                 std::string diaEntradaStr, mesEntradaStr, yearEntradaStr;}
+\DoxyCodeLine{145                 std::string horaEntradaStr, minutosEntradaStr, segundosEntradaStr;}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147                 \textcolor{keywordflow}{if} (std::getline(iss, dni, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{148                     std::getline(iss, swStr, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{149                     std::getline(iss, diaEntradaStr, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{150                     std::getline(iss, mesEntradaStr, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{151                     std::getline(iss, yearEntradaStr, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{152                     std::getline(iss, horaEntradaStr, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{153                     std::getline(iss, minutosEntradaStr, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{154                     std::getline(iss, segundosEntradaStr, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{155                     std::getline(iss, diaSalidaStr, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{156                     std::getline(iss, mesSalidaStr, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{157                     std::getline(iss, yearSalidaStr, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{158                     std::getline(iss, horaSalidaStr, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{159                     std::getline(iss, minutosSalidaStr, \textcolor{charliteral}{','}) \&\&}
+\DoxyCodeLine{160                     std::getline(iss, segundosSalidaStr, \textcolor{charliteral}{','}))}
+\DoxyCodeLine{161                 \{}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163                     \textcolor{comment}{// Convertir a los tipos de datos correctos}}
+\DoxyCodeLine{164                     \textcolor{keywordtype}{int} sw = stoi(swStr);}
+\DoxyCodeLine{165                     \textcolor{keywordtype}{int} diaEntrada = stoi(diaEntradaStr);}
+\DoxyCodeLine{166                     \textcolor{keywordtype}{int} mesEntrada = stoi(mesEntradaStr);}
+\DoxyCodeLine{167                     \textcolor{keywordtype}{int} yearEntrada = stoi(yearEntradaStr);}
+\DoxyCodeLine{168                     \textcolor{keywordtype}{int} horaEntrada = stoi(horaEntradaStr);}
+\DoxyCodeLine{169                     \textcolor{keywordtype}{int} minutoEntrada = stoi(minutosEntradaStr);}
+\DoxyCodeLine{170                     \textcolor{keywordtype}{int} segundoEntrada = stoi(segundosEntradaStr);}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172                     \textcolor{keywordtype}{int} diaSalida = stoi(diaSalidaStr);}
+\DoxyCodeLine{173                     \textcolor{keywordtype}{int} mesSalida = stoi(mesSalidaStr);}
+\DoxyCodeLine{174                     \textcolor{keywordtype}{int} yearSalida = stoi(yearSalidaStr);}
+\DoxyCodeLine{175                     \textcolor{keywordtype}{int} horaSalida = stoi(horaSalidaStr);}
+\DoxyCodeLine{176                     \textcolor{keywordtype}{int} minutoSalida = stoi(minutosSalidaStr);}
+\DoxyCodeLine{177                     \textcolor{keywordtype}{int} segundoSalida = stoi(segundosSalidaStr);}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179                     \textcolor{comment}{// Crear un objeto registro y establecer sus atributos}}
+\DoxyCodeLine{180                     \mbox{\hyperlink{class_registro}{Registro}} registro;}
+\DoxyCodeLine{181                     registro.\mbox{\hyperlink{class_registro_a33b0f3a2cf5719870f759d5494ebe436}{setDni}}(dni);}
+\DoxyCodeLine{182                     registro.\mbox{\hyperlink{class_registro_a49221bc4b68a5ae3742a5e4193417e8f}{setSw}}(sw);}
+\DoxyCodeLine{183                     \mbox{\hyperlink{class_fecha}{Fecha}} entrada;}
+\DoxyCodeLine{184                     entrada.\mbox{\hyperlink{class_fecha_a8af86e5ad4fb35a4387f986a24aa92a1}{setDia}}(diaEntrada);}
+\DoxyCodeLine{185                     entrada.\mbox{\hyperlink{class_fecha_a37cfe89759c3823b4ed5ecf77a3f222a}{setMes}}(mesEntrada);}
+\DoxyCodeLine{186                     entrada.\mbox{\hyperlink{class_fecha_a96c64b184ad60a064b89e5b3c1dc06fc}{setYear}}(yearEntrada);}
+\DoxyCodeLine{187                     entrada.\mbox{\hyperlink{class_fecha_a925b4b1b313b591d07a392290be53272}{setHora}}(horaEntrada);}
+\DoxyCodeLine{188                     entrada.\mbox{\hyperlink{class_fecha_a5b73de58d47e1c8b66859cb7e8036e15}{setMinuto}}(minutoEntrada);}
+\DoxyCodeLine{189                     entrada.\mbox{\hyperlink{class_fecha_aca06e285c1cf0df191433c900d33b757}{setSegundo}}(segundoEntrada);}
+\DoxyCodeLine{190                     registro.\mbox{\hyperlink{class_registro_ac1e9f11f466a3b30a06b36ac3173b727}{setEntrada}}(entrada);}
+\DoxyCodeLine{191                     \mbox{\hyperlink{class_fecha}{Fecha}} salida;  }
+\DoxyCodeLine{192                     salida.\mbox{\hyperlink{class_fecha_a8af86e5ad4fb35a4387f986a24aa92a1}{setDia}}(diaSalida);       }
+\DoxyCodeLine{193                     salida.\mbox{\hyperlink{class_fecha_a37cfe89759c3823b4ed5ecf77a3f222a}{setMes}}(mesSalida);        }
+\DoxyCodeLine{194                     salida.\mbox{\hyperlink{class_fecha_a96c64b184ad60a064b89e5b3c1dc06fc}{setYear}}(yearSalida);      }
+\DoxyCodeLine{195                     salida.\mbox{\hyperlink{class_fecha_a925b4b1b313b591d07a392290be53272}{setHora}}(horaSalida);      }
+\DoxyCodeLine{196                     salida.\mbox{\hyperlink{class_fecha_a5b73de58d47e1c8b66859cb7e8036e15}{setMinuto}}(minutoSalida);  }
+\DoxyCodeLine{197                     salida.\mbox{\hyperlink{class_fecha_aca06e285c1cf0df191433c900d33b757}{setSegundo}}(segundoSalida);}
+\DoxyCodeLine{198                     registro.\mbox{\hyperlink{class_registro_ad1bf6eeb6b5b758b4bc3cc5f9175aeb1}{setSalida}}(salida);}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200                     \textcolor{comment}{// Agregar la persona a la lista}}
+\DoxyCodeLine{201                     lista-\/>\mbox{\hyperlink{class_lista_circular_doble_a667641e5000aafb614848100d0f1849a}{insertar}}(registro);}
+\DoxyCodeLine{202                 \}}
+\DoxyCodeLine{203             \}}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205             archivo.close();}
+\DoxyCodeLine{206             cout << endl}
+\DoxyCodeLine{207                  << \textcolor{stringliteral}{"{}La lista se ha cargado correctamente desde el archivo."{}} << endl;}
+\DoxyCodeLine{208         \}}
+\DoxyCodeLine{209         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{210         \{}
+\DoxyCodeLine{211             cout << endl}
+\DoxyCodeLine{212                  << \textcolor{stringliteral}{"{}No se pudo abrir el archivo."{}} << endl;}
+\DoxyCodeLine{213         \}}
+\DoxyCodeLine{214 }
+\DoxyCodeLine{215         \textcolor{keywordflow}{return} lista;}
+\DoxyCodeLine{216     \}}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220 \};}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

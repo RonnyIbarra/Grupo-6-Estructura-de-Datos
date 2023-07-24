@@ -1,0 +1,151 @@
+\hypertarget{_easy_b_m_p_8cpp}{}\doxysection{Easy\+BMP.\+cpp File Reference}
+\label{_easy_b_m_p_8cpp}\index{EasyBMP.cpp@{EasyBMP.cpp}}
+{\ttfamily \#include \char`\"{}Easy\+BMP.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_easy_b_m_p_8cpp_aa572cda955cea246911a9d44fa19f96d}{Set\+Easy\+BMPwarnings\+Off}} (void)
+\item 
+void \mbox{\hyperlink{_easy_b_m_p_8cpp_ac27f66464409775cfc3833843bff8245}{Set\+Easy\+BMPwarnings\+On}} (void)
+\item 
+bool \mbox{\hyperlink{_easy_b_m_p_8cpp_a7de7f5371407388438c70e9e33c61395}{Get\+Easy\+BMPwarning\+State}} (void)
+\item 
+int \mbox{\hyperlink{_easy_b_m_p_8cpp_af52dc2e4faaa0a793efd117aac7473c9}{Int\+Pow}} (int base, int exponent)
+\item 
+bool \mbox{\hyperlink{_easy_b_m_p_8cpp_a7151a3d14fa85dc0d9f4909b188c6b91}{Safe\+Fread}} (char $\ast$buffer, int size, int number, FILE $\ast$fp)
+\item 
+\mbox{\hyperlink{class_b_m_f_h}{BMFH}} \mbox{\hyperlink{_easy_b_m_p_8cpp_a66cd5022854084cc377337cced3866e6}{Get\+BMFH}} (const char $\ast$sz\+File\+Name\+In)
+\item 
+\mbox{\hyperlink{class_b_m_i_h}{BMIH}} \mbox{\hyperlink{_easy_b_m_p_8cpp_ad3884939602af9979dab7e63b8892ce6}{Get\+BMIH}} (const char $\ast$sz\+File\+Name\+In)
+\item 
+void \mbox{\hyperlink{_easy_b_m_p_8cpp_af5917ccb612d45cdb324804c573052e6}{Display\+Bitmap\+Info}} (const char $\ast$sz\+File\+Name\+In)
+\item 
+int \mbox{\hyperlink{_easy_b_m_p_8cpp_a8a847e3d65680531be233837bccd46e1}{Get\+Bitmap\+Color\+Depth}} (const char $\ast$sz\+File\+Name\+In)
+\item 
+void \mbox{\hyperlink{_easy_b_m_p_8cpp_a3c8216fda2e5e5f4572836f2faf3ae13}{Pixel\+To\+Pixel\+Copy}} (\mbox{\hyperlink{class_b_m_p}{BMP}} \&From, int FromX, int FromY, \mbox{\hyperlink{class_b_m_p}{BMP}} \&To, int ToX, int ToY)
+\item 
+void \mbox{\hyperlink{_easy_b_m_p_8cpp_a3f5c525a5b92fb2eea2cd6ed205f49e2}{Pixel\+To\+Pixel\+Copy\+Transparent}} (\mbox{\hyperlink{class_b_m_p}{BMP}} \&From, int FromX, int FromY, \mbox{\hyperlink{class_b_m_p}{BMP}} \&To, int ToX, int ToY, \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} \&Transparent)
+\item 
+void \mbox{\hyperlink{_easy_b_m_p_8cpp_a6cbc498ae44154544d175c431401d080}{Ranged\+Pixel\+To\+Pixel\+Copy}} (\mbox{\hyperlink{class_b_m_p}{BMP}} \&From, int FromL, int FromR, int FromB, int FromT, \mbox{\hyperlink{class_b_m_p}{BMP}} \&To, int ToX, int ToY)
+\item 
+void \mbox{\hyperlink{_easy_b_m_p_8cpp_aa7effa5d8068916381bed1850cd21112}{Ranged\+Pixel\+To\+Pixel\+Copy\+Transparent}} (\mbox{\hyperlink{class_b_m_p}{BMP}} \&From, int FromL, int FromR, int FromB, int FromT, \mbox{\hyperlink{class_b_m_p}{BMP}} \&To, int ToX, int ToY, \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} \&Transparent)
+\item 
+bool \mbox{\hyperlink{_easy_b_m_p_8cpp_a64446d5ba994ea2d9e15f1fb2bdcf213}{Create\+Grayscale\+Color\+Table}} (\mbox{\hyperlink{class_b_m_p}{BMP}} \&Input\+Image)
+\item 
+bool \mbox{\hyperlink{_easy_b_m_p_8cpp_a06ce9e359783f4a482de8e3055957dce}{Easy\+BMPcheck\+Data\+Size}} (void)
+\item 
+bool \mbox{\hyperlink{_easy_b_m_p_8cpp_a27f69b10b344a0bb9f82175f1973ffe6}{Rescale}} (\mbox{\hyperlink{class_b_m_p}{BMP}} \&Input\+Image, char mode, int New\+Dimension)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{_easy_b_m_p_8cpp_ad2d40fce178ed9d70559f10759d66304}{Easy\+BMPwarnings}} = true
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_a64446d5ba994ea2d9e15f1fb2bdcf213}\label{_easy_b_m_p_8cpp_a64446d5ba994ea2d9e15f1fb2bdcf213}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!CreateGrayscaleColorTable@{CreateGrayscaleColorTable}}
+\index{CreateGrayscaleColorTable@{CreateGrayscaleColorTable}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{CreateGrayscaleColorTable()}{CreateGrayscaleColorTable()}}
+{\footnotesize\ttfamily bool Create\+Grayscale\+Color\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{Input\+Image }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_af5917ccb612d45cdb324804c573052e6}\label{_easy_b_m_p_8cpp_af5917ccb612d45cdb324804c573052e6}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!DisplayBitmapInfo@{DisplayBitmapInfo}}
+\index{DisplayBitmapInfo@{DisplayBitmapInfo}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{DisplayBitmapInfo()}{DisplayBitmapInfo()}}
+{\footnotesize\ttfamily void Display\+Bitmap\+Info (\begin{DoxyParamCaption}\item[{const char $\ast$}]{sz\+File\+Name\+In }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_a06ce9e359783f4a482de8e3055957dce}\label{_easy_b_m_p_8cpp_a06ce9e359783f4a482de8e3055957dce}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!EasyBMPcheckDataSize@{EasyBMPcheckDataSize}}
+\index{EasyBMPcheckDataSize@{EasyBMPcheckDataSize}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{EasyBMPcheckDataSize()}{EasyBMPcheckDataSize()}}
+{\footnotesize\ttfamily bool Easy\+BMPcheck\+Data\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_a8a847e3d65680531be233837bccd46e1}\label{_easy_b_m_p_8cpp_a8a847e3d65680531be233837bccd46e1}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!GetBitmapColorDepth@{GetBitmapColorDepth}}
+\index{GetBitmapColorDepth@{GetBitmapColorDepth}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{GetBitmapColorDepth()}{GetBitmapColorDepth()}}
+{\footnotesize\ttfamily int Get\+Bitmap\+Color\+Depth (\begin{DoxyParamCaption}\item[{const char $\ast$}]{sz\+File\+Name\+In }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_a66cd5022854084cc377337cced3866e6}\label{_easy_b_m_p_8cpp_a66cd5022854084cc377337cced3866e6}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!GetBMFH@{GetBMFH}}
+\index{GetBMFH@{GetBMFH}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{GetBMFH()}{GetBMFH()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_m_f_h}{BMFH}} Get\+BMFH (\begin{DoxyParamCaption}\item[{const char $\ast$}]{sz\+File\+Name\+In }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_ad3884939602af9979dab7e63b8892ce6}\label{_easy_b_m_p_8cpp_ad3884939602af9979dab7e63b8892ce6}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!GetBMIH@{GetBMIH}}
+\index{GetBMIH@{GetBMIH}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{GetBMIH()}{GetBMIH()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_m_i_h}{BMIH}} Get\+BMIH (\begin{DoxyParamCaption}\item[{const char $\ast$}]{sz\+File\+Name\+In }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_a7de7f5371407388438c70e9e33c61395}\label{_easy_b_m_p_8cpp_a7de7f5371407388438c70e9e33c61395}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!GetEasyBMPwarningState@{GetEasyBMPwarningState}}
+\index{GetEasyBMPwarningState@{GetEasyBMPwarningState}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{GetEasyBMPwarningState()}{GetEasyBMPwarningState()}}
+{\footnotesize\ttfamily bool Get\+Easy\+BMPwarning\+State (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_af52dc2e4faaa0a793efd117aac7473c9}\label{_easy_b_m_p_8cpp_af52dc2e4faaa0a793efd117aac7473c9}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!IntPow@{IntPow}}
+\index{IntPow@{IntPow}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{IntPow()}{IntPow()}}
+{\footnotesize\ttfamily int Int\+Pow (\begin{DoxyParamCaption}\item[{int}]{base,  }\item[{int}]{exponent }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_a3c8216fda2e5e5f4572836f2faf3ae13}\label{_easy_b_m_p_8cpp_a3c8216fda2e5e5f4572836f2faf3ae13}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!PixelToPixelCopy@{PixelToPixelCopy}}
+\index{PixelToPixelCopy@{PixelToPixelCopy}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{PixelToPixelCopy()}{PixelToPixelCopy()}}
+{\footnotesize\ttfamily void Pixel\+To\+Pixel\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{From,  }\item[{int}]{FromX,  }\item[{int}]{FromY,  }\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{To,  }\item[{int}]{ToX,  }\item[{int}]{ToY }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_a3f5c525a5b92fb2eea2cd6ed205f49e2}\label{_easy_b_m_p_8cpp_a3f5c525a5b92fb2eea2cd6ed205f49e2}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!PixelToPixelCopyTransparent@{PixelToPixelCopyTransparent}}
+\index{PixelToPixelCopyTransparent@{PixelToPixelCopyTransparent}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{PixelToPixelCopyTransparent()}{PixelToPixelCopyTransparent()}}
+{\footnotesize\ttfamily void Pixel\+To\+Pixel\+Copy\+Transparent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{From,  }\item[{int}]{FromX,  }\item[{int}]{FromY,  }\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{To,  }\item[{int}]{ToX,  }\item[{int}]{ToY,  }\item[{\mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} \&}]{Transparent }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_a6cbc498ae44154544d175c431401d080}\label{_easy_b_m_p_8cpp_a6cbc498ae44154544d175c431401d080}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!RangedPixelToPixelCopy@{RangedPixelToPixelCopy}}
+\index{RangedPixelToPixelCopy@{RangedPixelToPixelCopy}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{RangedPixelToPixelCopy()}{RangedPixelToPixelCopy()}}
+{\footnotesize\ttfamily void Ranged\+Pixel\+To\+Pixel\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{From,  }\item[{int}]{FromL,  }\item[{int}]{FromR,  }\item[{int}]{FromB,  }\item[{int}]{FromT,  }\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{To,  }\item[{int}]{ToX,  }\item[{int}]{ToY }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_aa7effa5d8068916381bed1850cd21112}\label{_easy_b_m_p_8cpp_aa7effa5d8068916381bed1850cd21112}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!RangedPixelToPixelCopyTransparent@{RangedPixelToPixelCopyTransparent}}
+\index{RangedPixelToPixelCopyTransparent@{RangedPixelToPixelCopyTransparent}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{RangedPixelToPixelCopyTransparent()}{RangedPixelToPixelCopyTransparent()}}
+{\footnotesize\ttfamily void Ranged\+Pixel\+To\+Pixel\+Copy\+Transparent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{From,  }\item[{int}]{FromL,  }\item[{int}]{FromR,  }\item[{int}]{FromB,  }\item[{int}]{FromT,  }\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{To,  }\item[{int}]{ToX,  }\item[{int}]{ToY,  }\item[{\mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} \&}]{Transparent }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_a27f69b10b344a0bb9f82175f1973ffe6}\label{_easy_b_m_p_8cpp_a27f69b10b344a0bb9f82175f1973ffe6}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!Rescale@{Rescale}}
+\index{Rescale@{Rescale}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{Rescale()}{Rescale()}}
+{\footnotesize\ttfamily bool Rescale (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{Input\+Image,  }\item[{char}]{mode,  }\item[{int}]{New\+Dimension }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_a7151a3d14fa85dc0d9f4909b188c6b91}\label{_easy_b_m_p_8cpp_a7151a3d14fa85dc0d9f4909b188c6b91}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!SafeFread@{SafeFread}}
+\index{SafeFread@{SafeFread}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{SafeFread()}{SafeFread()}}
+{\footnotesize\ttfamily bool Safe\+Fread (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{int}]{size,  }\item[{int}]{number,  }\item[{FILE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_aa572cda955cea246911a9d44fa19f96d}\label{_easy_b_m_p_8cpp_aa572cda955cea246911a9d44fa19f96d}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!SetEasyBMPwarningsOff@{SetEasyBMPwarningsOff}}
+\index{SetEasyBMPwarningsOff@{SetEasyBMPwarningsOff}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{SetEasyBMPwarningsOff()}{SetEasyBMPwarningsOff()}}
+{\footnotesize\ttfamily void Set\+Easy\+BMPwarnings\+Off (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_ac27f66464409775cfc3833843bff8245}\label{_easy_b_m_p_8cpp_ac27f66464409775cfc3833843bff8245}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!SetEasyBMPwarningsOn@{SetEasyBMPwarningsOn}}
+\index{SetEasyBMPwarningsOn@{SetEasyBMPwarningsOn}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{SetEasyBMPwarningsOn()}{SetEasyBMPwarningsOn()}}
+{\footnotesize\ttfamily void Set\+Easy\+BMPwarnings\+On (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_easy_b_m_p_8cpp_ad2d40fce178ed9d70559f10759d66304}\label{_easy_b_m_p_8cpp_ad2d40fce178ed9d70559f10759d66304}} 
+\index{EasyBMP.cpp@{EasyBMP.cpp}!EasyBMPwarnings@{EasyBMPwarnings}}
+\index{EasyBMPwarnings@{EasyBMPwarnings}!EasyBMP.cpp@{EasyBMP.cpp}}
+\doxysubsubsection{\texorpdfstring{EasyBMPwarnings}{EasyBMPwarnings}}
+{\footnotesize\ttfamily bool Easy\+BMPwarnings = true}
+

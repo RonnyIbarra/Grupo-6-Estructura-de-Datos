@@ -1,0 +1,90 @@
+\hypertarget{_easy_b_m_p_8h_source}{}\doxysection{Easy\+BMP.\+h}
+\mbox{\hyperlink{_easy_b_m_p_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE}}
+\DoxyCodeLine{3 \textcolor{comment}{DEPARTAMENTO DE CIENCIAS DE LA COMPUTACION}}
+\DoxyCodeLine{4 \textcolor{comment}{INGENIERIA DE SOFTWARE             }}
+\DoxyCodeLine{5 \textcolor{comment}{    AUTORES:}}
+\DoxyCodeLine{6 \textcolor{comment}{        Johan Romo}}
+\DoxyCodeLine{7 \textcolor{comment}{        Cristhopher Villamarin}}
+\DoxyCodeLine{8 \textcolor{comment}{        Sebastian Torres}}
+\DoxyCodeLine{9 \textcolor{comment}{                Jeanhela Nazate}}
+\DoxyCodeLine{10 \textcolor{comment}{                Milena Maldonado}}
+\DoxyCodeLine{11 \textcolor{comment}{                Shared Tinoco}}
+\DoxyCodeLine{12 \textcolor{comment}{        Brandon Masacela}}
+\DoxyCodeLine{13 \textcolor{comment}{        Juan Reyes}}
+\DoxyCodeLine{14 \textcolor{comment}{        GRUPOS: 7 -\/ 10 -\/ 11 -\/ 14}}
+\DoxyCodeLine{15 \textcolor{comment}{        FECHA DE CREACION:        Viernes, 1 de julio de 2022 7:34:00 p. m.     }}
+\DoxyCodeLine{16 \textcolor{comment}{    FECHA DE MODIFICACION:    Martes, 19 de junio de 2022 4:58:00 p. m.}}
+\DoxyCodeLine{17 \textcolor{comment}{        PROPOSITO: Proyecto Segundo Parcial -\/ Arboles B}}
+\DoxyCodeLine{18 \textcolor{comment}{*/}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#ifdef \_MSC\_VER }}
+\DoxyCodeLine{21 \textcolor{comment}{// MS Visual Studio gives warnings when using }}
+\DoxyCodeLine{22 \textcolor{comment}{// fopen. But fopen\_s is not going to work well }}
+\DoxyCodeLine{23 \textcolor{comment}{// with most compilers, and fopen\_s uses different }}
+\DoxyCodeLine{24 \textcolor{comment}{// syntax than fopen. (i.e., a macro won't work) }}
+\DoxyCodeLine{25 \textcolor{comment}{// So, we'lll use this:}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define \_CRT\_SECURE\_NO\_DEPRECATE}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include <cctype>}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#ifndef EasyBMP}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define EasyBMP}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#ifdef \_\_BCPLUSPLUS\_\_ }}
+\DoxyCodeLine{38 \textcolor{comment}{// The Borland compiler must use this because something}}
+\DoxyCodeLine{39 \textcolor{comment}{// is wrong with their cstdio file. }}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#else }}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <cstdio>}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#ifdef \_\_GNUC\_\_}}
+\DoxyCodeLine{46 \textcolor{comment}{// If g++ specific code is ever required, this is }}
+\DoxyCodeLine{47 \textcolor{comment}{// where it goes. }}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#ifdef \_\_INTEL\_COMPILER}}
+\DoxyCodeLine{51 \textcolor{comment}{// If Intel specific code is ever required, this is }}
+\DoxyCodeLine{52 \textcolor{comment}{// where it goes. }}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#ifndef \_DefaultXPelsPerMeter\_}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#define \_DefaultXPelsPerMeter\_}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#define DefaultXPelsPerMeter 3780}}
+\DoxyCodeLine{58 \textcolor{comment}{// set to a default of 96 dpi }}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#ifndef \_DefaultYPelsPerMeter\_}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define \_DefaultYPelsPerMeter\_}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define DefaultYPelsPerMeter 3780}}
+\DoxyCodeLine{64 \textcolor{comment}{// set to a default of 96 dpi}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_easy_b_m_p___data_structures_8h}{EasyBMP\_DataStructures.h}}"{}}}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_easy_b_m_p___b_m_p_8h}{EasyBMP\_BMP.h}}"{}}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h}{EasyBMP\_VariousBMPutilities.h}}"{}}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#ifndef \_EasyBMP\_Version\_}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#define \_EasyBMP\_Version\_ 1.06}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define \_EasyBMP\_Version\_Integer\_ 106}}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#define \_EasyBMP\_Version\_String\_ "{}1.06"{}}}
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#ifndef \_EasyBMPwarnings\_}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#define \_EasyBMPwarnings\_}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{keywordtype}{void} \mbox{\hyperlink{_easy_b_m_p_8h_aa572cda955cea246911a9d44fa19f96d}{SetEasyBMPwarningsOff}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{82 \textcolor{keywordtype}{void} \mbox{\hyperlink{_easy_b_m_p_8h_ac27f66464409775cfc3833843bff8245}{SetEasyBMPwarningsOn}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{83 \textcolor{keywordtype}{bool} \mbox{\hyperlink{_easy_b_m_p_8h_a7de7f5371407388438c70e9e33c61395}{GetEasyBMPwarningState}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

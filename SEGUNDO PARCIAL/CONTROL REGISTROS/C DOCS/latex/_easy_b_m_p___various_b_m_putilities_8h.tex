@@ -1,0 +1,88 @@
+\hypertarget{_easy_b_m_p___various_b_m_putilities_8h}{}\doxysection{Easy\+BMP\+\_\+\+Various\+BMPutilities.\+h File Reference}
+\label{_easy_b_m_p___various_b_m_putilities_8h}\index{EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_b_m_f_h}{BMFH}} \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_a66cd5022854084cc377337cced3866e6}{Get\+BMFH}} (const char $\ast$sz\+File\+Name\+In)
+\item 
+\mbox{\hyperlink{class_b_m_i_h}{BMIH}} \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_ad3884939602af9979dab7e63b8892ce6}{Get\+BMIH}} (const char $\ast$sz\+File\+Name\+In)
+\item 
+void \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_af5917ccb612d45cdb324804c573052e6}{Display\+Bitmap\+Info}} (const char $\ast$sz\+File\+Name\+In)
+\item 
+int \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_a8a847e3d65680531be233837bccd46e1}{Get\+Bitmap\+Color\+Depth}} (const char $\ast$sz\+File\+Name\+In)
+\item 
+void \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_a3c8216fda2e5e5f4572836f2faf3ae13}{Pixel\+To\+Pixel\+Copy}} (\mbox{\hyperlink{class_b_m_p}{BMP}} \&From, int FromX, int FromY, \mbox{\hyperlink{class_b_m_p}{BMP}} \&To, int ToX, int ToY)
+\item 
+void \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_a3f5c525a5b92fb2eea2cd6ed205f49e2}{Pixel\+To\+Pixel\+Copy\+Transparent}} (\mbox{\hyperlink{class_b_m_p}{BMP}} \&From, int FromX, int FromY, \mbox{\hyperlink{class_b_m_p}{BMP}} \&To, int ToX, int ToY, \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} \&Transparent)
+\item 
+void \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_a6cbc498ae44154544d175c431401d080}{Ranged\+Pixel\+To\+Pixel\+Copy}} (\mbox{\hyperlink{class_b_m_p}{BMP}} \&From, int FromL, int FromR, int FromB, int FromT, \mbox{\hyperlink{class_b_m_p}{BMP}} \&To, int ToX, int ToY)
+\item 
+void \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_aa7effa5d8068916381bed1850cd21112}{Ranged\+Pixel\+To\+Pixel\+Copy\+Transparent}} (\mbox{\hyperlink{class_b_m_p}{BMP}} \&From, int FromL, int FromR, int FromB, int FromT, \mbox{\hyperlink{class_b_m_p}{BMP}} \&To, int ToX, int ToY, \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} \&Transparent)
+\item 
+bool \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_a64446d5ba994ea2d9e15f1fb2bdcf213}{Create\+Grayscale\+Color\+Table}} (\mbox{\hyperlink{class_b_m_p}{BMP}} \&Input\+Image)
+\item 
+bool \mbox{\hyperlink{_easy_b_m_p___various_b_m_putilities_8h_a27f69b10b344a0bb9f82175f1973ffe6}{Rescale}} (\mbox{\hyperlink{class_b_m_p}{BMP}} \&Input\+Image, char mode, int New\+Dimension)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_easy_b_m_p___various_b_m_putilities_8h_a64446d5ba994ea2d9e15f1fb2bdcf213}\label{_easy_b_m_p___various_b_m_putilities_8h_a64446d5ba994ea2d9e15f1fb2bdcf213}} 
+\index{EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}!CreateGrayscaleColorTable@{CreateGrayscaleColorTable}}
+\index{CreateGrayscaleColorTable@{CreateGrayscaleColorTable}!EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}}
+\doxysubsubsection{\texorpdfstring{CreateGrayscaleColorTable()}{CreateGrayscaleColorTable()}}
+{\footnotesize\ttfamily bool Create\+Grayscale\+Color\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{Input\+Image }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p___various_b_m_putilities_8h_af5917ccb612d45cdb324804c573052e6}\label{_easy_b_m_p___various_b_m_putilities_8h_af5917ccb612d45cdb324804c573052e6}} 
+\index{EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}!DisplayBitmapInfo@{DisplayBitmapInfo}}
+\index{DisplayBitmapInfo@{DisplayBitmapInfo}!EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}}
+\doxysubsubsection{\texorpdfstring{DisplayBitmapInfo()}{DisplayBitmapInfo()}}
+{\footnotesize\ttfamily void Display\+Bitmap\+Info (\begin{DoxyParamCaption}\item[{const char $\ast$}]{sz\+File\+Name\+In }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p___various_b_m_putilities_8h_a8a847e3d65680531be233837bccd46e1}\label{_easy_b_m_p___various_b_m_putilities_8h_a8a847e3d65680531be233837bccd46e1}} 
+\index{EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}!GetBitmapColorDepth@{GetBitmapColorDepth}}
+\index{GetBitmapColorDepth@{GetBitmapColorDepth}!EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}}
+\doxysubsubsection{\texorpdfstring{GetBitmapColorDepth()}{GetBitmapColorDepth()}}
+{\footnotesize\ttfamily int Get\+Bitmap\+Color\+Depth (\begin{DoxyParamCaption}\item[{const char $\ast$}]{sz\+File\+Name\+In }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p___various_b_m_putilities_8h_a66cd5022854084cc377337cced3866e6}\label{_easy_b_m_p___various_b_m_putilities_8h_a66cd5022854084cc377337cced3866e6}} 
+\index{EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}!GetBMFH@{GetBMFH}}
+\index{GetBMFH@{GetBMFH}!EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}}
+\doxysubsubsection{\texorpdfstring{GetBMFH()}{GetBMFH()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_m_f_h}{BMFH}} Get\+BMFH (\begin{DoxyParamCaption}\item[{const char $\ast$}]{sz\+File\+Name\+In }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p___various_b_m_putilities_8h_ad3884939602af9979dab7e63b8892ce6}\label{_easy_b_m_p___various_b_m_putilities_8h_ad3884939602af9979dab7e63b8892ce6}} 
+\index{EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}!GetBMIH@{GetBMIH}}
+\index{GetBMIH@{GetBMIH}!EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}}
+\doxysubsubsection{\texorpdfstring{GetBMIH()}{GetBMIH()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_m_i_h}{BMIH}} Get\+BMIH (\begin{DoxyParamCaption}\item[{const char $\ast$}]{sz\+File\+Name\+In }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p___various_b_m_putilities_8h_a3c8216fda2e5e5f4572836f2faf3ae13}\label{_easy_b_m_p___various_b_m_putilities_8h_a3c8216fda2e5e5f4572836f2faf3ae13}} 
+\index{EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}!PixelToPixelCopy@{PixelToPixelCopy}}
+\index{PixelToPixelCopy@{PixelToPixelCopy}!EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}}
+\doxysubsubsection{\texorpdfstring{PixelToPixelCopy()}{PixelToPixelCopy()}}
+{\footnotesize\ttfamily void Pixel\+To\+Pixel\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{From,  }\item[{int}]{FromX,  }\item[{int}]{FromY,  }\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{To,  }\item[{int}]{ToX,  }\item[{int}]{ToY }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p___various_b_m_putilities_8h_a3f5c525a5b92fb2eea2cd6ed205f49e2}\label{_easy_b_m_p___various_b_m_putilities_8h_a3f5c525a5b92fb2eea2cd6ed205f49e2}} 
+\index{EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}!PixelToPixelCopyTransparent@{PixelToPixelCopyTransparent}}
+\index{PixelToPixelCopyTransparent@{PixelToPixelCopyTransparent}!EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}}
+\doxysubsubsection{\texorpdfstring{PixelToPixelCopyTransparent()}{PixelToPixelCopyTransparent()}}
+{\footnotesize\ttfamily void Pixel\+To\+Pixel\+Copy\+Transparent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{From,  }\item[{int}]{FromX,  }\item[{int}]{FromY,  }\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{To,  }\item[{int}]{ToX,  }\item[{int}]{ToY,  }\item[{\mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} \&}]{Transparent }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p___various_b_m_putilities_8h_a6cbc498ae44154544d175c431401d080}\label{_easy_b_m_p___various_b_m_putilities_8h_a6cbc498ae44154544d175c431401d080}} 
+\index{EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}!RangedPixelToPixelCopy@{RangedPixelToPixelCopy}}
+\index{RangedPixelToPixelCopy@{RangedPixelToPixelCopy}!EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}}
+\doxysubsubsection{\texorpdfstring{RangedPixelToPixelCopy()}{RangedPixelToPixelCopy()}}
+{\footnotesize\ttfamily void Ranged\+Pixel\+To\+Pixel\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{From,  }\item[{int}]{FromL,  }\item[{int}]{FromR,  }\item[{int}]{FromB,  }\item[{int}]{FromT,  }\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{To,  }\item[{int}]{ToX,  }\item[{int}]{ToY }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p___various_b_m_putilities_8h_aa7effa5d8068916381bed1850cd21112}\label{_easy_b_m_p___various_b_m_putilities_8h_aa7effa5d8068916381bed1850cd21112}} 
+\index{EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}!RangedPixelToPixelCopyTransparent@{RangedPixelToPixelCopyTransparent}}
+\index{RangedPixelToPixelCopyTransparent@{RangedPixelToPixelCopyTransparent}!EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}}
+\doxysubsubsection{\texorpdfstring{RangedPixelToPixelCopyTransparent()}{RangedPixelToPixelCopyTransparent()}}
+{\footnotesize\ttfamily void Ranged\+Pixel\+To\+Pixel\+Copy\+Transparent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{From,  }\item[{int}]{FromL,  }\item[{int}]{FromR,  }\item[{int}]{FromB,  }\item[{int}]{FromT,  }\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{To,  }\item[{int}]{ToX,  }\item[{int}]{ToY,  }\item[{\mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} \&}]{Transparent }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_easy_b_m_p___various_b_m_putilities_8h_a27f69b10b344a0bb9f82175f1973ffe6}\label{_easy_b_m_p___various_b_m_putilities_8h_a27f69b10b344a0bb9f82175f1973ffe6}} 
+\index{EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}!Rescale@{Rescale}}
+\index{Rescale@{Rescale}!EasyBMP\_VariousBMPutilities.h@{EasyBMP\_VariousBMPutilities.h}}
+\doxysubsubsection{\texorpdfstring{Rescale()}{Rescale()}}
+{\footnotesize\ttfamily bool Rescale (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{Input\+Image,  }\item[{char}]{mode,  }\item[{int}]{New\+Dimension }\end{DoxyParamCaption})}
+

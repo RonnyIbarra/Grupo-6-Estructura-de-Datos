@@ -1,0 +1,107 @@
+\hypertarget{_easy_b_m_p___data_structures_8h_source}{}\doxysection{Easy\+BMP\+\_\+\+Data\+Structures.\+h}
+\mbox{\hyperlink{_easy_b_m_p___data_structures_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE}}
+\DoxyCodeLine{3 \textcolor{comment}{DEPARTAMENTO DE CIENCIAS DE LA COMPUTACION}}
+\DoxyCodeLine{4 \textcolor{comment}{INGENIERIA DE SOFTWARE             }}
+\DoxyCodeLine{5 \textcolor{comment}{    AUTORES:}}
+\DoxyCodeLine{6 \textcolor{comment}{        Johan Romo}}
+\DoxyCodeLine{7 \textcolor{comment}{        Cristhopher Villamarin}}
+\DoxyCodeLine{8 \textcolor{comment}{        Sebastian Torres}}
+\DoxyCodeLine{9 \textcolor{comment}{                Jeanhela Nazate}}
+\DoxyCodeLine{10 \textcolor{comment}{                Milena Maldonado}}
+\DoxyCodeLine{11 \textcolor{comment}{                Shared Tinoco}}
+\DoxyCodeLine{12 \textcolor{comment}{        Brandon Masacela}}
+\DoxyCodeLine{13 \textcolor{comment}{        Juan Reyes}}
+\DoxyCodeLine{14 \textcolor{comment}{        GRUPOS: 7 -\/ 10 -\/ 11 -\/ 14}}
+\DoxyCodeLine{15 \textcolor{comment}{        FECHA DE CREACION:        Viernes, 1 de julio de 2022 7:34:00 p. m.     }}
+\DoxyCodeLine{16 \textcolor{comment}{    FECHA DE MODIFICACION:    Martes, 19 de junio de 2022 4:58:00 p. m.}}
+\DoxyCodeLine{17 \textcolor{comment}{        PROPOSITO: Proyecto Segundo Parcial -\/ Arboles B}}
+\DoxyCodeLine{18 \textcolor{comment}{*/}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#ifndef \_EasyBMP\_Custom\_Math\_Functions\_}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define \_EasyBMP\_Custom\_Math\_Functions\_}}
+\DoxyCodeLine{22 \textcolor{keyword}{inline} \textcolor{keywordtype}{double} \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a8e24ca8974baacbdab1b564da5439845}{Square}}( \textcolor{keywordtype}{double} number )}
+\DoxyCodeLine{23 \{ \textcolor{keywordflow}{return} number*number; \}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keyword}{inline} \textcolor{keywordtype}{int} \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a11374fd1247aaf2dd8e95e5c4853ba05}{IntSquare}}( \textcolor{keywordtype}{int} number )}
+\DoxyCodeLine{26 \{ \textcolor{keywordflow}{return} number*number; \}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{keywordtype}{int} \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_af52dc2e4faaa0a793efd117aac7473c9}{IntPow}}( \textcolor{keywordtype}{int} base, \textcolor{keywordtype}{int} exponent );}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#ifndef \_EasyBMP\_Defined\_WINGDI}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define \_EasyBMP\_Defined\_WINGDI}}
+\DoxyCodeLine{33  \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}};}
+\DoxyCodeLine{34  \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a5a51f6f2df4a239a0da076c4d1430c0c}{ebmpWORD}};}
+\DoxyCodeLine{35  \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a20a57d22320667d61e226cbc6c4f6c8c}{ebmpDWORD}};}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#ifndef \_EasyBMP\_DataStructures\_h\_}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define \_EasyBMP\_DataStructures\_h\_}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_ac6ab566aa4b7764fb0cbcaab5afab089}{IsBigEndian}}()}
+\DoxyCodeLine{42 \{}
+\DoxyCodeLine{43  \textcolor{keywordtype}{short} word = 0x0001;}
+\DoxyCodeLine{44  \textcolor{keywordflow}{if}((*(\textcolor{keywordtype}{char} *)\& word) != 0x01 )}
+\DoxyCodeLine{45  \{ \textcolor{keywordflow}{return} \textcolor{keyword}{true}; \}}
+\DoxyCodeLine{46  \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{47 \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{keyword}{inline} \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a5a51f6f2df4a239a0da076c4d1430c0c}{ebmpWORD}} \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_af747c0c8ddceeffab9b86640d59cb14a}{FlipWORD}}( \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a5a51f6f2df4a239a0da076c4d1430c0c}{ebmpWORD}} in )}
+\DoxyCodeLine{50 \{ \textcolor{keywordflow}{return} ( (in >> 8) | (in << 8) ); \}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{keyword}{inline} \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a20a57d22320667d61e226cbc6c4f6c8c}{ebmpDWORD}} \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a109ee493d87625eee6f8a528ee85eec4}{FlipDWORD}}( \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a20a57d22320667d61e226cbc6c4f6c8c}{ebmpDWORD}} in )}
+\DoxyCodeLine{53 \{}
+\DoxyCodeLine{54  \textcolor{keywordflow}{return} ( ((in\&0xFF000000)>>24) | ((in\&0x000000FF)<<24) | }
+\DoxyCodeLine{55           ((in\&0x00FF0000)>>8 ) | ((in\&0x0000FF00)<<8 )   );}
+\DoxyCodeLine{56 \}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{comment}{// it's easier to use a struct than a class}}
+\DoxyCodeLine{59 \textcolor{comment}{// because we can read/write all four of the bytes }}
+\DoxyCodeLine{60 \textcolor{comment}{// at once (as we can count on them being continuous }}
+\DoxyCodeLine{61 \textcolor{comment}{// in memory}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} \{}
+\DoxyCodeLine{64     \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}} \mbox{\hyperlink{struct_r_g_b_apixel_af12bfb2ddd00995b59ef07e4e77c11af}{Blue}};}
+\DoxyCodeLine{65     \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}} \mbox{\hyperlink{struct_r_g_b_apixel_a9a9cd569a585a627910620a7b13690e7}{Green}};}
+\DoxyCodeLine{66     \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}} \mbox{\hyperlink{struct_r_g_b_apixel_a0d2e09cc0a67fd3da76b17289146fc26}{Red}};}
+\DoxyCodeLine{67     \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a05a8d0fee523be837bbfb6dcd147009f}{ebmpBYTE}} \mbox{\hyperlink{struct_r_g_b_apixel_a531e2866b6daa3975738cdd37db6270c}{Alpha}};}
+\DoxyCodeLine{68 \} \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}}; }
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{keyword}{class }\mbox{\hyperlink{class_b_m_f_h}{BMFH}}\{}
+\DoxyCodeLine{71 \textcolor{keyword}{public}:}
+\DoxyCodeLine{72  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a5a51f6f2df4a239a0da076c4d1430c0c}{ebmpWORD}}  \mbox{\hyperlink{class_b_m_f_h_a214beda14254f1eb53b192f788622cc5}{bfType}};}
+\DoxyCodeLine{73  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a20a57d22320667d61e226cbc6c4f6c8c}{ebmpDWORD}} \mbox{\hyperlink{class_b_m_f_h_a0b9654dc1130f38957058cd7385920cc}{bfSize}};}
+\DoxyCodeLine{74  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a5a51f6f2df4a239a0da076c4d1430c0c}{ebmpWORD}}  \mbox{\hyperlink{class_b_m_f_h_a72e928c772aba8fe4828f78dddf5bd0d}{bfReserved1}};}
+\DoxyCodeLine{75  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a5a51f6f2df4a239a0da076c4d1430c0c}{ebmpWORD}}  \mbox{\hyperlink{class_b_m_f_h_acb35df8e47efd20b50968ca252758678}{bfReserved2}};}
+\DoxyCodeLine{76  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a20a57d22320667d61e226cbc6c4f6c8c}{ebmpDWORD}} \mbox{\hyperlink{class_b_m_f_h_a3ede15c91c9ce0a65c68fe2be591448a}{bfOffBits}}; }
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78  \mbox{\hyperlink{class_b_m_f_h_afde965142b7c9c4f358175c2438e8668}{BMFH}}();}
+\DoxyCodeLine{79  \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_m_f_h_a66ce85f14dfc812a2692a227af6cb225}{display}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{80  \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_m_f_h_a749e4bb6cfa10ed9fa77c3578c471110}{SwitchEndianess}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{81 \};}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 \textcolor{keyword}{class }\mbox{\hyperlink{class_b_m_i_h}{BMIH}}\{}
+\DoxyCodeLine{84 \textcolor{keyword}{public}:}
+\DoxyCodeLine{85  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a20a57d22320667d61e226cbc6c4f6c8c}{ebmpDWORD}} \mbox{\hyperlink{class_b_m_i_h_a2db3ef93c59706bc0fa570969a1b977d}{biSize}};}
+\DoxyCodeLine{86  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a20a57d22320667d61e226cbc6c4f6c8c}{ebmpDWORD}} \mbox{\hyperlink{class_b_m_i_h_ad0c7404fbebd92bfb2a7d6d9465779c8}{biWidth}};}
+\DoxyCodeLine{87  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a20a57d22320667d61e226cbc6c4f6c8c}{ebmpDWORD}} \mbox{\hyperlink{class_b_m_i_h_aa8e0f59fede14cd0d8fa5c4b5f24e6b0}{biHeight}};}
+\DoxyCodeLine{88  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a5a51f6f2df4a239a0da076c4d1430c0c}{ebmpWORD}}  \mbox{\hyperlink{class_b_m_i_h_a85822751ad3c5761aa722da52a3e8fc7}{biPlanes}};}
+\DoxyCodeLine{89  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a5a51f6f2df4a239a0da076c4d1430c0c}{ebmpWORD}}  \mbox{\hyperlink{class_b_m_i_h_a483836ab0ab74bbbadc3aaaefb3bc6ff}{biBitCount}};}
+\DoxyCodeLine{90  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a20a57d22320667d61e226cbc6c4f6c8c}{ebmpDWORD}} \mbox{\hyperlink{class_b_m_i_h_ae8082e74c08c30be9ece489b51989a36}{biCompression}};}
+\DoxyCodeLine{91  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a20a57d22320667d61e226cbc6c4f6c8c}{ebmpDWORD}} \mbox{\hyperlink{class_b_m_i_h_ada57ca087ba23b0bfafcf161343f45b5}{biSizeImage}};}
+\DoxyCodeLine{92  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a20a57d22320667d61e226cbc6c4f6c8c}{ebmpDWORD}} \mbox{\hyperlink{class_b_m_i_h_a3def1dbb5bdf27a3c9b36cd27228aa2e}{biXPelsPerMeter}};}
+\DoxyCodeLine{93  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a20a57d22320667d61e226cbc6c4f6c8c}{ebmpDWORD}} \mbox{\hyperlink{class_b_m_i_h_a933d1de74ec3e28cad20e83ca5751319}{biYPelsPerMeter}};}
+\DoxyCodeLine{94  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a20a57d22320667d61e226cbc6c4f6c8c}{ebmpDWORD}} \mbox{\hyperlink{class_b_m_i_h_a92a19ff093c553a393d53d0a3bd6c5e7}{biClrUsed}};}
+\DoxyCodeLine{95  \mbox{\hyperlink{_easy_b_m_p___data_structures_8h_a20a57d22320667d61e226cbc6c4f6c8c}{ebmpDWORD}} \mbox{\hyperlink{class_b_m_i_h_ab36b35be2c0a89f215049baa7f46efb3}{biClrImportant}};}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97  \mbox{\hyperlink{class_b_m_i_h_af16a14a7fe56a28349067fe18858f9f3}{BMIH}}();}
+\DoxyCodeLine{98  \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_m_i_h_a3204317506996229b6fefaacbb2d79cb}{display}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{99  \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_m_i_h_aece3c1b46fe1712b5926d0b47eb1739f}{SwitchEndianess}}( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{100 \};}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

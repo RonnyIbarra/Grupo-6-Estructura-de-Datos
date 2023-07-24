@@ -1,0 +1,181 @@
+\hypertarget{class_b_m_p}{}\doxysection{BMP Class Reference}
+\label{class_b_m_p}\index{BMP@{BMP}}
+
+
+{\ttfamily \#include $<$Easy\+BMP\+\_\+\+BMP.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_b_m_p_a4ce7ba10524707a536bfd3f69e4a7934}{Tell\+Bit\+Depth}} (void)
+\item 
+int \mbox{\hyperlink{class_b_m_p_addbaef07743df3bc6b15195709015d1a}{Tell\+Width}} (void)
+\item 
+int \mbox{\hyperlink{class_b_m_p_a76cff2e39ca9e1c3d7f2d6bbec0a3091}{Tell\+Height}} (void)
+\item 
+int \mbox{\hyperlink{class_b_m_p_a2db1f1954c322028359d2c8db084f8d6}{Tell\+Number\+Of\+Colors}} (void)
+\item 
+void \mbox{\hyperlink{class_b_m_p_a7ff803dfff74e560f648ac25dce0846d}{Set\+DPI}} (int Horizontal\+DPI, int Vertical\+DPI)
+\item 
+int \mbox{\hyperlink{class_b_m_p_ad0d9bf394d15684619ff7516457059b3}{Tell\+Vertical\+DPI}} (void)
+\item 
+int \mbox{\hyperlink{class_b_m_p_a2000c6bed1e4a1776fa625e6a8c7c8a3}{Tell\+Horizontal\+DPI}} (void)
+\item 
+\mbox{\hyperlink{class_b_m_p_a4876e9c343e660f4fff12d223da8f172}{BMP}} ()
+\item 
+\mbox{\hyperlink{class_b_m_p_a3c73465aac82d707e77871c66dc4d2f9}{BMP}} (\mbox{\hyperlink{class_b_m_p}{BMP}} \&Input)
+\item 
+\mbox{\hyperlink{class_b_m_p_a9fb4f868c2ee3a26357729c48482c8c5}{$\sim$\+BMP}} ()
+\item 
+\mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} $\ast$ \mbox{\hyperlink{class_b_m_p_adcae214f9928fb816962f39f08d33744}{operator()}} (int i, int j)
+\item 
+\mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} \mbox{\hyperlink{class_b_m_p_a10512de9346451e2cf3c9955af769d99}{Get\+Pixel}} (int i, int j) const
+\item 
+bool \mbox{\hyperlink{class_b_m_p_ae378a2baa9e7690b94a0b37d29719818}{Set\+Pixel}} (int i, int j, \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} New\+Pixel)
+\item 
+bool \mbox{\hyperlink{class_b_m_p_a10f253e8dabe8ee5f4c1825579a985d3}{Create\+Standard\+Color\+Table}} (void)
+\item 
+bool \mbox{\hyperlink{class_b_m_p_a2508215650ae9b72ab85d7b7e336378e}{Set\+Size}} (int New\+Width, int New\+Height)
+\item 
+bool \mbox{\hyperlink{class_b_m_p_a8274e16938a5ae0a71210f140e2fc016}{Set\+Bit\+Depth}} (int New\+Depth)
+\item 
+bool \mbox{\hyperlink{class_b_m_p_abb9f9f6a073c1eb9dfcc3799a25d15ab}{Write\+To\+File}} (const char $\ast$File\+Name)
+\item 
+bool \mbox{\hyperlink{class_b_m_p_ae396a195224d9ab9f4659d4d84683cc2}{Read\+From\+File}} (const char $\ast$File\+Name)
+\item 
+\mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} \mbox{\hyperlink{class_b_m_p_a3bad05db381bfcb97abb8d385f43097f}{Get\+Color}} (int Color\+Number)
+\item 
+bool \mbox{\hyperlink{class_b_m_p_aa1b4400834341da1e6551f52a32b3956}{Set\+Color}} (int Color\+Number, \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} New\+Color)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_b_m_p_a4876e9c343e660f4fff12d223da8f172}\label{class_b_m_p_a4876e9c343e660f4fff12d223da8f172}} 
+\index{BMP@{BMP}!BMP@{BMP}}
+\index{BMP@{BMP}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{BMP()}{BMP()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily BMP\+::\+BMP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_a3c73465aac82d707e77871c66dc4d2f9}\label{class_b_m_p_a3c73465aac82d707e77871c66dc4d2f9}} 
+\index{BMP@{BMP}!BMP@{BMP}}
+\index{BMP@{BMP}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{BMP()}{BMP()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily BMP\+::\+BMP (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_m_p}{BMP}} \&}]{Input }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_a9fb4f868c2ee3a26357729c48482c8c5}\label{class_b_m_p_a9fb4f868c2ee3a26357729c48482c8c5}} 
+\index{BMP@{BMP}!````~BMP@{$\sim$BMP}}
+\index{````~BMP@{$\sim$BMP}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{$\sim$BMP()}{~BMP()}}
+{\footnotesize\ttfamily BMP\+::$\sim$\+BMP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_b_m_p_a10f253e8dabe8ee5f4c1825579a985d3}\label{class_b_m_p_a10f253e8dabe8ee5f4c1825579a985d3}} 
+\index{BMP@{BMP}!CreateStandardColorTable@{CreateStandardColorTable}}
+\index{CreateStandardColorTable@{CreateStandardColorTable}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{CreateStandardColorTable()}{CreateStandardColorTable()}}
+{\footnotesize\ttfamily bool BMP\+::\+Create\+Standard\+Color\+Table (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_a3bad05db381bfcb97abb8d385f43097f}\label{class_b_m_p_a3bad05db381bfcb97abb8d385f43097f}} 
+\index{BMP@{BMP}!GetColor@{GetColor}}
+\index{GetColor@{GetColor}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{GetColor()}{GetColor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} BMP\+::\+Get\+Color (\begin{DoxyParamCaption}\item[{int}]{Color\+Number }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_a10512de9346451e2cf3c9955af769d99}\label{class_b_m_p_a10512de9346451e2cf3c9955af769d99}} 
+\index{BMP@{BMP}!GetPixel@{GetPixel}}
+\index{GetPixel@{GetPixel}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{GetPixel()}{GetPixel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} BMP\+::\+Get\+Pixel (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_b_m_p_adcae214f9928fb816962f39f08d33744}\label{class_b_m_p_adcae214f9928fb816962f39f08d33744}} 
+\index{BMP@{BMP}!operator()@{operator()}}
+\index{operator()@{operator()}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}} $\ast$ BMP\+::operator() (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_ae396a195224d9ab9f4659d4d84683cc2}\label{class_b_m_p_ae396a195224d9ab9f4659d4d84683cc2}} 
+\index{BMP@{BMP}!ReadFromFile@{ReadFromFile}}
+\index{ReadFromFile@{ReadFromFile}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{ReadFromFile()}{ReadFromFile()}}
+{\footnotesize\ttfamily bool BMP\+::\+Read\+From\+File (\begin{DoxyParamCaption}\item[{const char $\ast$}]{File\+Name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_a8274e16938a5ae0a71210f140e2fc016}\label{class_b_m_p_a8274e16938a5ae0a71210f140e2fc016}} 
+\index{BMP@{BMP}!SetBitDepth@{SetBitDepth}}
+\index{SetBitDepth@{SetBitDepth}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{SetBitDepth()}{SetBitDepth()}}
+{\footnotesize\ttfamily bool BMP\+::\+Set\+Bit\+Depth (\begin{DoxyParamCaption}\item[{int}]{New\+Depth }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_aa1b4400834341da1e6551f52a32b3956}\label{class_b_m_p_aa1b4400834341da1e6551f52a32b3956}} 
+\index{BMP@{BMP}!SetColor@{SetColor}}
+\index{SetColor@{SetColor}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{SetColor()}{SetColor()}}
+{\footnotesize\ttfamily bool BMP\+::\+Set\+Color (\begin{DoxyParamCaption}\item[{int}]{Color\+Number,  }\item[{\mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}}}]{New\+Color }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_a7ff803dfff74e560f648ac25dce0846d}\label{class_b_m_p_a7ff803dfff74e560f648ac25dce0846d}} 
+\index{BMP@{BMP}!SetDPI@{SetDPI}}
+\index{SetDPI@{SetDPI}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{SetDPI()}{SetDPI()}}
+{\footnotesize\ttfamily void BMP\+::\+Set\+DPI (\begin{DoxyParamCaption}\item[{int}]{Horizontal\+DPI,  }\item[{int}]{Vertical\+DPI }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_ae378a2baa9e7690b94a0b37d29719818}\label{class_b_m_p_ae378a2baa9e7690b94a0b37d29719818}} 
+\index{BMP@{BMP}!SetPixel@{SetPixel}}
+\index{SetPixel@{SetPixel}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{SetPixel()}{SetPixel()}}
+{\footnotesize\ttfamily bool BMP\+::\+Set\+Pixel (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{\mbox{\hyperlink{struct_r_g_b_apixel}{RGBApixel}}}]{New\+Pixel }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_a2508215650ae9b72ab85d7b7e336378e}\label{class_b_m_p_a2508215650ae9b72ab85d7b7e336378e}} 
+\index{BMP@{BMP}!SetSize@{SetSize}}
+\index{SetSize@{SetSize}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{SetSize()}{SetSize()}}
+{\footnotesize\ttfamily bool BMP\+::\+Set\+Size (\begin{DoxyParamCaption}\item[{int}]{New\+Width,  }\item[{int}]{New\+Height }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_a4ce7ba10524707a536bfd3f69e4a7934}\label{class_b_m_p_a4ce7ba10524707a536bfd3f69e4a7934}} 
+\index{BMP@{BMP}!TellBitDepth@{TellBitDepth}}
+\index{TellBitDepth@{TellBitDepth}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{TellBitDepth()}{TellBitDepth()}}
+{\footnotesize\ttfamily int BMP\+::\+Tell\+Bit\+Depth (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_a76cff2e39ca9e1c3d7f2d6bbec0a3091}\label{class_b_m_p_a76cff2e39ca9e1c3d7f2d6bbec0a3091}} 
+\index{BMP@{BMP}!TellHeight@{TellHeight}}
+\index{TellHeight@{TellHeight}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{TellHeight()}{TellHeight()}}
+{\footnotesize\ttfamily int BMP\+::\+Tell\+Height (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_a2000c6bed1e4a1776fa625e6a8c7c8a3}\label{class_b_m_p_a2000c6bed1e4a1776fa625e6a8c7c8a3}} 
+\index{BMP@{BMP}!TellHorizontalDPI@{TellHorizontalDPI}}
+\index{TellHorizontalDPI@{TellHorizontalDPI}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{TellHorizontalDPI()}{TellHorizontalDPI()}}
+{\footnotesize\ttfamily int BMP\+::\+Tell\+Horizontal\+DPI (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_a2db1f1954c322028359d2c8db084f8d6}\label{class_b_m_p_a2db1f1954c322028359d2c8db084f8d6}} 
+\index{BMP@{BMP}!TellNumberOfColors@{TellNumberOfColors}}
+\index{TellNumberOfColors@{TellNumberOfColors}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{TellNumberOfColors()}{TellNumberOfColors()}}
+{\footnotesize\ttfamily int BMP\+::\+Tell\+Number\+Of\+Colors (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_ad0d9bf394d15684619ff7516457059b3}\label{class_b_m_p_ad0d9bf394d15684619ff7516457059b3}} 
+\index{BMP@{BMP}!TellVerticalDPI@{TellVerticalDPI}}
+\index{TellVerticalDPI@{TellVerticalDPI}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{TellVerticalDPI()}{TellVerticalDPI()}}
+{\footnotesize\ttfamily int BMP\+::\+Tell\+Vertical\+DPI (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_addbaef07743df3bc6b15195709015d1a}\label{class_b_m_p_addbaef07743df3bc6b15195709015d1a}} 
+\index{BMP@{BMP}!TellWidth@{TellWidth}}
+\index{TellWidth@{TellWidth}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{TellWidth()}{TellWidth()}}
+{\footnotesize\ttfamily int BMP\+::\+Tell\+Width (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_m_p_abb9f9f6a073c1eb9dfcc3799a25d15ab}\label{class_b_m_p_abb9f9f6a073c1eb9dfcc3799a25d15ab}} 
+\index{BMP@{BMP}!WriteToFile@{WriteToFile}}
+\index{WriteToFile@{WriteToFile}!BMP@{BMP}}
+\doxysubsubsection{\texorpdfstring{WriteToFile()}{WriteToFile()}}
+{\footnotesize\ttfamily bool BMP\+::\+Write\+To\+File (\begin{DoxyParamCaption}\item[{const char $\ast$}]{File\+Name }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_easy_b_m_p___b_m_p_8h}{Easy\+BMP\+\_\+\+BMP.\+h}}\item 
+\mbox{\hyperlink{_easy_b_m_p_8cpp}{Easy\+BMP.\+cpp}}\end{DoxyCompactItemize}

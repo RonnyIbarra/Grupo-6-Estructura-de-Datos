@@ -1,0 +1,38 @@
+\hypertarget{_arbol_8h_source}{}\doxysection{Arbol.\+h}
+\mbox{\hyperlink{_arbol_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{2 \textcolor{comment}{ * UNIVERSIDAD DE LAS FUERZAS ARMADAS -\/ ESPE}}
+\DoxyCodeLine{3 \textcolor{comment}{ * Module:  Arbol.h}}
+\DoxyCodeLine{4 \textcolor{comment}{ * Author: Milena Maldonado, Alexander Guaman, Ronny Ibarra}}
+\DoxyCodeLine{5 \textcolor{comment}{ * Modified:  Lunes, Julio 17, 2023 18:24:36}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Purpose: Declaration of the class Arbol}}
+\DoxyCodeLine{7 \textcolor{comment}{ ***********************************************************************/}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#ifndef ARBOL\_H}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define ARBOL\_H}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_nodo_8h}{Nodo.h}}"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{class_arbol}{Arbol}}}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17 \textcolor{keyword}{private}:}
+\DoxyCodeLine{18     \mbox{\hyperlink{class_nodo}{Nodo<T>}} *arbol = NULL;}
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arbol_a751d21aee4c8d1db4e1b41e68b9da021}{setArbol}}(\mbox{\hyperlink{class_nodo}{Nodo<T>}} *);}
+\DoxyCodeLine{21     \mbox{\hyperlink{class_nodo}{Nodo<T>}}*\mbox{\hyperlink{class_arbol_aa6e208537c62ba6927fafb5a7e803d85}{getArbol}}();}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_nodo}{Nodo<T>}}*\mbox{\hyperlink{class_arbol_ab33a273dba754af0a18baffbacb26dfb}{crearNodo}}(T);}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arbol_aad8985e9d07acc675bc35a44367b523b}{insertarNodo}}(\mbox{\hyperlink{class_nodo}{Nodo<T>}}*\&, T);}
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arbol_a253313c7d0fecb0a2ee3a374bea36efb}{mostrar}}(\mbox{\hyperlink{class_nodo}{Nodo<T>}}*, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{25     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_arbol_a199b6076544127c3768d692ac2af10ec}{buscar}}(\mbox{\hyperlink{class_nodo}{Nodo<T>}}*,\textcolor{keywordtype}{string}\&);}
+\DoxyCodeLine{26     T \mbox{\hyperlink{class_arbol_a134dfdc4e97969a1905f6c561e259594}{buscarNodo}}(\mbox{\hyperlink{class_nodo}{Nodo<T>}}*, \textcolor{keywordtype}{string}\&);}
+\DoxyCodeLine{27     \mbox{\hyperlink{class_nodo}{Nodo<T>}}* \mbox{\hyperlink{class_arbol_a6e34448902ff749d9e0074355850cc21}{eliminarNodo}}(\mbox{\hyperlink{class_nodo}{Nodo<T>}}*, \textcolor{keywordtype}{string});}
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arbol_a6dda36b908e21d4505e639dbf6c28b7f}{preOrden}}(\mbox{\hyperlink{class_nodo}{Nodo<T>}}*);}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arbol_adbc74ee83cc73994d077d8a62ee4ea64}{inOrden}}(\mbox{\hyperlink{class_nodo}{Nodo<T>}}*);}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arbol_a2ac5d4030833fde8b0509e888318f841}{postOrden}}(\mbox{\hyperlink{class_nodo}{Nodo<T>}}*);}
+\DoxyCodeLine{31 \};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

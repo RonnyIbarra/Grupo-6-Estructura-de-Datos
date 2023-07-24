@@ -1,0 +1,45 @@
+\hypertarget{_persona_8h_source}{}\doxysection{Persona.\+h}
+\mbox{\hyperlink{_persona_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{2 \textcolor{comment}{ * UNIVERSIDAD DE LAS FUERZAS ARMADAS -\/ ESPE}}
+\DoxyCodeLine{3 \textcolor{comment}{ * Module:  Persona.h}}
+\DoxyCodeLine{4 \textcolor{comment}{ * Author: Milena Maldonado, Alexander Guaman, Ronny Ibarra}}
+\DoxyCodeLine{5 \textcolor{comment}{ * Modified:  Lunes, Julio 17, 2023 18:24:36}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Purpose: Declaration of the class Persona}}
+\DoxyCodeLine{7 \textcolor{comment}{ ***********************************************************************/}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#if !defined PERSONA\_H}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define PERSONA\_H}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_fecha_8h}{Fecha.h}}"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{comment}{// Clase abstracta Persona}}
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{class_persona}{Persona}} \{}
+\DoxyCodeLine{19 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{20     \textcolor{keywordtype}{string} \mbox{\hyperlink{class_persona_a2158d61c4af939d29e569e25bc1b16df}{dni}};}
+\DoxyCodeLine{21     \textcolor{keywordtype}{string} \mbox{\hyperlink{class_persona_a08be6fe295c330f6fb2d479d466f2946}{nombre}};}
+\DoxyCodeLine{22     \textcolor{keywordtype}{string} \mbox{\hyperlink{class_persona_a6332da3552b88b3bbd27e8b425c49854}{apellido}};}
+\DoxyCodeLine{23     \mbox{\hyperlink{class_fecha}{Fecha}} \mbox{\hyperlink{class_persona_a639a92ada11d2383678861e82e00ad5d}{fecha}};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keyword}{public}:}
+\DoxyCodeLine{26     \mbox{\hyperlink{class_persona_a7c397bbb298be9104191122f6383b643}{Persona}}();}
+\DoxyCodeLine{27     \mbox{\hyperlink{class_persona_a7c397bbb298be9104191122f6383b643}{Persona}}(\textcolor{keywordtype}{string},\textcolor{keywordtype}{string},\textcolor{keywordtype}{string},\mbox{\hyperlink{class_fecha}{Fecha}});}
+\DoxyCodeLine{28     \textcolor{keywordtype}{string} \mbox{\hyperlink{class_persona_a1e1c14ff1afd9b6a8a26377d622eda8d}{getDni}}();}
+\DoxyCodeLine{29     \textcolor{keywordtype}{string} \mbox{\hyperlink{class_persona_aa4b9145dd6f2fcef67aef551ab30be06}{getNombre}}();}
+\DoxyCodeLine{30     \textcolor{keywordtype}{string} \mbox{\hyperlink{class_persona_ab7f2e32295a7a278f7a3cd2eb504c2c1}{getApellido}}();}
+\DoxyCodeLine{31     \mbox{\hyperlink{class_fecha}{Fecha}} \mbox{\hyperlink{class_persona_a32b531a8b790b50f984c1e34c2c69771}{getFecha}}();}
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_persona_ad4823e472af0fc986ba57f61aab2cecf}{setDni}}(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_persona_a815122dcd9e9fcc77deeba9a86b2f4eb}{setNombre}}(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_persona_ab2ed83871322771824a8e6af5292cf78}{setApellido}}(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{35     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_persona_a42a718dab85a53e0c699a73807d5521d}{setFecha}}(\mbox{\hyperlink{class_fecha}{Fecha}});}
+\DoxyCodeLine{36     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_persona_a77d57a0774edbde8b3f60daa4c9a0ef6}{toString}}() = 0;}
+\DoxyCodeLine{37     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_persona_aa12363655f364e8088875e68b005325d}{toStringTable}}() = 0;}
+\DoxyCodeLine{38 \};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

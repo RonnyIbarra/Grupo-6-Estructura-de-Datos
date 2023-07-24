@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['bfoffbits_0',['bfOffBits',['../class_b_m_f_h.html#a3ede15c91c9ce0a65c68fe2be591448a',1,'BMFH']]],
+  ['bfreserved1_1',['bfReserved1',['../class_b_m_f_h.html#a72e928c772aba8fe4828f78dddf5bd0d',1,'BMFH']]],
+  ['bfreserved2_2',['bfReserved2',['../class_b_m_f_h.html#acb35df8e47efd20b50968ca252758678',1,'BMFH']]],
+  ['bfsize_3',['bfSize',['../class_b_m_f_h.html#a0b9654dc1130f38957058cd7385920cc',1,'BMFH']]],
+  ['bftype_4',['bfType',['../class_b_m_f_h.html#a214beda14254f1eb53b192f788622cc5',1,'BMFH']]],
+  ['bibitcount_5',['biBitCount',['../class_b_m_i_h.html#a483836ab0ab74bbbadc3aaaefb3bc6ff',1,'BMIH']]],
+  ['biclrimportant_6',['biClrImportant',['../class_b_m_i_h.html#ab36b35be2c0a89f215049baa7f46efb3',1,'BMIH']]],
+  ['biclrused_7',['biClrUsed',['../class_b_m_i_h.html#a92a19ff093c553a393d53d0a3bd6c5e7',1,'BMIH']]],
+  ['bicompression_8',['biCompression',['../class_b_m_i_h.html#ae8082e74c08c30be9ece489b51989a36',1,'BMIH']]],
+  ['biheight_9',['biHeight',['../class_b_m_i_h.html#aa8e0f59fede14cd0d8fa5c4b5f24e6b0',1,'BMIH']]],
+  ['biplanes_10',['biPlanes',['../class_b_m_i_h.html#a85822751ad3c5761aa722da52a3e8fc7',1,'BMIH']]],
+  ['bisize_11',['biSize',['../class_b_m_i_h.html#a2db3ef93c59706bc0fa570969a1b977d',1,'BMIH']]],
+  ['bisizeimage_12',['biSizeImage',['../class_b_m_i_h.html#ada57ca087ba23b0bfafcf161343f45b5',1,'BMIH']]],
+  ['biwidth_13',['biWidth',['../class_b_m_i_h.html#ad0c7404fbebd92bfb2a7d6d9465779c8',1,'BMIH']]],
+  ['bixpelspermeter_14',['biXPelsPerMeter',['../class_b_m_i_h.html#a3def1dbb5bdf27a3c9b36cd27228aa2e',1,'BMIH']]],
+  ['biypelspermeter_15',['biYPelsPerMeter',['../class_b_m_i_h.html#a933d1de74ec3e28cad20e83ca5751319',1,'BMIH']]],
+  ['blue_16',['Blue',['../struct_r_g_b_apixel.html#af12bfb2ddd00995b59ef07e4e77c11af',1,'RGBApixel']]]
+];
