@@ -1,2 +1,0 @@
-C:\Users\Det-Pc\Documents\ESPE\Estructuras de datos\Visual Studio\ControlRegistros\x64\Debug\ControlRegistros.exe
-C:\Users\Det-Pc\Documents\ESPE\Estructuras de datos\Github\Grupo-6-Estructura-de-Datos\SEGUNDO PARCIAL\CONTROL REGISTROS\Codigo\ControlRegistros\x64\Debug\ControlRegistros.exe
